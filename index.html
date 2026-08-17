@@ -96,6 +96,18 @@ section{padding-top:112px;}
 h3{font-size:1.14rem; font-weight:700; margin:0 0 10px; line-height:1.5;}
 h4{font-size:1rem; font-weight:700; margin:0 0 6px;}
 
+/* 섹션 제목 밑줄 바로 다음에 오는 목록은 윗줄을 긋지 않는다 (선 겹침 방지) */
+.sechead + .figs > li:first-child,
+.sechead + .asks > li:first-child,
+.sechead + .gens > li:first-child,
+.sechead + .steps > li:first-child,
+.sechead + .quotes > li:first-child,
+.sechead + .beliefs > li:first-child,
+.sechead + .career > li:first-child{border-top:none; padding-top:4px;}
+
+/* 목록 안에서 두 번째 묶음은 윗줄을 유지해 구분자로 쓴다 */
+.figs + .figs > li:first-child{border-top:1px solid var(--hair);}
+
 /* ═══ 숫자 ═══ */
 .figs{margin:0; padding:0; list-style:none;}
 .figs li{display:grid; grid-template-columns:1fr; gap:2px; padding:24px 0; border-top:1px solid var(--hair);}
@@ -128,7 +140,7 @@ h4{font-size:1rem; font-weight:700; margin:0 0 6px;}
 table{border-collapse:collapse; width:100%; min-width:600px;}
 caption{text-align:left; font-size:15px; font-weight:700; padding:0 0 16px; color:var(--ink);}
 th,td{text-align:left; padding:17px 24px 17px 0; vertical-align:top;}
-thead th{font-size:13.5px; font-weight:400; color:var(--ink-3); border-bottom:1px solid var(--ink); padding-bottom:9px;}
+thead th{font-size:13.5px; font-weight:400; color:var(--ink-3); border-bottom:1px solid var(--rule); padding-bottom:11px;}
 tbody td{border-bottom:1px solid var(--hair); font-size:14.5px; color:var(--ink-2); font-weight:300; line-height:1.72;}
 tbody td:first-child{color:var(--ink); font-weight:400; white-space:nowrap;}
 tbody td b{font-weight:700; color:var(--ink);}
