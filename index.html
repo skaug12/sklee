@@ -8,320 +8,319 @@
 <meta name="robots" content="noindex, nofollow">
 <meta property="og:title" content="이슬기 — 삼양라운드스퀘어 지원 포트폴리오">
 <meta property="og:description" content="12번 실패하고 세 번 갈아엎은 기록.">
-<meta property="og:type" content="profile">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect x='3' y='9' width='17' height='17' fill='%23323232'/%3E%3Ccircle cx='20' cy='14' r='9' fill='%23FF6400' fill-opacity='.85'/%3E%3C/svg%3E">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard-dynamic-subset.css">
 <style>
 :root{
-  /* Samyang Roundsquare CI */
-  --orange:#FF6400;      /* Evolving Orange */
-  --charcoal:#323232;    /* Sophisto Charcoal */
-  --white:#FFFFFF;       /* Unlimited White */
+  --orange:#FF6400;
+  --charcoal:#323232;
   --burgundy:#5F0A32;
-  --tangerine:#FFA300;
   --sand:#F7DECB;
 
-  --ground:#FBF9F7;
-  --surface:#FFFFFF;
-  --surface-2:#F4F0EC;
-  --ink:#1C1A19;
-  --ink-2:#514C48;
-  --ink-3:#837B75;
-  --rule:#E4DCD4;
-  --rule-2:#EFE9E3;
+  --paper:#FCFAF8;
+  --ink:#1A1817;
+  --ink-2:#55504C;
+  --ink-3:#8C847E;
+  --rule:#DED6CE;
+  --hair:#EDE7E1;
   --accent:var(--orange);
-  --accent-soft:#FFF0E6;
 
-  --sans:"Pretendard","Apple SD Gothic Neo","Malgun Gothic","Noto Sans KR",system-ui,-apple-system,sans-serif;
-  --serif:"Nanum Myeongjo","AppleMyungjo","Apple SD Gothic Neo",Batang,Georgia,serif;
-  --mono:"SF Mono","JetBrains Mono",ui-monospace,Menlo,monospace;
+  --font:"Pretendard Variable",Pretendard,-apple-system,BlinkMacSystemFont,"Apple SD Gothic Neo",system-ui,sans-serif;
 }
 @media (prefers-color-scheme:dark){
   :root:not([data-theme="light"]){
-    --ground:#141211; --surface:#1C1917; --surface-2:#24201D;
-    --ink:#F2EDE8; --ink-2:#B7ADA5; --ink-3:#8A817A;
-    --rule:#332D28; --rule-2:#282320;
-    --accent:#FF7D26; --accent-soft:#3A2113;
-    --sand:#4A3527;
+    --paper:#131110; --ink:#F0EBE6; --ink-2:#ADA49D; --ink-3:#7C736C;
+    --rule:#332C27; --hair:#252017; --sand:#3A2A1E; --accent:#FF7D26;
   }
 }
 :root[data-theme="dark"]{
-  --ground:#141211; --surface:#1C1917; --surface-2:#24201D;
-  --ink:#F2EDE8; --ink-2:#B7ADA5; --ink-3:#8A817A;
-  --rule:#332D28; --rule-2:#282320;
-  --accent:#FF7D26; --accent-soft:#3A2113;
-  --sand:#4A3527;
+  --paper:#131110; --ink:#F0EBE6; --ink-2:#ADA49D; --ink-3:#7C736C;
+  --rule:#332C27; --hair:#252017; --sand:#3A2A1E; --accent:#FF7D26;
 }
 
 *{box-sizing:border-box;}
 html{scroll-behavior:smooth;}
 body{
-  margin:0; background:var(--ground); color:var(--ink);
-  font-family:var(--sans); font-size:16px; line-height:1.78;
+  margin:0;
+  background:var(--paper);
+  color:var(--ink);
+  font-family:var(--font);
+  font-size:16px;
+  font-weight:400;
+  line-height:1.8;
+  letter-spacing:-0.015em;
   -webkit-font-smoothing:antialiased;
+  word-break:keep-all;
 }
-.wrap{max-width:1080px; margin:0 auto; padding:0 24px 104px;}
+.wrap{max-width:940px; margin:0 auto; padding:0 28px 120px;}
 a{color:inherit;}
+p{margin:0 0 18px; max-width:44em;}
+b,strong{font-weight:600;}
+em{font-style:normal;}
 
-/* ---------- symbol: □ + ○ (golden ratio motif) ---------- */
-.sym{display:inline-block; vertical-align:-.14em;}
+/* ═══ 심볼 ═══ */
 .sym rect{fill:var(--ink);}
 .sym circle{fill:var(--accent); mix-blend-mode:multiply;}
-@media (prefers-color-scheme:dark){
-  :root:not([data-theme="light"]) .sym circle{mix-blend-mode:screen;}
-}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .sym circle{mix-blend-mode:screen;}}
 :root[data-theme="dark"] .sym circle{mix-blend-mode:screen;}
 
-/* ---------- masthead ---------- */
-.mast{padding:76px 0 44px; border-bottom:2px solid var(--ink);}
-.eyebrow{
-  font-family:var(--mono); font-size:11px; letter-spacing:.18em;
-  text-transform:uppercase; color:var(--accent); margin:0 0 22px;
-  display:flex; align-items:center; gap:10px;
-}
+/* ═══ 표제 ═══ */
+.mast{padding:86px 0 0;}
+.mast .id{display:flex; align-items:center; gap:13px; margin:0 0 54px;}
+.mast .id p{margin:0; font-size:14px; color:var(--ink-3); font-weight:400;}
+
 .mast h1{
-  font-family:var(--serif); font-weight:400;
-  font-size:clamp(2.3rem,6.2vw,4.05rem); line-height:1.16;
-  letter-spacing:-.015em; text-wrap:balance; margin:0 0 14px;
+  margin:0 0 30px;
+  font-size:clamp(2.5rem,7vw,4.6rem);
+  font-weight:800;
+  line-height:1.12;
+  letter-spacing:-0.015em;
+  max-width:15em;
 }
-.mast h1 em{font-style:normal; color:var(--accent);}
-.who{
-  font-size:15px; color:var(--ink-2); margin:0 0 30px;
-  display:flex; flex-wrap:wrap; gap:8px 16px; align-items:center;
-}
-.who b{color:var(--ink); font-weight:650; font-size:16px;}
-.who span{font-family:var(--mono); font-size:12px; color:var(--ink-3);}
-.lede{font-size:1.07rem; color:var(--ink-2); max-width:60ch; margin:0 0 30px;}
-.lede b{color:var(--ink); font-weight:650;}
-.contact{display:flex; flex-wrap:wrap; gap:9px;}
-.contact a{
-  display:inline-flex; align-items:center; gap:7px;
-  font-family:var(--mono); font-size:12.5px;
-  text-decoration:none; color:var(--ink-2);
-  border:1px solid var(--rule); border-radius:2px;
-  padding:7px 13px; background:var(--surface);
-  transition:border-color .15s,color .15s;
-}
-.contact a:hover,.contact a:focus-visible{color:var(--accent); border-color:var(--accent);}
+.mast h1 em{color:var(--accent);}
 
-/* ---------- applying-to banner ---------- */
-.applying{
-  display:grid; grid-template-columns:1fr; gap:1px;
-  background:var(--rule); border:1px solid var(--rule);
-  margin:34px 0 0; border-radius:3px; overflow:hidden;
+.lede{
+  font-size:1.16rem; font-weight:300; line-height:1.82;
+  color:var(--ink-2); max-width:36em; margin:0 0 44px;
 }
-@media(min-width:720px){.applying{grid-template-columns:1fr 1fr;}}
-.applying div{background:var(--surface); padding:18px 20px;}
-.applying .tag{
-  font-family:var(--mono); font-size:10.5px; letter-spacing:.13em;
-  text-transform:uppercase; color:var(--accent); display:block; margin-bottom:6px;
-}
-.applying h3{font-size:1rem; font-weight:650; margin:0 0 4px;}
-.applying p{font-size:13.5px; color:var(--ink-3); margin:0;}
+.lede b{color:var(--ink); font-weight:600;}
 
-/* ---------- sections ---------- */
-section{padding-top:64px;}
-.sechead{display:flex; align-items:baseline; gap:12px; margin:0 0 8px;}
-.secno{font-family:var(--mono); font-size:12px; color:var(--accent); letter-spacing:.1em;}
-h2{
-  font-family:var(--serif); font-weight:400; font-size:1.78rem;
-  letter-spacing:-.01em; margin:0; text-wrap:balance;
+.namecard{
+  display:flex; flex-wrap:wrap; align-items:baseline; gap:10px 22px;
+  padding:0 0 22px; border-bottom:1px solid var(--ink);
 }
-.sub{color:var(--ink-3); font-size:14.5px; margin:0 0 30px; max-width:64ch;}
-h3{font-size:1.05rem; font-weight:650; margin:0 0 6px; letter-spacing:-.005em;}
-p{margin:0 0 14px; max-width:68ch;}
+.namecard .nm{font-size:1.5rem; font-weight:800;}
+.namecard .rl{font-size:14.5px; color:var(--ink-2); font-weight:400;}
+.namecard .lk{margin-left:auto; display:flex; flex-wrap:wrap; gap:18px;}
+.namecard .lk a{
+  font-size:14px; color:var(--ink-2); text-decoration:none;
+  border-bottom:1px solid var(--rule); padding-bottom:1px;
+}
+.namecard .lk a:hover,.namecard .lk a:focus-visible{color:var(--accent); border-bottom-color:var(--accent);}
 
-/* ---------- stats ---------- */
-.stats{
-  display:grid; grid-template-columns:repeat(auto-fit,minmax(152px,1fr));
-  gap:1px; background:var(--rule); border:1px solid var(--rule);
-  border-radius:3px; overflow:hidden;
-}
-.stat{background:var(--surface); padding:20px 18px;}
-.stat b{
-  display:block; font-family:var(--mono); font-variant-numeric:tabular-nums;
-  font-size:1.8rem; font-weight:600; letter-spacing:-.025em; line-height:1.2;
-}
-.stat b i{font-style:normal; font-size:.86rem; color:var(--ink-3); font-weight:500; letter-spacing:0;}
-.stat span{display:block; font-size:12.5px; color:var(--ink-3); line-height:1.5; margin-top:3px;}
-.stat.hi b{color:var(--accent);}
+.applying{margin:26px 0 0; font-size:15px; color:var(--ink-2); max-width:44em;}
+.applying strong{color:var(--ink); font-weight:600;}
 
-/* ---------- belief chip ---------- */
-.belief{
-  display:inline-flex; align-items:center; gap:7px;
-  font-family:var(--mono); font-size:10.5px; letter-spacing:.09em;
-  text-transform:uppercase; color:var(--accent);
-  background:var(--accent-soft); border-radius:2px;
-  padding:4px 10px; white-space:nowrap;
+/* ═══ 섹션 ═══ */
+section{padding-top:96px;}
+.sechead{
+  display:grid; grid-template-columns:1fr; gap:2px;
+  padding-bottom:16px; border-bottom:1px solid var(--ink); margin-bottom:34px;
 }
-.belief svg{flex:none;}
+@media(min-width:760px){
+  .sechead{grid-template-columns:2.6rem 1fr; gap:0 20px; align-items:baseline;}
+}
+.sechead .no{
+  font-size:.9rem; font-weight:800; color:var(--accent);
+  font-variant-numeric:tabular-nums;
+}
+.sechead h2{margin:0; font-size:1.62rem; font-weight:700; line-height:1.42;}
+.sechead .sub{
+  grid-column:1/-1; margin:9px 0 0; font-size:15px; font-weight:300;
+  color:var(--ink-3); max-width:42em; line-height:1.75;
+}
+@media(min-width:760px){.sechead .sub{grid-column:2;}}
 
-/* ---------- case ---------- */
-.case{
-  background:var(--surface); border:1px solid var(--rule);
-  border-radius:3px; padding:28px 26px; margin-bottom:20px;
-}
-.case-head{display:flex; flex-wrap:wrap; gap:10px 14px; align-items:center; margin:0 0 6px;}
-.case-head h3{font-family:var(--serif); font-weight:400; font-size:1.38rem; margin:0;}
-.case-meta{font-family:var(--mono); font-size:11.5px; color:var(--ink-3); margin:0 0 20px;}
+h3{font-size:1.14rem; font-weight:700; margin:0 0 10px; line-height:1.5;}
+h4{font-size:1rem; font-weight:700; margin:0 0 6px;}
 
-.rows{display:grid; grid-template-columns:1fr; gap:12px;}
-@media (min-width:640px){.rows{grid-template-columns:74px 1fr; gap:10px 22px; align-items:baseline;}}
-.rows dt{
-  font-family:var(--mono); font-size:11px; letter-spacing:.1em;
-  text-transform:uppercase; color:var(--ink-3); padding-top:3px;
+/* ═══ 숫자 목록 ═══ */
+.figs{margin:0; padding:0; list-style:none;}
+.figs li{
+  display:grid; grid-template-columns:1fr; gap:2px;
+  padding:19px 0; border-top:1px solid var(--hair);
 }
-.rows dd{margin:0; font-size:14.5px; color:var(--ink-2); line-height:1.72;}
-.rows dd b{color:var(--ink); font-weight:650;}
-.rows dd ul{margin:0; padding-left:17px; display:flex; flex-direction:column; gap:5px;}
+@media(min-width:640px){
+  .figs li{grid-template-columns:7.5rem 1fr; gap:0 28px; align-items:baseline;}
+}
+.figs li:first-child{border-top:none; padding-top:4px;}
+.figs .n{
+  font-size:2.15rem; font-weight:800; line-height:1.15;
+  letter-spacing:-0.015em; font-variant-numeric:tabular-nums;
+}
+.figs .n span{font-size:.92rem; font-weight:400; color:var(--ink-3); margin-left:3px;}
+.figs.key .n{color:var(--accent);}
+.figs .d{font-size:15px; color:var(--ink-2); font-weight:300; line-height:1.72;}
+.figs .d b{color:var(--ink); font-weight:600;}
 
-blockquote{
-  margin:14px 0; padding:12px 0 12px 18px;
-  border-left:3px solid var(--accent);
-  font-family:var(--serif); font-size:15px; color:var(--ink);
-  line-height:1.7;
+/* ═══ 3기 전개 ═══ */
+.gens{margin:0 0 46px; padding:0; list-style:none; counter-reset:g;}
+.gens li{
+  padding:26px 0; border-top:1px solid var(--hair);
+  display:grid; grid-template-columns:1fr; gap:8px;
 }
-blockquote cite{
-  display:block; font-family:var(--mono); font-style:normal;
-  font-size:11px; color:var(--ink-3); margin-top:8px; letter-spacing:.04em;
+@media(min-width:820px){
+  .gens li{grid-template-columns:9rem 1fr 15rem; gap:0 32px;}
 }
+.gens li:last-child{border-bottom:1px solid var(--hair);}
+.gens .era{font-size:14px; color:var(--ink-3); font-weight:400; padding-top:2px;}
+.gens .body h4{margin-bottom:5px;}
+.gens .body p{margin:0; font-size:14.5px; color:var(--ink-2); font-weight:300; line-height:1.72;}
+.gens .out{
+  font-size:14px; font-weight:400; color:var(--ink-3);
+  line-height:1.68; padding-top:2px;
+}
+.gens li.win .out{color:var(--ink); font-weight:600;}
+.gens li.win .out em{color:var(--accent);}
 
-.result{
-  margin-top:20px; padding-top:18px; border-top:1px solid var(--rule-2);
-  display:flex; flex-wrap:wrap; gap:26px;
+/* ═══ 본문 블록 ═══ */
+.block{margin:0 0 42px;}
+.block > .lbl{
+  font-size:14px; color:var(--ink-3); font-weight:400;
+  margin:0 0 7px;
 }
-.kpi b{
-  display:block; font-family:var(--mono); font-variant-numeric:tabular-nums;
-  font-size:1.36rem; font-weight:600; color:var(--accent); letter-spacing:-.015em;
+.block ul{margin:0 0 18px; padding-left:0; list-style:none; max-width:44em;}
+.block ul li{
+  font-size:15px; color:var(--ink-2); font-weight:300; line-height:1.78;
+  padding-left:19px; position:relative; margin-bottom:7px;
 }
-.kpi span{font-size:12px; color:var(--ink-3);}
+.block ul li::before{
+  content:""; position:absolute; left:0; top:.82em;
+  width:6px; height:6px; background:var(--rule);
+}
+.block ul li b{color:var(--ink); font-weight:600;}
 
-/* ---------- 3기 progression ---------- */
-.gens{display:grid; grid-template-columns:1fr; gap:1px; background:var(--rule);
-  border:1px solid var(--rule); border-radius:3px; overflow:hidden; margin:0 0 20px;}
-@media(min-width:800px){.gens{grid-template-columns:repeat(3,1fr);}}
-.gen{background:var(--surface); padding:20px 19px; position:relative;}
-.gen .era{font-family:var(--mono); font-size:11px; color:var(--ink-3); letter-spacing:.06em;}
-.gen h4{font-size:.98rem; font-weight:650; margin:5px 0 8px;}
-.gen p{font-size:13.5px; color:var(--ink-2); margin:0; line-height:1.68;}
-.gen .verdict{
-  margin-top:12px; padding-top:11px; border-top:1px dashed var(--rule);
-  font-family:var(--mono); font-size:11.5px; letter-spacing:.03em;
+.pull{
+  margin:34px 0; padding:0; max-width:26em;
+  font-size:1.42rem; font-weight:300; line-height:1.66; color:var(--ink);
 }
-.gen.fail .verdict{color:var(--ink-3);}
-.gen.win .verdict{color:var(--accent);}
+.pull .src{display:block; margin-top:14px; font-size:13.5px; color:var(--ink-3); font-weight:400;}
 
-/* ---------- chart ---------- */
-.chartbox{
-  display:flex; flex-wrap:wrap; gap:28px; align-items:center;
-  background:var(--surface-2); border:1px solid var(--rule);
-  border-radius:3px; padding:22px 24px; margin:0 0 20px;
+.point{
+  font-size:1.06rem; font-weight:400; line-height:1.8;
+  color:var(--ink); max-width:40em; margin:0 0 26px;
 }
-.chartbox p{font-size:14px; color:var(--ink-2); margin:0; max-width:36ch;}
-svg .grid{stroke:var(--rule);}
+.point b{font-weight:700;}
+
+/* ═══ 성과 라인 ═══ */
+.out-line{
+  display:flex; flex-wrap:wrap; gap:0;
+  border-top:2px solid var(--ink); margin-top:34px;
+}
+.out-line div{padding:18px 34px 0 0;}
+.out-line b{
+  display:block; font-size:1.62rem; font-weight:800;
+  letter-spacing:-0.015em; color:var(--accent); font-variant-numeric:tabular-nums;
+}
+.out-line span{display:block; font-size:13.5px; color:var(--ink-3); font-weight:400; margin-top:1px;}
+
+/* ═══ 스펙 인라인 ═══ */
+.inline-figs{
+  display:flex; flex-wrap:wrap; gap:0 44px;
+  padding:0 0 26px; border-bottom:1px solid var(--hair); margin-bottom:30px;
+}
+.inline-figs div b{
+  display:block; font-size:1.72rem; font-weight:800;
+  letter-spacing:-0.015em; font-variant-numeric:tabular-nums; line-height:1.2;
+}
+.inline-figs div span{display:block; font-size:13.5px; color:var(--ink-3); font-weight:400;}
+.tools{font-size:14px; color:var(--ink-3); font-weight:300; line-height:2; max-width:46em;}
+.tools i{font-style:normal; color:var(--ink-2);}
+
+/* ═══ 차트 ═══ */
+.chart{display:flex; flex-wrap:wrap; gap:40px; align-items:center; margin:0 0 38px;}
+.chart p{margin:0; font-size:15px; font-weight:300; color:var(--ink-2); max-width:26em;}
+.chart p b{color:var(--ink); font-weight:600;}
+svg .grid{stroke:var(--hair);}
 svg .ln{stroke:var(--accent); stroke-width:2.5; fill:none; stroke-linecap:round;}
 svg .dot{fill:var(--accent);}
-svg .lbl{fill:var(--ink-3); font-family:var(--mono); font-size:10px;}
-svg .val{fill:var(--ink); font-family:var(--mono); font-size:13px; font-weight:600;}
+svg .lbl{fill:var(--ink-3); font-family:var(--font); font-size:11px; letter-spacing:-0.015em;}
+svg .val{fill:var(--ink); font-family:var(--font); font-size:14px; font-weight:800; letter-spacing:-0.015em;}
 
-/* ---------- spec / stack ---------- */
-.spec{
-  display:grid; grid-template-columns:repeat(auto-fit,minmax(134px,1fr));
-  gap:1px; background:var(--rule); border:1px solid var(--rule);
-  border-radius:3px; overflow:hidden; margin-bottom:18px;
+/* ═══ 신념 ═══ */
+.beliefs{margin:0; padding:0; list-style:none;}
+.beliefs li{
+  display:grid; grid-template-columns:1fr; gap:5px;
+  padding:22px 0; border-top:1px solid var(--hair);
 }
-.spec div{background:var(--surface); padding:16px;}
-.spec b{display:block; font-family:var(--mono); font-variant-numeric:tabular-nums;
-  font-size:1.34rem; font-weight:600; letter-spacing:-.02em;}
-.spec span{display:block; font-size:12px; color:var(--ink-3); margin-top:2px;}
-.stack{display:flex; flex-wrap:wrap; gap:7px; margin-top:4px;}
-.stack code{
-  font-family:var(--mono); font-size:11.5px;
-  background:var(--surface-2); border:1px solid var(--rule);
-  color:var(--ink-2); padding:4px 9px; border-radius:2px;
+@media(min-width:760px){
+  .beliefs li{grid-template-columns:17rem 1fr; gap:0 32px; align-items:baseline;}
 }
+.beliefs li:last-child{border-bottom:1px solid var(--hair);}
+.beliefs .en{font-size:15px; font-weight:700; line-height:1.5;}
+.beliefs .en i{font-style:normal; color:var(--accent); margin-right:7px;}
+.beliefs p{margin:0; font-size:14.5px; color:var(--ink-2); font-weight:300; line-height:1.75;}
+.beliefs p b{color:var(--ink); font-weight:600;}
 
-/* ---------- fit table ---------- */
-.tablewrap{overflow-x:auto; border:1px solid var(--rule); border-radius:3px; background:var(--surface);}
-table{border-collapse:collapse; width:100%; min-width:620px; font-size:14px;}
-th,td{text-align:left; padding:13px 16px; border-bottom:1px solid var(--rule-2); vertical-align:top;}
-thead th{
-  font-family:var(--mono); font-size:11px; letter-spacing:.09em; text-transform:uppercase;
-  color:var(--ink-3); font-weight:500; background:var(--surface-2);
-  border-bottom:1px solid var(--rule); white-space:nowrap;
-}
-tbody tr:last-child td{border-bottom:none;}
-td b{color:var(--ink); font-weight:650;}
-td{color:var(--ink-2);}
-
-/* ---------- beliefs grid ---------- */
-.bgrid{display:grid; grid-template-columns:1fr; gap:1px; background:var(--rule);
-  border:1px solid var(--rule); border-radius:3px; overflow:hidden;}
-@media(min-width:760px){.bgrid{grid-template-columns:1fr 1fr;}}
-.bcell{background:var(--surface); padding:20px 19px;}
-.bcell .en{
-  font-family:var(--mono); font-size:11.5px; letter-spacing:.05em;
-  color:var(--accent); display:block; margin-bottom:7px;
-}
-.bcell p{font-size:14px; color:var(--ink-2); margin:0; line-height:1.7;}
-
-/* ---------- timeline ---------- */
-.tl{list-style:none; margin:0; padding:0;}
-.tl li{
+/* ═══ 연혁 ═══ */
+.career{margin:0; padding:0; list-style:none;}
+.career li{
   display:grid; grid-template-columns:1fr; gap:4px;
-  padding:19px 0; border-top:1px solid var(--rule);
+  padding:24px 0; border-top:1px solid var(--hair);
 }
-@media (min-width:640px){.tl li{grid-template-columns:158px 1fr; gap:26px;}}
-.tl li:last-child{border-bottom:1px solid var(--rule);}
-.tl time{font-family:var(--mono); font-size:12px; color:var(--ink-3); padding-top:3px;}
-.tl h3{margin:0 0 3px;}
-.tl p{font-size:14px; color:var(--ink-2); margin:0;}
+@media(min-width:700px){
+  .career li{grid-template-columns:10.5rem 1fr; gap:0 32px;}
+}
+.career li:last-child{border-bottom:1px solid var(--hair);}
+.career time{font-size:14px; color:var(--ink-3); font-weight:400; padding-top:4px; font-variant-numeric:tabular-nums;}
+.career h3{font-size:1.04rem; margin:0 0 4px;}
+.career p{margin:0; font-size:14.5px; color:var(--ink-2); font-weight:300; line-height:1.74;}
 
-/* ---------- honest box ---------- */
-.honest{
-  border:1px solid var(--rule); border-left:3px solid var(--burgundy);
-  background:var(--surface); border-radius:3px; padding:24px 24px;
+/* ═══ 대조표 ═══ */
+.tablewrap{overflow-x:auto; margin-bottom:34px;}
+table{border-collapse:collapse; width:100%; min-width:600px;}
+caption{
+  text-align:left; font-size:15px; font-weight:700;
+  padding:0 0 12px; color:var(--ink);
 }
-@media (prefers-color-scheme:dark){
-  :root:not([data-theme="light"]) .honest{border-left-color:var(--tangerine);}
+th,td{text-align:left; padding:15px 22px 15px 0; vertical-align:top;}
+thead th{
+  font-size:13.5px; font-weight:400; color:var(--ink-3);
+  border-bottom:1px solid var(--ink); padding-bottom:9px;
 }
-:root[data-theme="dark"] .honest{border-left-color:var(--tangerine);}
-.honest ul{margin:0; padding-left:18px; display:flex; flex-direction:column; gap:11px;}
-.honest li{font-size:14.5px; color:var(--ink-2); line-height:1.72;}
-.honest li b{color:var(--ink); font-weight:650;}
+tbody td{border-bottom:1px solid var(--hair); font-size:14.5px; color:var(--ink-2); font-weight:300; line-height:1.72;}
+tbody td:first-child{width:38%; color:var(--ink); font-weight:400;}
+tbody td b{font-weight:700; color:var(--ink);}
+tbody td i{font-style:normal; color:var(--ink-3);}
 
-/* ---------- closing ---------- */
-.closing{
-  margin-top:64px; padding:44px 0 0; border-top:2px solid var(--ink);
+/* ═══ 없는 것 ═══ */
+.gaps{margin:0; padding:0; list-style:none; counter-reset:gap;}
+.gaps li{
+  padding:22px 0; border-top:1px solid var(--hair);
+  display:grid; grid-template-columns:1fr; gap:4px;
 }
+@media(min-width:700px){
+  .gaps li{grid-template-columns:2rem 1fr; gap:0 20px;}
+}
+.gaps li::before{
+  counter-increment:gap; content:counter(gap,decimal-leading-zero);
+  font-size:14px; font-weight:800; color:var(--rule); padding-top:5px;
+}
+.gaps li:last-child{border-bottom:1px solid var(--hair);}
+.gaps h4{margin:0 0 4px; font-size:1rem;}
+.gaps p{margin:0; font-size:14.5px; color:var(--ink-2); font-weight:300; line-height:1.76; max-width:46em;}
+
+/* ═══ 맺음 ═══ */
+.closing{margin-top:104px; padding-top:44px; border-top:2px solid var(--ink);}
 .closing p{
-  font-family:var(--serif); font-size:1.28rem; line-height:1.72;
-  color:var(--ink); max-width:44ch; margin:0 0 26px;
+  font-size:1.62rem; font-weight:300; line-height:1.6;
+  color:var(--ink); max-width:22em; margin:0 0 36px;
 }
+.closing p b{font-weight:700;}
+.closing .lk{display:flex; flex-wrap:wrap; gap:20px;}
+.closing .lk a{font-size:15px; color:var(--ink-2); text-decoration:none; border-bottom:1px solid var(--rule); padding-bottom:1px;}
+.closing .lk a:hover{color:var(--accent); border-bottom-color:var(--accent);}
+
 footer{
-  margin-top:56px; padding-top:22px; border-top:1px solid var(--rule);
-  font-family:var(--mono); font-size:11.5px; color:var(--ink-3);
-  display:flex; flex-wrap:wrap; gap:8px 20px; justify-content:space-between;
+  margin-top:64px; padding-top:20px; border-top:1px solid var(--hair);
+  font-size:13px; color:var(--ink-3); font-weight:300;
+  display:flex; flex-wrap:wrap; gap:6px 26px; justify-content:space-between;
 }
 </style>
 </head>
 <body>
 <div class="wrap">
 
-<!-- ============ MASTHEAD ============ -->
+<!-- ══════════ 표제 ══════════ -->
 <header class="mast">
-  <p class="eyebrow">
-    <svg class="sym" width="18" height="18" viewBox="0 0 32 32" aria-hidden="true">
+  <div class="id">
+    <svg class="sym" width="21" height="21" viewBox="0 0 32 32" aria-hidden="true">
       <rect x="2" y="10" width="18" height="18"/><circle cx="20" cy="14" r="9.5"/>
     </svg>
-    Portfolio · 삼양라운드스퀘어 지원
-  </p>
+    <p>삼양라운드스퀘어 지원 포트폴리오 · 2026년 8월</p>
+  </div>
 
   <h1>12번 실패하고<br>세 번 <em>갈아엎은</em> 기록</h1>
-
-  <p class="who">
-    <b>이슬기</b>
-    <span>AI 실무 적용 · 교육 설계 · 운영 자동화 7년</span>
-  </p>
 
   <p class="lede">
     AI를 직접 써서 제 일을 다시 짜고, 그 방식을 다른 사람에게 옮겨 왔습니다.
@@ -330,135 +329,133 @@ footer{
     이 페이지는 잘된 것보다 <b>무엇이 안 됐고 어떻게 바꿨는지</b>를 중심으로 정리했습니다.
   </p>
 
-  <nav class="contact">
-    <a href="mailto:skaug12@gmail.com">skaug12@gmail.com</a>
-    <a href="tel:01071624923">010-7162-4923</a>
-    <a href="https://linkedin.com/in/fromsklee" target="_blank" rel="noopener">linkedin.com/in/fromsklee</a>
-  </nav>
-
-  <div class="applying">
-    <div>
-      <span class="tag">지원 1 · 우선</span>
-      <h3>AI Transformation(AX) 전략 기획</h3>
-      <p>AX전략팀 · 전사지원 — AI 리터러시 교육 기획과 변화관리가 제 본업입니다.</p>
-    </div>
-    <div>
-      <span class="tag">지원 2</span>
-      <h3>조직문화 담당</h3>
-      <p>인사/총무 — 진단 → 개입 설계 → 효과 측정 사이클을 7년간 반복 운영했습니다.</p>
-    </div>
+  <div class="namecard">
+    <span class="nm">이슬기</span>
+    <span class="rl">AI 실무 적용 · 교육 설계 · 운영 자동화 7년</span>
+    <span class="lk">
+      <a href="mailto:skaug12@gmail.com">skaug12@gmail.com</a>
+      <a href="tel:01071624923">010-7162-4923</a>
+      <a href="https://www.linkedin.com/in/fromsklee/" target="_blank" rel="noopener noreferrer">linkedin.com/in/fromsklee</a>
+    </span>
   </div>
+
+  <p class="applying">
+    두 공고에 지원합니다. 우선순위는 <strong>AX전략팀 · AI Transformation 전략 기획</strong>입니다.
+    공고의 주요 업무 중 'AI 리터러시 교육 기획 및 변화관리'와 '임직원 대상 전략 커뮤니케이션'이 제 본업입니다.
+    두 번째는 <strong>인사·총무 · 조직문화 담당</strong>이며, 진단에서 개입 설계와 효과 측정까지의 사이클을 7년간 반복 운영했습니다.
+  </p>
 </header>
 
-<!-- ============ 01 숫자 ============ -->
+<!-- ══════════ 01 ══════════ -->
 <section id="numbers">
-  <div class="sechead"><span class="secno">01</span><h2>숫자로 먼저</h2></div>
-  <p class="sub">2019년 6월부터 2026년 8월까지, HBR Forum Korea에서 단독으로 운영한 결과입니다.</p>
-
-  <div class="stats">
-    <div class="stat hi"><b>12<i> 시즌</i></b><span>AI부사수 연속 운영<br>2024.03 ~ 2026.08</span></div>
-    <div class="stat hi"><b>80<i> %+</i></b><span>AI 과정 참여자<br>현업 적용률</span></div>
-    <div class="stat"><b>124<i> 종</i></b><span>직접 만든<br>자동화 스킬</span></div>
-    <div class="stat"><b>62<i> 종</i></b><span>사람 없이 도는<br>정기 실행 잡</span></div>
-    <div class="stat"><b>30<i> 개</i></b><span>기획·개발한<br>학습 과정</span></div>
-    <div class="stat"><b>2,500<i> 명+</i></b><span>직접 만난<br>중간관리자·시니어</span></div>
-    <div class="stat hi"><b>66→78<i> %</i></b><span>진단 체계 도입 후<br>재등록률</span></div>
-    <div class="stat"><b>1<i> 인</i></b><span>운영 인원<br>(분기 과정 15 + 행사 20)</span></div>
+  <div class="sechead">
+    <span class="no">01</span>
+    <h2>숫자로 먼저</h2>
+    <p class="sub">2019년 6월부터 2026년 8월까지, HBR Forum Korea에서 단독으로 운영한 결과입니다.</p>
   </div>
+
+  <ul class="figs key">
+    <li><span class="n">12<span>시즌</span></span><span class="d">비개발 직군 대상 AI 실무 과정 <b>AI부사수</b> 연속 운영. 2024년 3월 개설 후 지금까지</span></li>
+    <li><span class="n">80<span>%+</span></span><span class="d">AI 과정 참여자 <b>현업 적용률</b>. 만족도가 아니라 행동 전이 단계에서 측정</span></li>
+    <li><span class="n">66→78<span>%</span></span><span class="d">만족도 진단 체계 도입 후 <b>재등록률</b>. 정원 미달 과정이 함께 줄었습니다</span></li>
+  </ul>
+
+  <ul class="figs" style="margin-top:34px;">
+    <li><span class="n">124<span>종</span></span><span class="d">직접 만든 자동화 스킬. 슬래시 명령 하나가 다단계 업무 하나를 대신합니다</span></li>
+    <li><span class="n">62<span>종</span></span><span class="d">사람 없이 도는 정기 실행 잡. Python 스크립트는 282개</span></li>
+    <li><span class="n">30<span>개</span></span><span class="d">기획·개발한 학습 과정. 과정당 3개월 6회차 18시간, 300회 이상 운영</span></li>
+    <li><span class="n">2,500<span>명+</span></span><span class="d">직접 만난 중간관리자·시니어. 300여 개 기업, 누적 참여자는 3,000명 이상</span></li>
+    <li><span class="n">1<span>인</span></span><span class="d">운영 인원. 분기당 학습 과정 15개와 행사 20회를 혼자 감당합니다</span></li>
+  </ul>
 </section>
 
-<!-- ============ 02 AI부사수 ============ -->
+<!-- ══════════ 02 ══════════ -->
 <section id="busasu">
-  <div class="sechead"><span class="secno">02</span><h2>AI부사수 — 커리큘럼을 세 번 갈아엎다</h2></div>
-  <p class="sub">
-    비개발 직군에게 AI를 가르치는 과정입니다. 1기는 실패했습니다.
-    만족도는 나쁘지 않았는데 참여자의 업무가 그대로였기 때문입니다.
-  </p>
-
-  <div class="gens">
-    <div class="gen fail">
-      <span class="era">1기 · 24겨울 ~ 25가을</span>
-      <h4>도구를 소개하다</h4>
-      <p>생성형 AI 이해 → 노코드 자동화(MAKE) 실습 → 프롬프트 작성법. 도구 카탈로그에 가까운 구조였습니다.</p>
-      <div class="verdict">→ 회고에 "툴이 많은 줄 몰랐다"만 반복. <b>행동이 안 바뀜</b></div>
-    </div>
-    <div class="gen fail">
-      <span class="era">2기 · 26봄</span>
-      <h4>노코드를 걷어내다</h4>
-      <p>비개발 직군에게 VS Code와 Claude Code를 직접 설치하게 했습니다. 이탈 위험이 큰 결정이었고 실제로 흔들렸습니다.</p>
-      <div class="verdict">→ 처음으로 <b>"해보겠다"</b>는 문장 등장. 방향은 맞음</div>
-    </div>
-    <div class="gen win">
-      <span class="era">3기 · 26여름</span>
-      <h4>2주를 실행 구간으로</h4>
-      <p>매 회차를 ①트렌드 ②<b>지난 2주간 각자 해본 것 공유</b> ③사분면 실습(Start/Try/Amplify/Recover)으로 고정했습니다.</p>
-      <div class="verdict">→ 공지 채널이 <b>대화 채널로</b> 전환</div>
-    </div>
+  <div class="sechead">
+    <span class="no">02</span>
+    <h2>AI부사수 — 커리큘럼을 세 번 갈아엎다</h2>
+    <p class="sub">비개발 직군에게 AI를 가르치는 과정입니다. 1기는 실패했습니다. 만족도는 나쁘지 않았는데 참여자의 업무가 그대로였기 때문입니다.</p>
   </div>
 
-  <div class="case">
-    <div class="case-head">
-      <h3>진짜 문제는 도구가 아니었다</h3>
-      <span class="belief">
-        <svg class="sym" width="11" height="11" viewBox="0 0 32 32" aria-hidden="true"><rect x="2" y="10" width="18" height="18"/><circle cx="20" cy="14" r="9.5"/></svg>
-        Spend time defining the problem
-      </span>
-    </div>
-    <p class="case-meta">2024.03 ~ 2026.08 · 12시즌 · 연인원 110명+ · 기획·커리큘럼·운영 전담</p>
+  <ol class="gens">
+    <li>
+      <span class="era">1기 · 24겨울–25가을</span>
+      <div class="body">
+        <h4>도구를 소개하다</h4>
+        <p>생성형 AI 이해 → 노코드 자동화(MAKE) 실습 → 프롬프트 작성법. 도구 카탈로그에 가까운 구조였습니다.</p>
+      </div>
+      <p class="out">회고에 "툴이 많은 줄 몰랐다"만 반복. 행동이 안 바뀌었습니다.</p>
+    </li>
+    <li>
+      <span class="era">2기 · 26봄</span>
+      <div class="body">
+        <h4>노코드를 걷어내다</h4>
+        <p>비개발 직군에게 VS Code와 Claude Code를 직접 설치하게 했습니다. 이탈 위험이 큰 결정이었고 실제로 흔들렸습니다.</p>
+      </div>
+      <p class="out">처음으로 "해보겠다"는 문장이 나왔습니다. 방향은 맞았습니다.</p>
+    </li>
+    <li class="win">
+      <span class="era">3기 · 26여름</span>
+      <div class="body">
+        <h4>2주를 실행 구간으로</h4>
+        <p>매 회차를 ①업계 트렌드 ②지난 2주간 각자 해본 것 공유 ③사분면 실습(Start·Try·Amplify·Recover)으로 고정했습니다.</p>
+      </div>
+      <p class="out">공지만 흐르던 채널이 <em>대화하는 채널로</em> 바뀌었습니다.</p>
+    </li>
+  </ol>
 
-    <dl class="rows">
-      <dt>진단</dt>
-      <dd>
-        1·2기 회고 데이터를 다시 읽고 문제를 재정의했습니다. "AI를 못 배운다"가 아니라
-        <b>"자동화할 목적어가 없다"</b>였습니다. 도구를 아무리 잘 가르쳐도, 자기 업무에서 무엇을
-        바꿀지 정하지 못하면 아무 일도 일어나지 않습니다.
-      </dd>
-
-      <dt>설계</dt>
-      <dd>
-        <ul>
-          <li>사분면을 "새 걸 배우기"가 아니라 <b>"이미 있는 내 업무를 어떻게 할 것인가"</b>로 짬</li>
-          <li>세션과 세션 사이 2주를 과제 기간으로 만들고, 결과를 다음 회차 첫머리에 공개</li>
-          <li>운영 측이 스킬 키트를 배포하면 참여자가 자기 업무에 맞게 변형하는 구조</li>
-          <li>4L 회고(Liked·Learned·Lacked·Long for)를 캔버스에 누적</li>
-        </ul>
-      </dd>
-
-      <dt>결과물</dt>
-      <dd>
-        참여자가 직접 만든 것 — 매일 기사 크롤링 후 시트 스크랩, 비자 발급 서류 처리 자동화,
-        네이버 지도 리뷰 크롤러, PR 일정 캘린더, 유튜브 브리핑 스킬, 개인 지식 아카이빙.
-      </dd>
-    </dl>
-
-    <blockquote>
-      혼자서 가장 하기 힘든 일을 쪼개서 시작하기 — 혼자서는 버거웠던 취약성을 AI와 함께 보완하고 싶어요.
-      <cite>참여자 회고 (익명 인용)</cite>
-    </blockquote>
-
-    <p style="font-size:14.5px;color:var(--ink-2);max-width:66ch;">
-      사람들은 AI 도구를 배우러 오지 않았습니다. <b>미뤄둔 일을 꺼낼 핑계</b>를 사러 왔습니다.
-      그래서 리터러시 교육의 성패는 콘텐츠 품질이 아니라 세 가지에서 갈립니다.
-      본인의 실제 업무를 과제로 삼게 하는가, 세션 사이에 실행 구간이 있는가, 결과를 공개하는 자리가 있는가.
+  <div class="block">
+    <p class="lbl">문제 재정의</p>
+    <h3>진짜 문제는 도구가 아니었다</h3>
+    <p>
+      1·2기 회고 데이터를 다시 읽고 문제를 새로 정의했습니다. "AI를 못 배운다"는 증상이었고,
+      원인은 <b>자동화할 목적어가 없다</b>였습니다. 도구를 아무리 잘 가르쳐도 자기 업무에서
+      무엇을 바꿀지 정하지 못하면 아무 일도 일어나지 않습니다.
     </p>
+  </div>
 
-    <div class="result">
-      <div class="kpi"><b>1.6배</b><span>답글 221 / 원글 135 (26여름 2개 반)</span></div>
-      <div class="kpi"><b>6.5배</b><span>회고 기록량 1.3만 자 → 8.4만 자</span></div>
-      <div class="kpi"><b>80%+</b><span>현업 적용 · 자기 목표 달성</span></div>
-    </div>
+  <div class="block">
+    <p class="lbl">설계</p>
+    <ul>
+      <li>사분면을 "새 걸 배우기"가 아니라 <b>"이미 있는 내 업무를 어떻게 할 것인가"</b>로 짬</li>
+      <li>세션과 세션 사이 2주를 과제 기간으로 만들고, 결과를 다음 회차 첫머리에 공개</li>
+      <li>운영 측이 스킬 키트를 배포하면 참여자가 자기 업무에 맞게 변형하는 구조</li>
+      <li>4L 회고(Liked · Learned · Lacked · Long for)를 캔버스에 누적</li>
+    </ul>
+    <p class="lbl">참여자가 실제로 만든 것</p>
+    <p style="font-size:15px;color:var(--ink-2);font-weight:300;">
+      매일 기사 크롤링 후 시트 스크랩 · 비자 발급 서류 처리 자동화 · 네이버 지도 리뷰 크롤러 ·
+      PR 일정 캘린더 · 유튜브 브리핑 스킬 · 옵시디언 개인 지식 아카이빙
+    </p>
+  </div>
+
+  <p class="pull">
+    “혼자서 가장 하기 힘든 일을 쪼개서 시작하기 — 혼자서는 버거웠던 취약성을 AI와 함께 보완하고 싶어요.”
+    <span class="src">참여자 회고에서, 익명 인용</span>
+  </p>
+
+  <p class="point">
+    사람들은 AI 도구를 배우러 오지 않았습니다. <b>미뤄둔 일을 꺼낼 핑계</b>를 사러 왔습니다.
+    그래서 리터러시 교육의 성패는 콘텐츠 품질이 아니라 세 가지에서 갈립니다.
+    본인의 실제 업무를 과제로 삼게 하는가, 세션 사이에 실행 구간이 있는가, 결과를 공개하는 자리가 있는가.
+  </p>
+
+  <div class="out-line">
+    <div><b>1.6배</b><span>답글 221건 / 원글 135건 (26여름 2개 반)</span></div>
+    <div><b>6.5배</b><span>회고 기록량 1.3만 자 → 8.4만 자</span></div>
+    <div><b>80%+</b><span>현업 적용 · 자기 목표 달성</span></div>
   </div>
 </section>
 
-<!-- ============ 03 자동화 ============ -->
+<!-- ══════════ 03 ══════════ -->
 <section id="automation">
-  <div class="sechead"><span class="secno">03</span><h2>1인 운영 조직의 AX</h2></div>
-  <p class="sub">
-    분기마다 학습 과정 15개와 행사 20회가 돌아갑니다. 담당자는 저 한 명입니다.
-    사람을 늘리는 대신 업무를 옮겼습니다.
-  </p>
+  <div class="sechead">
+    <span class="no">03</span>
+    <h2>1인 운영 조직의 AX</h2>
+    <p class="sub">분기마다 학습 과정 15개와 행사 20회가 돌아갑니다. 담당자는 저 한 명입니다. 사람을 늘리는 대신 업무를 옮겼습니다.</p>
+  </div>
 
-  <div class="spec">
+  <div class="inline-figs">
     <div><b>124</b><span>자동화 스킬</span></div>
     <div><b>282</b><span>Python 스크립트</span></div>
     <div><b>62</b><span>무인 정기 실행 잡</span></div>
@@ -466,208 +463,163 @@ footer{
     <div><b>2,815</b><span>자동 기록된 발송 이력</span></div>
   </div>
 
-  <div class="stack">
-    <code>Claude Code</code><code>MCP</code><code>Python</code><code>Slack API</code>
-    <code>Google Workspace API</code><code>Imweb API</code><code>GA4</code>
-    <code>launchd / cron</code><code>GitHub Pages</code>
-  </div>
+  <p class="tools">
+    <i>Claude Code · MCP · Python · Slack API · Google Workspace API · Imweb API · GA4 · launchd · cron · GitHub Pages</i>
+  </p>
 
-  <div class="case" style="margin-top:22px;">
-    <div class="case-head">
-      <h3>무엇을 자동화하지 않을지가 절반이다</h3>
-      <span class="belief">
-        <svg class="sym" width="11" height="11" viewBox="0 0 32 32" aria-hidden="true"><rect x="2" y="10" width="18" height="18"/><circle cx="20" cy="14" r="9.5"/></svg>
-        Obsess over the specifics
-      </span>
-    </div>
-    <p class="case-meta">2024 ~ 현재 · 과제 선별 기준</p>
-
-    <dl class="rows">
-      <dt>기준 1</dt>
-      <dd><b>반복 빈도 × 소요 시간</b>이 큰 것부터 — 주간 공지 예약, 출석 동기화, 상품 백업</dd>
-
-      <dt>기준 2</dt>
-      <dd>
-        <b>사람이 틀리기 쉬운 것</b> — 멤버십 정합성(시트 ↔ 슬랙 ↔ 출석 3소스 대조),
-        파트너 일정 4자 대조. 이 영역은 <b>읽기 전용 감사 리포트만 내고 수정은 사람이 판단</b>하도록 분리했습니다.
-      </dd>
-
-      <dt>기준 3</dt>
-      <dd>
-        <b>판단이 필요한 것은 자동화하지 않음</b> — 고객에게 나가는 메시지는 발송 전 미리보기 필수,
-        환불·멤버 이동은 사람 확인 후 실행. 외부 노출 콘텐츠는 발행 전 "AI 티" 검수 단계를 반드시 거칩니다.
-      </dd>
-
-      <dt>확장</dt>
-      <dd>
-        규모는 다르지만 순서는 같습니다. <b>업무 목록화 → 자동화 범위 정의 → 우선순위 → 시범 적용 →
-        효과 확인 → 정규 전환 → 감사 체계로 신뢰 확보.</b> 이 사이클을 문서로 읽은 게 아니라
-        2년 넘게 매주 직접 돌렸습니다.
-      </dd>
-    </dl>
-
-    <div class="result">
-      <div class="kpi"><b>15 + 20</b><span>1인이 감당하는 분기당 과정 + 행사</span></div>
-      <div class="kpi"><b>0명</b><span>추가 채용 없이 처리</span></div>
-    </div>
+  <div class="block" style="margin-top:40px;">
+    <h3>무엇을 자동화하지 않을지가 절반이다</h3>
+    <p>전부 자동화하지 않았습니다. 세 가지 기준으로 걸렀습니다.</p>
+    <ul>
+      <li><b>반복 빈도 × 소요 시간</b>이 큰 것부터 — 주간 공지 예약, 출석 동기화, 상품 백업</li>
+      <li><b>사람이 틀리기 쉬운 것</b> — 멤버십 정합성(시트·슬랙·출석 3소스 대조), 파트너 일정 4자 대조. 이 영역은 읽기 전용 감사 리포트만 내고 수정은 사람이 판단하도록 분리했습니다</li>
+      <li><b>판단이 필요한 것은 자동화하지 않음</b> — 고객에게 나가는 메시지는 발송 전 미리보기 필수, 환불·멤버 이동은 사람 확인 후 실행</li>
+    </ul>
+    <p class="point">
+      규모는 다르지만 순서는 같습니다. <b>업무 목록화 → 자동화 범위 정의 → 우선순위 → 시범 적용 →
+      효과 확인 → 정규 전환 → 감사 체계로 신뢰 확보.</b> 이 사이클을 문서로 읽은 게 아니라 2년 넘게 매주 직접 돌렸습니다.
+    </p>
   </div>
 </section>
 
-<!-- ============ 04 진단 ============ -->
+<!-- ══════════ 04 ══════════ -->
 <section id="diagnosis">
-  <div class="sechead"><span class="secno">04</span><h2>감으로 하던 기획을 데이터로</h2></div>
-  <p class="sub">진단의 가치는 점수 확인이 아니라 다음 설계에 반영되는 회로를 만드는 데 있습니다.</p>
+  <div class="sechead">
+    <span class="no">04</span>
+    <h2>감으로 하던 기획을 데이터로</h2>
+    <p class="sub">진단의 가치는 점수 확인이 아니라, 다음 설계에 반영되는 회로를 만드는 데 있습니다.</p>
+  </div>
 
-  <div class="chartbox">
-    <svg width="290" height="132" viewBox="0 0 290 132" role="img" aria-label="재등록률 66%에서 78%로 상승">
-      <line class="grid" x1="46" y1="16" x2="278" y2="16"/>
-      <line class="grid" x1="46" y1="62" x2="278" y2="62"/>
-      <line class="grid" x1="46" y1="108" x2="278" y2="108"/>
-      <text class="lbl" x="6" y="20">80%</text>
-      <text class="lbl" x="6" y="66">70%</text>
-      <text class="lbl" x="6" y="112">60%</text>
-      <path class="ln" d="M76,80 L246,25"/>
-      <circle class="dot" cx="76" cy="80" r="5"/>
-      <circle class="dot" cx="246" cy="25" r="5"/>
-      <text class="val" x="58" y="102">66%</text>
-      <text class="val" x="228" y="17">78%</text>
-      <text class="lbl" x="52" y="126">도입 전</text>
-      <text class="lbl" x="222" y="126">도입 후</text>
+  <div class="chart">
+    <svg width="286" height="128" viewBox="0 0 286 128" role="img" aria-label="재등록률 66%에서 78%로 상승">
+      <line class="grid" x1="44" y1="16" x2="276" y2="16"/>
+      <line class="grid" x1="44" y1="60" x2="276" y2="60"/>
+      <line class="grid" x1="44" y1="104" x2="276" y2="104"/>
+      <text class="lbl" x="4" y="20">80%</text>
+      <text class="lbl" x="4" y="64">70%</text>
+      <text class="lbl" x="4" y="108">60%</text>
+      <path class="ln" d="M76,78 L244,25"/>
+      <circle class="dot" cx="76" cy="78" r="5"/>
+      <circle class="dot" cx="244" cy="25" r="5"/>
+      <text class="val" x="58" y="100">66%</text>
+      <text class="val" x="226" y="17">78%</text>
+      <text class="lbl" x="52" y="122">도입 전</text>
+      <text class="lbl" x="220" y="122">도입 후</text>
     </svg>
     <p>
-      과정 기획이 운영자의 감에 의존해 정원 미달이 반복됐습니다.
-      정기 만족도 진단을 설계·도입하고 응답을 다음 기수 구성에 직접 반영한 결과,
-      <b>재등록률이 12%p 올랐고</b> 정원 미달 과정이 줄었습니다.
+      과정 기획이 운영자의 감에 의존해 정원 미달이 반복됐습니다. 정기 만족도 진단을 설계·도입하고
+      응답을 다음 기수 구성에 직접 반영한 결과, <b>재등록률이 12%p 올랐습니다.</b>
     </p>
   </div>
 
-  <div class="case">
-    <div class="case-head">
-      <h3>점수가 아니라 문장의 종류를 봤다</h3>
-      <span class="belief">
-        <svg class="sym" width="11" height="11" viewBox="0 0 32 32" aria-hidden="true"><rect x="2" y="10" width="18" height="18"/><circle cx="20" cy="14" r="9.5"/></svg>
-        Cultivate your taste
-      </span>
-    </div>
-    <p class="case-meta">2022 ~ 현재 · 진단 설계 · 지표화 · 대시보드 구축</p>
-
-    <dl class="rows">
-      <dt>방법</dt>
-      <dd>
-        <ul>
-          <li>과정 초안을 사전 공유하고 참여 목적 · 가능 요일 · 선호 학습 형태를 미리 조사</li>
-          <li>노출 → 등록 → 전환 대시보드를 직접 구축해 운영 판단에 사용</li>
-          <li>GA4 리포트 · 팀 지표 · 시장 트렌드를 주간 자동 수집</li>
-        </ul>
-      </dd>
-      <dt>판단</dt>
-      <dd>
-        만족도 점수만으로는 2기 개편의 성패를 알 수 없었습니다. 대신 회고에 쓰인
-        <b>문장의 종류가 바뀌었는지</b>를 봤습니다. "알겠다"에서 "해보겠다"로 바뀐 것이
-        점수보다 정확한 신호였습니다.
-      </dd>
-      <dt>전공</dt>
-      <dd>연세대학교 정보통계학과. 칸타(Kantar)에서 64개국 글로벌 리서치 리포트의 통계 분석·시각화 담당.</dd>
-    </dl>
+  <div class="block">
+    <h3>점수가 아니라 문장의 종류를 봤다</h3>
+    <ul>
+      <li>과정 초안을 사전 공유하고 참여 목적 · 가능 요일 · 선호 학습 형태를 미리 조사</li>
+      <li>노출 → 등록 → 전환 대시보드를 직접 구축해 운영 판단에 사용</li>
+      <li>GA4 리포트 · 팀 지표 · 시장 트렌드를 주간 자동 수집</li>
+    </ul>
+    <p>
+      만족도 점수만으로는 2기 개편의 성패를 알 수 없었습니다. 대신 회고에 쓰인
+      <b>문장의 종류가 바뀌었는지</b>를 봤습니다. "알겠다"에서 "해보겠다"로 바뀐 것이 점수보다 정확한 신호였습니다.
+    </p>
+    <p style="font-size:14.5px;color:var(--ink-3);font-weight:300;">
+      연세대학교 정보통계학과 졸업. 칸타(Kantar)에서 64개국 글로벌 리서치 리포트의 통계 분석·시각화를 담당했습니다.
+    </p>
   </div>
 </section>
 
-<!-- ============ 05 실패 ============ -->
+<!-- ══════════ 05 ══════════ -->
 <section id="failure">
-  <div class="sechead"><span class="secno">05</span><h2>잃어버린 네 시즌</h2></div>
-  <p class="sub">잘된 것만 쓰면 포트폴리오가 아니라 광고입니다. 복구하지 못한 것도 남깁니다.</p>
+  <div class="sechead">
+    <span class="no">05</span>
+    <h2>잃어버린 네 시즌</h2>
+    <p class="sub">잘된 것만 쓰면 포트폴리오가 아니라 광고입니다. 복구하지 못한 것도 남깁니다.</p>
+  </div>
 
-  <div class="case">
-    <div class="case-head">
-      <h3>기록은 나중에 붙일 수 없다</h3>
-      <span class="belief">
-        <svg class="sym" width="11" height="11" viewBox="0 0 32 32" aria-hidden="true"><rect x="2" y="10" width="18" height="18"/><circle cx="20" cy="14" r="9.5"/></svg>
-        Earn your failures
-      </span>
-    </div>
-    <p class="case-meta">2026.08 · AI부사수 12개 채널 전수 아카이빙 중 발견</p>
-
-    <dl class="rows">
-      <dt>사고</dt>
-      <dd>
-        2년 반 치 채널을 정리하다가 <b>24봄~24가을 네 시즌의 대화가 복구 불가능하게 사라진 것</b>을
-        확인했습니다. 워크스페이스가 무료 플랜이라 메시지 본문이 90일만 남는데, 채널은 그대로 열려서
-        문제를 눈치채지 못했습니다. 멤버 목록도 파일도 다 있는데 대화만 0건이었습니다.
-      </dd>
-      <dt>생존</dt>
-      <dd>
-        살아남은 것은 <b>4L 회고 캔버스뿐</b>이었습니다. 메시지가 다 날아간 채널에도 회고 캔버스는
-        온전히 남아 있었습니다. 회고 목적으로 만든 장치가 결과적으로 유일한 아카이브가 됐습니다.
-      </dd>
-      <dt>조치</dt>
-      <dd>
-        시즌 종료 시점의 채널 수집을 <b>운영 체크리스트에 넣었습니다.</b>
-        채널명에 <code style="font-family:var(--mono);font-size:12.5px;">off-</code>를 붙이는 순간이 마지막 기회입니다.
-      </dd>
-      <dt>교훈</dt>
-      <dd>
-        AX 과제에서도 마찬가지입니다. <b>데이터를 남기는 설계는 나중에 붙일 수 없습니다.</b>
-        처음부터 넣지 않으면 사라진 뒤에 알게 됩니다.
-      </dd>
-    </dl>
+  <div class="block">
+    <p class="lbl">2026년 8월 · AI부사수 12개 채널 전수 아카이빙 중 발견</p>
+    <h3>기록은 나중에 붙일 수 없다</h3>
+    <p>
+      2년 반 치 채널을 정리하다가 <b>24봄부터 24가을까지 네 시즌의 대화가 복구 불가능하게 사라진 것</b>을
+      확인했습니다. 워크스페이스가 무료 플랜이라 메시지 본문이 90일만 남는데, 채널은 그대로 열려 있어서
+      문제를 눈치채지 못했습니다. 멤버 목록도 파일도 다 있는데 대화만 0건이었습니다.
+    </p>
+    <p>
+      살아남은 것은 <b>4L 회고 캔버스뿐</b>이었습니다. 메시지가 전부 날아간 채널에도 회고 캔버스는
+      온전히 남아 있었습니다. 회고 목적으로 만든 장치가 결과적으로 유일한 아카이브가 됐습니다.
+    </p>
+    <p>
+      시즌 종료 시점의 채널 수집을 운영 체크리스트에 넣었습니다. 채널명에 접두어를 붙이는 순간이 마지막 기회입니다.
+    </p>
+    <p class="point">
+      AX 과제에서도 마찬가지입니다. <b>데이터를 남기는 설계는 나중에 붙일 수 없습니다.</b>
+      처음부터 넣지 않으면 사라진 뒤에 알게 됩니다.
+    </p>
   </div>
 </section>
 
-<!-- ============ 06 S-Beliefs ============ -->
+<!-- ══════════ 06 ══════════ -->
 <section id="beliefs">
-  <div class="sechead"><span class="secno">06</span><h2>S-Beliefs와 제 기록</h2></div>
-  <p class="sub">일곱 가지 신념에 제 경험 중 어떤 것이 걸리는지 대조했습니다. 없는 것을 만들지는 않았습니다.</p>
-
-  <div class="bgrid">
-    <div class="bcell">
-      <span class="en">① Disrespect the status quo</span>
-      <p>잘 돌아가던 1기 노코드 커리큘럼을 걷어내고, 비개발 직군에게 개발 환경을 직접 설치하게 했습니다. 만족도가 나쁘지 않았기 때문에 바꾸지 않을 이유가 더 많았습니다.</p>
-    </div>
-    <div class="bcell">
-      <span class="en">② Spend time defining the problem</span>
-      <p>"AI를 못 배운다"가 증상이었고, 진짜 원인은 <b>"자동화할 목적어가 없다"</b>였습니다. 회고 데이터를 다시 읽고 나서야 찾았습니다.</p>
-    </div>
-    <div class="bcell">
-      <span class="en">③ Obsess over the specifics</span>
-      <p>자동화 대상을 반복 빈도 · 오류 가능성 · 판단 필요 여부 세 기준으로 나누고, 사람 확인이 필요한 영역을 명시적으로 분리했습니다.</p>
-    </div>
-    <div class="bcell">
-      <span class="en">④ Cultivate your taste</span>
-      <p>만족도 점수가 아니라 회고에 쓰인 문장의 종류로 방향을 판단했습니다. "알겠다"와 "해보겠다"는 다른 신호입니다.</p>
-    </div>
-    <div class="bcell">
-      <span class="en">⑤ Have a point of view worth defending</span>
-      <p>이탈 위험을 알면서 2기 개편을 강행했고, 그 근거와 흔들린 기록을 지우지 않고 그대로 남겼습니다.</p>
-    </div>
-    <div class="bcell">
-      <span class="en">⑥ Own the outcome, not just your part</span>
-      <p>과정 기획에서 멈추지 않고 등록 · 운영 · 데이터 · 자동화 · 아카이빙까지 1인이 끝까지 감당했습니다.</p>
-    </div>
-    <div class="bcell" style="grid-column:1/-1;">
-      <span class="en">⑦ Earn your failures</span>
-      <p>네 시즌의 기록을 잃었습니다. 복구할 방법은 없었고, 대신 그 사고를 운영 체크리스트 변경으로 바꿨습니다. AI부사수 커리큘럼도 두 번 실패한 뒤 세 번째에 숫자가 나왔습니다.</p>
-    </div>
+  <div class="sechead">
+    <span class="no">06</span>
+    <h2>S-Beliefs와 제 기록</h2>
+    <p class="sub">일곱 가지 신념에 제 경험 중 어떤 것이 걸리는지 대조했습니다. 없는 것을 만들지는 않았습니다.</p>
   </div>
+
+  <ol class="beliefs">
+    <li>
+      <p class="en"><i>①</i>Disrespect the status quo</p>
+      <p>잘 돌아가던 1기 노코드 커리큘럼을 걷어내고, 비개발 직군에게 개발 환경을 직접 설치하게 했습니다. 만족도가 나쁘지 않았기 때문에 <b>바꾸지 않을 이유가 더 많았습니다.</b></p>
+    </li>
+    <li>
+      <p class="en"><i>②</i>Spend time defining the problem</p>
+      <p>"AI를 못 배운다"가 증상이었고, 진짜 원인은 <b>자동화할 목적어가 없다</b>였습니다. 회고 데이터를 다시 읽고 나서야 찾았습니다.</p>
+    </li>
+    <li>
+      <p class="en"><i>③</i>Obsess over the specifics</p>
+      <p>자동화 대상을 반복 빈도 · 오류 가능성 · 판단 필요 여부 세 기준으로 나누고, <b>사람 확인이 필요한 영역을 명시적으로 분리</b>했습니다.</p>
+    </li>
+    <li>
+      <p class="en"><i>④</i>Cultivate your taste</p>
+      <p>만족도 점수가 아니라 회고에 쓰인 문장의 종류로 방향을 판단했습니다. "알겠다"와 "해보겠다"는 다른 신호입니다.</p>
+    </li>
+    <li>
+      <p class="en"><i>⑤</i>Have a point of view worth defending</p>
+      <p>이탈 위험을 알면서 2기 개편을 강행했고, 그 근거와 흔들린 기록을 <b>지우지 않고 그대로 남겼습니다.</b></p>
+    </li>
+    <li>
+      <p class="en"><i>⑥</i>Own the outcome, not just your part</p>
+      <p>과정 기획에서 멈추지 않고 등록 · 운영 · 데이터 · 자동화 · 아카이빙까지 1인이 끝까지 감당했습니다.</p>
+    </li>
+    <li>
+      <p class="en"><i>⑦</i>Earn your failures</p>
+      <p>네 시즌의 기록을 잃었습니다. 복구할 방법은 없었고, 대신 그 사고를 운영 체크리스트 변경으로 바꿨습니다. 커리큘럼도 <b>두 번 실패한 뒤 세 번째에</b> 숫자가 나왔습니다.</p>
+    </li>
+  </ol>
 </section>
 
-<!-- ============ 07 경력 ============ -->
+<!-- ══════════ 07 ══════════ -->
 <section id="career">
-  <div class="sechead"><span class="secno">07</span><h2>경력</h2></div>
-  <p class="sub">통계로 시작해 공간과 사람을 거쳐, 지금은 AI로 일하는 방식을 다시 짜고 있습니다.</p>
+  <div class="sechead">
+    <span class="no">07</span>
+    <h2>경력</h2>
+    <p class="sub">통계로 시작해 공간과 사람을 거쳐, 지금은 AI로 일하는 방식을 다시 짜고 있습니다.</p>
+  </div>
 
-  <ol class="tl">
+  <ol class="career">
     <li>
       <time>2019.06 – 현재</time>
       <div>
         <h3>위어드벤처 · HBR Forum Korea — 학습 프로그램 설계 · 운영 총괄</h3>
-        <p>누적 3,000명이 참여한 학습 조직. 과정 30개 개발 및 300회 이상 운영, 100명 규모 컨퍼런스 3회 포함 행사 50회 이상. AI부사수 12시즌, 자동화 체계 구축, 4L·AAR 정착.</p>
+        <p>누적 3,000명이 참여한 학습 조직. 과정 30개 개발 및 300회 이상 운영, 100명 규모 컨퍼런스 3회 포함 행사 50회 이상. AI부사수 12시즌, 자동화 체계 구축, 4L·AAR 방법론 정착.</p>
       </div>
     </li>
     <li>
       <time>2017.03 – 2019.05</time>
       <div>
         <h3>중앙화동재단 (구 월드컬처오픈) — 공간 운영 매니저</h3>
-        <p>공연장·오피스·공유주방 등 5개 공간 운영. 공유공간 예약 시스템 구축 프로젝트 주도로 수기 운영을 디지털로 전환. 지역 페스티벌 기획, 행사당 관람객 500명 이상.</p>
+        <p>공연장·오피스·공유주방 등 5개 공간 운영. 공유공간 예약 시스템 구축 프로젝트를 주도해 수기 운영을 디지털로 전환. 지역 페스티벌 기획, 행사당 관람객 500명 이상.</p>
       </div>
     </li>
     <li>
@@ -694,37 +646,38 @@ footer{
   </ol>
 </section>
 
-<!-- ============ 08 직무 적합성 ============ -->
+<!-- ══════════ 08 ══════════ -->
 <section id="fit">
-  <div class="sechead"><span class="secno">08</span><h2>공고 요구사항 대조</h2></div>
-  <p class="sub">두 공고의 주요 업무 항목에 각각 어떤 근거가 있는지 정리했습니다.</p>
+  <div class="sechead">
+    <span class="no">08</span>
+    <h2>공고 요구사항 대조</h2>
+    <p class="sub">두 공고의 주요 업무 항목에 각각 어떤 근거가 있는지 정리했습니다.</p>
+  </div>
 
   <div class="tablewrap">
     <table>
-      <thead>
-        <tr><th>AX전략팀 주요 업무</th><th>근거</th></tr>
-      </thead>
+      <caption>AX전략팀 · AI Transformation 전략 기획</caption>
+      <thead><tr><th>주요 업무</th><th>근거</th></tr></thead>
       <tbody>
-        <tr><td><b>AI 리터러시 교육 기획 및 변화관리</b></td><td>AI부사수 12시즌 설계·운영 (2024.03~), 연인원 110명+, 커리큘럼 3회 전면 개편. AI리더스로 의사결정 계층 확장</td></tr>
+        <tr><td><b>AI 리터러시 교육 기획 및 변화관리</b></td><td>AI부사수 12시즌 설계·운영(2024.03~), 연인원 110명 이상, 커리큘럼 3회 전면 개편. AI리더스로 의사결정 계층까지 확장</td></tr>
         <tr><td><b>AX 관련 임직원 대상 전략 커뮤니케이션</b></td><td>100명 규모 컨퍼런스 3회, 세미나·워크숍 50회 이상. 비전문가에게 기술을 설명하는 것이 본업</td></tr>
-        <tr><td>전사 AX 전략 수립 및 과제 포트폴리오 운영</td><td>자동화 범위를 3개 기준으로 정의·우선순위화해 스킬 124종 축적. 판단 필요 영역은 의도적으로 제외</td></tr>
-        <tr><td>PoC 수행 후 성과 분석 · 내재화 전략</td><td>시도 → 효과 확인 → 정규 전환 사이클 반복. 실패한 개편도 데이터로 판정 (커리큘럼 3회 개편)</td></tr>
+        <tr><td>전사 AX 전략 수립 및 과제 포트폴리오 운영</td><td>자동화 범위를 3개 기준으로 정의·우선순위화해 스킬 124종 축적. 판단이 필요한 영역은 의도적으로 제외</td></tr>
+        <tr><td>PoC 수행 후 성과 분석 · 내재화 전략</td><td>시도 → 효과 확인 → 정규 전환 사이클 반복. 실패한 개편도 데이터로 판정</td></tr>
         <tr><td>AI 기술 트렌드 분석 및 적용 방안 제시</td><td>주간 AI 트렌드 자동 수집, 모델 선택 기준 정기 리뷰 체계 운영</td></tr>
         <tr><td><i>우대 — 해커톤 · 교육 설계 · 퍼실리테이션</i></td><td>참여자를 퍼실리테이터로 전환하는 구조를 30개 과정 전체에 적용</td></tr>
       </tbody>
     </table>
   </div>
 
-  <div class="tablewrap" style="margin-top:18px;">
+  <div class="tablewrap">
     <table>
-      <thead>
-        <tr><th>조직문화 담당 주요 업무</th><th>근거</th></tr>
-      </thead>
+      <caption>인사·총무 · 조직문화 담당</caption>
+      <thead><tr><th>주요 업무</th><th>근거</th></tr></thead>
       <tbody>
-        <tr><td><b>사업 · 조직 니즈 기반 교육 체계 기획 및 과정 개발 · 운영</b></td><td>산업·직무·연차별 니즈 진단 → 과정 30개 개발. 3개월 6회차 18시간 표준 수립, 300회 이상 운영</td></tr>
+        <tr><td><b>교육 체계 기획 및 과정 개발 · 운영</b></td><td>산업·직무·연차별 니즈 진단 후 과정 30개 개발. 3개월 6회차 18시간 표준 수립, 300회 이상 운영</td></tr>
         <tr><td><b>효과성 분석을 통한 지속 개선</b></td><td>만족도 진단 도입 → 지표화 → 다음 기수 반영 회로 구축. 재등록률 66% → 78%</td></tr>
-        <tr><td>조직환경 분석 및 개선과제 도출</td><td>회고 데이터로 문제를 재정의한 경험 (증상: AI 학습 실패 / 원인: 자동화 목적어 부재)</td></tr>
-        <tr><td>조직변화를 위한 중재 기획 및 운영</td><td>4L 회고 전 과정 적용, AAR 밋업 정례화. 회고 기록량 1.3만 자 → 8.4만 자 자발적 증가</td></tr>
+        <tr><td>조직환경 분석 및 개선과제 도출</td><td>회고 데이터로 문제를 재정의한 경험. 증상은 'AI 학습 실패', 원인은 '자동화 목적어 부재'였습니다</td></tr>
+        <tr><td>조직변화를 위한 중재 기획 및 운영</td><td>4L 회고 전 과정 적용, AAR 밋업 정례화. 회고 기록량이 1.3만 자에서 8.4만 자로 자발적 증가</td></tr>
         <tr><td><i>우대 — 퍼실리테이션 · 코칭 운영</i></td><td>참여자 주도 진행을 위한 퍼실리테이터 교육 별도 운영</td></tr>
         <tr><td><i>우대 — 글로벌 환경 협업</i></td><td>칸타 64개국 리서치, 캐나다 교환학생, '글로벌감각' 과정 기획·운영</td></tr>
       </tbody>
@@ -732,37 +685,55 @@ footer{
   </div>
 </section>
 
-<!-- ============ 09 솔직 ============ -->
+<!-- ══════════ 09 ══════════ -->
 <section id="gaps">
-  <div class="sechead"><span class="secno">09</span><h2>없는 것</h2></div>
-  <p class="sub">면접에서 반드시 나올 질문이라, 먼저 씁니다.</p>
-
-  <div class="honest">
-    <ul>
-      <li><b>대기업 전사 스케일 경험이 없습니다.</b> 1인~수십 인 규모에서 전 과정을 직접 실행했지, 수천 명 규모의 로드맵을 수립해 본 적은 없습니다. 다만 작은 규모에서 사이클 전체를 돌려봤기 때문에 어디가 끊기는지는 압니다. 초기에는 현업 인터뷰와 업무 실태 파악부터 참여해 스케일 감각을 확보하겠습니다.</li>
-      <li><b>사내(인하우스) 조직문화 실무 경험이 없습니다.</b> 7년간 조직 밖에서 300여 개 기업을 비교해 봤습니다. 안에 오래 있으면 안 보이는 것이 있고, 밖에서만 보면 맥락을 모릅니다. 지금은 안에서 맥락을 익힐 차례라고 생각합니다.</li>
-      <li><b>제조 · 식품 도메인 경험이 없습니다.</b> 서비스·교육 산업 중심이었습니다. 산업별 업무 구조를 비교해 온 경험으로 학습 속도를 메우겠습니다.</li>
-      <li><b>공인 자격이 아직 없습니다.</b> AICE Associate(국가공인) 2026년 9월, SQLD 2026년 11월 응시 예정입니다. 실무 산출물이 자격보다 앞선다고 생각하지만, 검증 가능한 형태도 갖추겠습니다.</li>
-    </ul>
+  <div class="sechead">
+    <span class="no">09</span>
+    <h2>없는 것</h2>
+    <p class="sub">면접에서 반드시 나올 질문이라, 먼저 씁니다.</p>
   </div>
+
+  <ol class="gaps">
+    <li>
+      <div>
+        <h4>대기업 전사 스케일 경험이 없습니다</h4>
+        <p>1인에서 수십 인 규모까지 전 과정을 직접 실행했지, 수천 명 규모의 로드맵을 수립해 본 적은 없습니다. 다만 작은 규모에서 사이클 전체를 돌려봤기 때문에 어디가 끊기는지는 압니다. 초기에는 현업 인터뷰와 업무 실태 파악부터 참여해 스케일 감각을 확보하겠습니다.</p>
+      </div>
+    </li>
+    <li>
+      <div>
+        <h4>사내 조직문화 실무 경험이 없습니다</h4>
+        <p>7년간 조직 밖에서 300여 개 기업을 비교해 봤습니다. 안에 오래 있으면 안 보이는 것이 있고, 밖에서만 보면 맥락을 모릅니다. 지금은 안에서 맥락을 익힐 차례라고 생각합니다.</p>
+      </div>
+    </li>
+    <li>
+      <div>
+        <h4>제조 · 식품 도메인 경험이 없습니다</h4>
+        <p>서비스와 교육 산업 중심이었습니다. 산업별 업무 구조를 비교해 온 경험으로 학습 속도를 메우겠습니다.</p>
+      </div>
+    </li>
+    <li>
+      <div>
+        <h4>공인 자격이 아직 없습니다</h4>
+        <p>AICE Associate(국가공인) 2026년 9월, SQLD 2026년 11월 응시 예정입니다. 실무 산출물이 자격보다 앞선다고 생각하지만, 검증 가능한 형태도 갖추겠습니다.</p>
+      </div>
+    </li>
+  </ol>
 </section>
 
-<!-- ============ CLOSING ============ -->
+<!-- ══════════ 맺음 ══════════ -->
 <div class="closing">
-  <p>
-    AI Transformation이 막히는 곳은 기술이 아니라 임직원의 책상 위입니다.<br>
-    제가 잘하는 일은 그 사이를 번역하는 것입니다.
-  </p>
-  <nav class="contact">
+  <p>AI Transformation이 막히는 곳은 기술이 아니라 임직원의 책상 위입니다. 제가 잘하는 일은 <b>그 사이를 번역하는 것</b>입니다.</p>
+  <nav class="lk">
     <a href="mailto:skaug12@gmail.com">skaug12@gmail.com</a>
     <a href="tel:01071624923">010-7162-4923</a>
-    <a href="https://linkedin.com/in/fromsklee" target="_blank" rel="noopener">LinkedIn</a>
+    <a href="https://www.linkedin.com/in/fromsklee/" target="_blank" rel="noopener noreferrer">linkedin.com/in/fromsklee</a>
   </nav>
 </div>
 
 <footer>
   <span>이슬기 · 2026년 8월</span>
-  <span>색상은 삼양라운드스퀘어 CI 팔레트를 참조했습니다 (Evolving Orange · Sophisto Charcoal · Sand)</span>
+  <span>색상은 삼양라운드스퀘어 CI 팔레트를 참조했습니다 — Evolving Orange · Sophisto Charcoal · Sand</span>
 </footer>
 
 </div>
