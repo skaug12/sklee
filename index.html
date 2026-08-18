@@ -30,11 +30,11 @@
   .sm{ font-size:.82em; font-weight:400; color:var(--sub); letter-spacing:-0.01em; }
 
   .body{ position:absolute; left:116px; right:116px; top:74px; bottom:62px; z-index:2; }
-  .label{ font-size:13px; font-weight:600; color:var(--accent); margin-bottom:20px; letter-spacing:-0.01em; }
+  .label{ font-size:13px; font-weight:700; color:var(--accent); margin-bottom:26px; letter-spacing:-0.01em; }
   .label b{ font-weight:700; margin-right:9px; }
   .h-title{ font-size:29px; font-weight:700; line-height:1.38; letter-spacing:-0.028em; }
   .h-title .hl{ font-weight:700; }
-  .lead{ font-size:15px; color:var(--body); line-height:1.78; margin-top:22px; max-width:900px; }
+  .lead{ font-size:15.5px; color:var(--body); line-height:1.85; margin-top:30px; max-width:900px; }
 
   .foot{ position:absolute; left:116px; right:116px; bottom:26px; display:flex; justify-content:space-between;
          z-index:2; font-size:11px; color:var(--faint); font-weight:500; letter-spacing:-0.005em; }
@@ -60,27 +60,27 @@
          font-size:14px; color:var(--body); line-height:1.72; }
 
   /* ---------- 숫자 ---------- */
-  .stats{ display:grid; grid-template-columns:repeat(3,1fr); column-gap:52px; row-gap:52px; margin-top:52px; }
+  .stats{ display:grid; grid-template-columns:repeat(3,1fr); column-gap:64px; row-gap:58px; margin-top:58px; }
   .stat .num{ font-size:34px; font-weight:700; line-height:1.05; letter-spacing:-0.04em; color:var(--ink); }
   .stat .lb{ font-size:14px; font-weight:600; color:var(--accent); margin-top:12px; }
   .stat .ds{ font-size:12.5px; color:var(--sub); margin-top:8px; line-height:1.6; }
 
   /* ---------- 표 ---------- */
-  .tb{ margin-top:26px; border-top:1px solid var(--ink); }
-  .tb .hd, .tb .r{ display:grid; align-items:start; gap:34px; padding:20px 0; border-bottom:1px solid var(--line); }
+  .tb{ margin-top:34px; border-top:1px solid var(--ink); }
+  .tb .hd, .tb .r{ display:grid; align-items:start; gap:44px; padding:26px 0; border-bottom:1px solid var(--line); }
   .tb .hd{ padding:11px 0; border-bottom:1px solid var(--line); }
   .tb .hd span{ font-size:12px; font-weight:700; color:var(--sub); }
   .tb .r > div{ font-size:13.5px; color:var(--body); line-height:1.62; }
   .tb .r > div:first-child{ color:var(--ink); font-weight:600; }
   .g3{ grid-template-columns:1fr 1.05fr 1.25fr; }
   .g2{ grid-template-columns:0.62fr 2fr; }
-  .tb.tight .r{ padding:12px 0; }
+  .tb.tight .r{ padding:19px 0; }
   .tb.tight .r > div{ font-size:13px; line-height:1.56; }
 
   /* ---------- 교육 ---------- */
-  .split{ display:grid; grid-template-columns:1.35fr 1fr; gap:70px; margin-top:34px; }
+  .split{ display:grid; grid-template-columns:1.35fr 1fr; gap:84px; margin-top:44px; }
   .flow{ display:flex; flex-direction:column; border-top:1px solid var(--line); }
-  .flow div{ padding:14px 0; border-bottom:1px solid var(--line); font-size:15px; font-weight:600; color:var(--ink); }
+  .flow div{ padding:19px 0; border-bottom:1px solid var(--line); font-size:15px; font-weight:600; color:var(--ink); }
   .flownote{ font-size:13.5px; color:var(--body); line-height:1.68; margin-top:18px; }
   .vstats{ display:flex; flex-direction:column; gap:30px; }
   .vstat .num{ font-size:31px; font-weight:700; letter-spacing:-0.04em; line-height:1.05; color:var(--accent); }
@@ -89,7 +89,7 @@
            font-size:13.5px; color:var(--body); line-height:1.65; }
 
   /* ---------- 3단 ---------- */
-  .cols3{ display:grid; grid-template-columns:repeat(3,1fr); gap:52px; margin-top:62px; }
+  .cols3{ display:grid; grid-template-columns:repeat(3,1fr); gap:64px; margin-top:66px; }
   .col .n{ font-size:12.5px; font-weight:700; color:var(--accent); margin-bottom:14px; }
   .col h3{ font-size:17px; font-weight:700; letter-spacing:-0.028em; line-height:1.4; }
   .col p{ font-size:13.5px; color:var(--body); line-height:1.72; margin-top:13px; }
@@ -101,26 +101,26 @@
 
   /* ---------- 매트릭스 ---------- */
   .mx{ display:grid; grid-template-columns:1fr 1fr; margin-top:26px; border-top:1px solid var(--ink); }
-  .qd{ padding:20px 26px 22px 0; border-bottom:1px solid var(--line); }
+  .qd{ padding:28px 34px 30px 0; border-bottom:1px solid var(--line); }
   .qd:nth-child(odd){ border-right:1px solid var(--line); }
-  .qd:nth-child(even){ padding-left:34px; }
+  .qd:nth-child(even){ padding-left:44px; }
   .qd .qi{ font-size:12.5px; font-weight:600; color:var(--sub); }
   .qd h3{ font-size:16.5px; font-weight:700; color:var(--accent); margin-top:10px; letter-spacing:-0.026em; }
   .qd p{ font-size:12.8px; color:var(--body); line-height:1.66; margin-top:10px; }
   .axes{ display:flex; justify-content:space-between; margin-top:16px; font-size:12px; color:var(--sub); font-weight:500; }
 
   /* ---------- 인터뷰 질문 ---------- */
-  .qs{ display:grid; grid-template-columns:1fr 1fr; gap:40px; margin-top:34px; }
+  .qs{ display:grid; grid-template-columns:1fr 1fr; gap:52px; margin-top:44px; }
   .qs div{ font-size:23px; font-weight:700; letter-spacing:-0.03em; line-height:1.45; color:var(--ink);
            border-top:1px solid var(--ink); padding-top:20px; }
-  .outs{ display:grid; grid-template-columns:repeat(3,1fr); gap:44px; margin-top:66px; }
+  .outs{ display:grid; grid-template-columns:repeat(3,1fr); gap:56px; margin-top:60px; }
   .outs .o h4{ font-size:14.5px; font-weight:700; letter-spacing:-0.026em; }
   .outs .o p{ font-size:13px; color:var(--body); line-height:1.68; margin-top:11px; }
 
   /* ---------- 하단 보조표 ---------- */
-  .subtb{ margin-top:30px; }
+  .subtb{ margin-top:44px; }
   .subtb .st{ font-size:12px; font-weight:700; color:var(--sub); margin-bottom:11px; }
-  .subtb .sr{ display:grid; grid-template-columns:0.62fr 2fr; gap:34px; padding:8px 0; border-top:1px solid var(--line2); }
+  .subtb .sr{ display:grid; grid-template-columns:0.62fr 2fr; gap:44px; padding:13px 0; border-top:1px solid var(--line2); }
   .subtb .sr > div{ font-size:12.2px; color:var(--sub); line-height:1.55; }
   .subtb .sr > div:first-child{ color:var(--body); font-weight:600; }
 
@@ -155,31 +155,39 @@
   .cv .cr .og{ font-size:14px; font-weight:700; letter-spacing:-0.026em; line-height:1.45; }
   .cv .cr .de{ font-size:12.5px; color:var(--body); line-height:1.62; }
 
-  /* ── reveal 없이 세로로 쌓이는 페이지 ── */
+  /* ── 세로로 쌓이는 페이지 · 높이 자유 · 여백 넉넉 ── */
   html,body{margin:0;padding:0;background:#EDE7E0;}
   .reveal{display:block;}
   .reveal .slides{
-    display:flex; flex-direction:column; align-items:center; gap:20px;
-    padding:20px 0 56px; text-align:left; width:auto;
+    display:flex; flex-direction:column; align-items:center; gap:24px;
+    padding:24px 20px 64px; text-align:left; width:auto;
   }
   .reveal .slides > section{
-    width:100%; max-width:1280px; height:720px; position:relative;
-    background:var(--paper); overflow:hidden; box-sizing:border-box;
-    box-shadow:0 1px 4px rgba(40,30,20,.10);
+    width:100%; max-width:1280px; height:auto; min-height:640px;
+    position:relative; background:var(--paper); box-sizing:border-box;
+    padding:80px 150px 36px; display:flex; flex-direction:column;
+    box-shadow:0 1px 4px rgba(40,30,20,.10); overflow:visible;
   }
-  @media (max-width:1320px){ .reveal .slides{ padding-left:16px; padding-right:16px; } }
-  @media (max-width:860px){
-    .reveal .slides > section{ height:auto; padding:52px 0 30px; }
-    .body{ position:static !important; left:auto !important; right:auto !important;
-           top:auto !important; bottom:auto !important; padding:0 26px; }
-    .foot{ position:static !important; left:auto !important; right:auto !important;
-           bottom:auto !important; padding:26px 26px 0; }
-    .cover .contact, .close .links{ position:static !important; left:auto !important;
-           bottom:auto !important; padding:34px 26px 0; }
-    .note,.result,.band{ position:static !important; left:auto !important; right:auto !important;
-           bottom:auto !important; margin-top:26px; }
-    .stats,.cols3,.qs,.outs,.split,.mx{ grid-template-columns:1fr !important; gap:26px !important; }
+  /* 절대배치를 흐름배치로 — 여백이 자유롭게 늘어나도록 */
+  .body{ position:static; left:auto; right:auto; top:auto; bottom:auto; flex:1 0 auto; }
+  .foot{ position:static; left:auto; right:auto; bottom:auto;
+         margin-top:52px; padding-top:22px; border-top:1px solid var(--line2); }
+  .note,.result{ position:static; left:auto; right:auto; bottom:auto; margin-top:44px; padding-top:24px; }
+  .band{ position:static; left:auto; right:auto; bottom:auto; margin-top:40px; }
+  .cover .contact,.close .links{ position:static; left:auto; bottom:auto; margin-top:auto; padding-top:72px; }
+  .deep{ padding-top:104px; padding-bottom:56px; min-height:600px; }
+
+  /* 삼양 시그니처 — 장마다 오렌지 룰 */
+  .body > .label{ position:relative; padding-top:22px; }
+  .body > .label::before{
+    content:""; position:absolute; top:0; left:0; width:44px; height:2px; background:var(--accent);
   }
+
+  @media (max-width:900px){
+    .reveal .slides > section{ padding:56px 26px 28px; min-height:0; }
+    .stats,.cols3,.qs,.outs,.split,.mx,.vgrid{ grid-template-columns:1fr !important; gap:28px !important; }
+  }
+
 </style>
 </head>
 <body>
