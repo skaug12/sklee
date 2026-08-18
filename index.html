@@ -7,15 +7,21 @@
 <meta name="description" content="AI 리터러시 교육 12시즌. 비개발 직군 300여 명이 사내에서 AI를 못 쓰는 이유를 현장에서 수집한 기록.">
 <meta name="robots" content="noindex, nofollow">
 <meta property="og:title" content="이슬기 — AX 전략 기획 지원 포트폴리오">
-<meta property="og:description" content="12번 실패하고 세 번 갈아엎은 기록.">
+<meta property="og:description" content="AI를 배운 사람들이 회사에서 못 쓰는 이유.">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect x='3' y='9' width='17' height='17' fill='%23323232'/%3E%3Ccircle cx='20' cy='14' r='9' fill='%23FF6400' fill-opacity='.85'/%3E%3C/svg%3E">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard-dynamic-subset.css">
 <style>
 :root{
-  --orange:#FF6400; --charcoal:#323232; --burgundy:#5F0A32; --sand:#F7DECB;
+  --orange:#FF6400; --burgundy:#5F0A32; --sand:#F7DECB;
   --paper:#FCFAF8; --ink:#1A1817; --ink-2:#55504C; --ink-3:#8C847E;
   --rule:#DED6CE; --hair:#EDE7E1; --accent:var(--orange);
   --font:"Pretendard Variable",Pretendard,-apple-system,BlinkMacSystemFont,"Apple SD Gothic Neo",system-ui,sans-serif;
+
+  /* 페이지 전체가 쓰는 단 하나의 격자 */
+  --rail:8.5rem;        /* 왼쪽 라벨 칸 */
+  --gap:1.75rem;        /* 라벨과 본문 사이 */
+  --indent:10.25rem;    /* = rail + gap. 모든 본문의 왼쪽 시작점 */
+  --measure:40rem;      /* 모든 본문의 최대 폭 (rem 고정 — em은 글자 크기마다 달라짐) */
 }
 @media (prefers-color-scheme:dark){
   :root:not([data-theme="light"]){
@@ -27,18 +33,19 @@
   --paper:#131110; --ink:#F0EBE6; --ink-2:#ADA49D; --ink-3:#7C736C;
   --rule:#332C27; --hair:#252017; --sand:#3A2A1E; --accent:#FF7D26;
 }
+@media (max-width:760px){ :root{ --indent:0rem; } }
 
 *{box-sizing:border-box;}
 html{scroll-behavior:smooth;}
 body{
   margin:0; background:var(--paper); color:var(--ink);
   font-family:var(--font); font-size:16px; font-weight:400;
-  line-height:1.8; letter-spacing:-0.015em;
+  line-height:1.78; letter-spacing:-0.015em;
   -webkit-font-smoothing:antialiased; word-break:keep-all;
 }
 .wrap{max-width:940px; margin:0 auto; padding:0 28px 120px;}
 a{color:inherit;}
-p{margin:0 0 18px; max-width:44em;}
+p{margin:0 0 16px; max-width:var(--measure);}
 b,strong{font-weight:600;}
 em{font-style:normal;}
 
@@ -47,220 +54,160 @@ em{font-style:normal;}
 @media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .sym circle{mix-blend-mode:screen;}}
 :root[data-theme="dark"] .sym circle{mix-blend-mode:screen;}
 
+/* 머리말·맺음말도 본문과 같은 왼쪽 시작점 */
+.mast .id,.mast h1,.lede,.namecard,.applying,.toc,.closing p,.closing .lk,footer{
+  margin-left:var(--indent);
+}
+.mast h1{max-width:var(--measure);}
+
 /* ═══ 표제 ═══ */
-.mast{padding:86px 0 0;}
-.mast .id{display:flex; align-items:center; gap:13px; margin:0 0 54px;}
-.mast .id p{margin:0; font-size:14px; color:var(--ink-3);}
+.mast{padding:76px 0 0;}
+.mast .id{display:flex; align-items:center; gap:12px; margin:0 0 40px var(--indent);}
+.mast .id p{margin:0; font-size:13.5px; color:var(--ink-3);}
 .mast h1{
-  margin:0 0 30px; font-size:clamp(2.4rem,6.6vw,4.4rem);
-  font-weight:800; line-height:1.13; letter-spacing:-0.015em; max-width:15em;
+  margin:0 0 24px var(--indent); font-size:clamp(1.85rem,4vw,2.75rem);
+  font-weight:800; line-height:1.24; letter-spacing:-0.015em; max-width:var(--measure);
 }
 .mast h1 em{color:var(--accent);}
-.lede{font-size:1.16rem; font-weight:300; line-height:1.82; color:var(--ink-2); max-width:36em; margin:0 0 44px;}
+.lede{font-size:1.02rem; font-weight:300; line-height:1.82; color:var(--ink-2); max-width:var(--measure); margin:0 0 36px var(--indent);}
 .lede b{color:var(--ink); font-weight:600;}
-.namecard{
-  display:flex; flex-wrap:wrap; align-items:baseline; gap:10px 22px;
-  padding:0 0 22px; border-bottom:1px solid var(--ink);
-}
-.namecard .nm{font-size:1.5rem; font-weight:800;}
-.namecard .rl{font-size:14.5px; color:var(--ink-2);}
-.namecard .lk{margin-left:auto; display:flex; flex-wrap:wrap; gap:18px;}
-.namecard .lk a{font-size:14px; color:var(--ink-2); text-decoration:none; border-bottom:1px solid var(--rule); padding-bottom:1px;}
+.namecard{display:flex; flex-wrap:wrap; align-items:baseline; gap:10px 20px; padding:0 0 20px; border-bottom:1px solid var(--ink);}
+.namecard .nm{font-size:1.3rem; font-weight:800;}
+.namecard .rl{font-size:14px; color:var(--ink-2);}
+.namecard .lk{margin-left:auto; display:flex; flex-wrap:wrap; gap:16px;}
+.namecard .lk a{font-size:13.5px; color:var(--ink-2); text-decoration:none; border-bottom:1px solid var(--rule); padding-bottom:1px;}
 .namecard .lk a:hover,.namecard .lk a:focus-visible{color:var(--accent); border-bottom-color:var(--accent);}
-.applying{margin:26px 0 0; font-size:15px; color:var(--ink-2); max-width:44em;}
+.applying{margin:22px 0 0 var(--indent); font-size:14.5px; color:var(--ink-2); max-width:var(--measure);}
 .applying strong{color:var(--ink); font-weight:600;}
 
 /* ═══ 목차 ═══ */
-.toc{margin:52px 0 0; padding:26px 0 0; border-top:1px solid var(--hair);}
-.toc ol{margin:0; padding:0; list-style:none; display:grid; grid-template-columns:1fr; gap:1px 34px;}
+.toc{margin:44px 0 0 var(--indent); padding:22px 0 0; border-top:1px solid var(--hair);}
+.toc ol{margin:0; padding:0; list-style:none; display:grid; grid-template-columns:1fr; gap:0 32px;}
 @media(min-width:700px){.toc ol{grid-template-columns:1fr 1fr;}}
-.toc a{
-  display:grid; grid-template-columns:2.2rem 1fr; gap:8px;
-  text-decoration:none; font-size:14.5px; color:var(--ink-2); padding:7px 0;
-}
+.toc a{display:grid; grid-template-columns:2.1rem 1fr; gap:8px; text-decoration:none; font-size:14px; color:var(--ink-2); padding:6px 0;}
 .toc a:hover{color:var(--accent);}
 .toc a span{font-weight:700; color:var(--ink-3); font-variant-numeric:tabular-nums;}
 
-/* ═══ 섹션 ═══ */
-section{padding-top:112px;}
+/* ═══ 섹션 — 모든 본문은 --indent 에서 시작 ═══ */
+section{padding-top:104px;}
 .sechead{
   display:grid; grid-template-columns:1fr; gap:2px;
-  padding-bottom:18px; border-bottom:1px solid var(--ink); margin-bottom:44px;
+  padding-bottom:16px; border-bottom:1px solid var(--ink); margin-bottom:40px;
 }
-@media(min-width:760px){.sechead{grid-template-columns:2.6rem 1fr; gap:0 20px; align-items:baseline;}}
-.sechead .no{font-size:.9rem; font-weight:800; color:var(--accent); font-variant-numeric:tabular-nums;}
-.sechead h2{margin:0; font-size:1.62rem; font-weight:700; line-height:1.42;}
-.sechead .sub{grid-column:1/-1; margin:9px 0 0; font-size:15px; font-weight:300; color:var(--ink-3); max-width:42em; line-height:1.75;}
-@media(min-width:760px){.sechead .sub{grid-column:2;}}
-
-h3{font-size:1.14rem; font-weight:700; margin:0 0 10px; line-height:1.5;}
-h4{font-size:1rem; font-weight:700; margin:0 0 6px;}
-
-/* 섹션 제목 밑줄 바로 다음에 오는 목록은 윗줄을 긋지 않는다 (선 겹침 방지) */
-.sechead + .figs > li:first-child,
-.sechead + .asks > li:first-child,
-.sechead + .gens > li:first-child,
-.sechead + .steps > li:first-child,
-.sechead + .quotes > li:first-child,
-.sechead + .beliefs > li:first-child,
-.sechead + .career > li:first-child{border-top:none; padding-top:4px;}
-
-/* 목록 안에서 두 번째 묶음은 윗줄을 유지해 구분자로 쓴다 */
-.figs + .figs > li:first-child{border-top:1px solid var(--hair);}
-
-/* ═══ 숫자 ═══ */
-.figs{margin:0; padding:0; list-style:none;}
-.figs li{display:grid; grid-template-columns:1fr; gap:2px; padding:24px 0; border-top:1px solid var(--hair);}
-@media(min-width:640px){.figs li{grid-template-columns:7.5rem 1fr; gap:0 28px; align-items:baseline;}}
-
-.figs .n{font-size:2.15rem; font-weight:800; line-height:1.15; letter-spacing:-0.015em; font-variant-numeric:tabular-nums;}
-.figs .n span{font-size:.92rem; font-weight:400; color:var(--ink-3); margin-left:3px;}
-.figs.key .n{color:var(--accent);}
-.figs .d{font-size:15px; color:var(--ink-2); font-weight:300; line-height:1.72;}
-.figs .d b{color:var(--ink); font-weight:600;}
-
-/* ═══ 질문 목록 (고민) ═══ */
-.asks{margin:0; padding:0; list-style:none; counter-reset:ask;}
-.asks li{padding:36px 0; border-top:1px solid var(--hair);}
-.asks li:last-child{border-bottom:1px solid var(--hair);}
-.asks .q{
-  display:grid; grid-template-columns:1fr; gap:6px; margin:0 0 14px;
+@media(min-width:760px){
+  .sechead{grid-template-columns:var(--rail) 1fr; gap:0 var(--gap); align-items:baseline;}
+  .sechead h2, .sechead .sub{grid-column:2;}
 }
-@media(min-width:760px){.asks .q{grid-template-columns:3.4rem 1fr; gap:0 22px; align-items:baseline;}}
-.asks .q .idx{font-size:13.5px; font-weight:800; color:var(--accent); font-variant-numeric:tabular-nums;}
-.asks .q h3{margin:0; font-size:1.24rem; font-weight:700; line-height:1.48; max-width:24em;}
-.asks .a{max-width:44em;}
-@media(min-width:760px){.asks .a{margin-left:5.6rem;}}
-.asks .a p{font-size:15px; font-weight:300; color:var(--ink-2); line-height:1.8; margin:0 0 12px;}
-.asks .a p b{color:var(--ink); font-weight:600;}
-.asks .a .when{font-size:13.5px; color:var(--ink-3); margin:0 0 10px;}
+.sechead .no{font-size:.85rem; font-weight:800; color:var(--accent); font-variant-numeric:tabular-nums;}
+.sechead h2{margin:0; font-size:1.34rem; font-weight:700; line-height:1.46;}
+.sechead .sub{margin:8px 0 0; font-size:14.5px; font-weight:300; color:var(--ink-3); max-width:var(--measure); line-height:1.75;}
 
-/* ═══ 회차 표 ═══ */
-.tablewrap{overflow-x:auto; margin-bottom:52px;}
-table{border-collapse:collapse; width:100%; min-width:600px;}
-caption{text-align:left; font-size:15px; font-weight:700; padding:0 0 16px; color:var(--ink);}
-th,td{text-align:left; padding:17px 24px 17px 0; vertical-align:top;}
-thead th{font-size:13.5px; font-weight:400; color:var(--ink-3); border-bottom:1px solid var(--rule); padding-bottom:11px;}
-tbody td{border-bottom:1px solid var(--hair); font-size:14.5px; color:var(--ink-2); font-weight:300; line-height:1.72;}
-tbody td:first-child{color:var(--ink); font-weight:400; white-space:nowrap;}
-tbody td b{font-weight:700; color:var(--ink);}
-tbody td i{font-style:normal; color:var(--ink-3);}
-table.wide tbody td:first-child{width:30%; white-space:normal;}
+/* 격자를 쓰지 않는 덩어리는 들여쓰기로 본문 시작점을 맞춘다 */
+.block,.tablewrap,.out-line,.inline-figs,.tools,.chart,.pull,.point,.anon,.sofar,.qgroup{
+  margin-left:var(--indent);
+}
+h3{font-size:1.06rem; font-weight:700; margin:0 0 8px; line-height:1.5;}
+h4{font-size:.98rem; font-weight:700; margin:0 0 5px;}
 
-/* ═══ 3기 전개 ═══ */
-.gens{margin:0 0 60px; padding:0; list-style:none;}
-.gens li{padding:32px 0; border-top:1px solid var(--hair); display:grid; grid-template-columns:1fr; gap:8px;}
-@media(min-width:820px){.gens li{grid-template-columns:9rem 1fr 15rem; gap:0 32px;}}
-
-.gens .era{font-size:14px; color:var(--ink-3); padding-top:2px;}
-.gens .body h4{margin-bottom:5px;}
-.gens .body p{margin:0; font-size:14.5px; color:var(--ink-2); font-weight:300; line-height:1.72;}
-.gens .out{font-size:14px; color:var(--ink-3); line-height:1.68; padding-top:2px;}
-.gens li.win .out{color:var(--ink); font-weight:600;}
-.gens li.win .out em{color:var(--accent);}
-
-/* ═══ 본문 ═══ */
-.block{margin:0 0 56px;}
-.block > .lbl{font-size:14px; color:var(--ink-3); margin:0 0 7px;}
-.block ul{margin:0 0 18px; padding-left:0; list-style:none; max-width:44em;}
-.block ul li{font-size:15px; color:var(--ink-2); font-weight:300; line-height:1.78; padding-left:19px; position:relative; margin-bottom:7px;}
-.block ul li::before{content:""; position:absolute; left:0; top:.82em; width:6px; height:6px; background:var(--rule);}
-.block ul li b{color:var(--ink); font-weight:600;}
-.point{font-size:1.06rem; font-weight:400; line-height:1.8; color:var(--ink); max-width:40em; margin:0 0 26px;}
-.point b{font-weight:700;}
-
-/* ═══ 인용 ═══ */
-.quotes{margin:0 0 44px; padding:0; list-style:none;}
-.quotes li{display:grid; grid-template-columns:1fr; gap:5px; padding:24px 0; border-top:1px solid var(--hair);}
-@media(min-width:760px){.quotes li{grid-template-columns:12rem 1fr; gap:0 30px; align-items:baseline;}}
-.quotes li:last-child{border-bottom:1px solid var(--hair);}
-.quotes .who{font-size:13.5px; color:var(--ink-3); line-height:1.6;}
-.quotes .say{font-size:15.5px; color:var(--ink); font-weight:300; line-height:1.76;}
-.quotes .say b{font-weight:700;}
-.anon{font-size:13.5px; color:var(--ink-3); font-weight:300; max-width:44em; margin:0 0 26px;}
-
-.pull{margin:56px 0; padding:0; max-width:26em; font-size:1.42rem; font-weight:300; line-height:1.66; color:var(--ink);}
-.pull .src{display:block; margin-top:14px; font-size:13.5px; color:var(--ink-3); font-weight:400;}
-
-/* ═══ 성과 라인 ═══ */
-.out-line{display:flex; flex-wrap:wrap; gap:0; border-top:2px solid var(--ink); margin-top:52px;}
-.out-line div{padding:22px 40px 0 0;}
-.out-line b{display:block; font-size:1.62rem; font-weight:800; letter-spacing:-0.015em; color:var(--accent); font-variant-numeric:tabular-nums;}
-.out-line span{display:block; font-size:13.5px; color:var(--ink-3); margin-top:1px;}
-
-/* ═══ 인라인 수치 ═══ */
-.inline-figs{display:flex; flex-wrap:wrap; gap:0 48px; padding:0 0 30px; border-bottom:1px solid var(--hair); margin-bottom:30px;}
-.inline-figs div b{display:block; font-size:1.72rem; font-weight:800; letter-spacing:-0.015em; font-variant-numeric:tabular-nums; line-height:1.2;}
-.inline-figs div span{display:block; font-size:13.5px; color:var(--ink-3);}
-.tools{font-size:14px; color:var(--ink-3); font-weight:300; line-height:2; max-width:46em;}
-.tools i{font-style:normal; color:var(--ink-2);}
-
-/* ═══ 진행 단계 ═══ */
-.steps{margin:0 0 40px; padding:0; list-style:none; counter-reset:st;}
-.steps li{
-  display:grid; grid-template-columns:1fr; gap:4px;
+/* ═══ 라벨+본문 목록 (전부 같은 격자) ═══ */
+.rows{margin:0; padding:0; list-style:none;}
+.rows > li{
+  display:grid; grid-template-columns:1fr; gap:5px;
   padding:24px 0; border-top:1px solid var(--hair);
 }
-@media(min-width:700px){.steps li{grid-template-columns:2.4rem 1fr; gap:0 20px;}}
-.steps li::before{
-  counter-increment:st; content:counter(st,decimal-leading-zero);
-  font-size:13.5px; font-weight:800; color:var(--rule); padding-top:5px;
+@media(min-width:760px){
+  .rows > li{grid-template-columns:var(--rail) 1fr; gap:0 var(--gap); align-items:baseline;}
 }
+.sechead + .rows > li:first-child{border-top:none; padding-top:4px;}
+.rows .lab{font-size:13.5px; color:var(--ink-3); line-height:1.6;}
+.rows .lab b{display:block; color:var(--ink); font-weight:700; margin-bottom:2px;}
+.rows .val{font-size:15px; color:var(--ink-2); font-weight:300; line-height:1.76; max-width:var(--measure);}
+.rows .val b{color:var(--ink); font-weight:600;}
+.rows .val h3,.rows .val h4{color:var(--ink);}
+.rows .val p{margin:0 0 12px;}
+.rows .val p:last-child{margin-bottom:0;}
+.rows .num{font-size:1.7rem; font-weight:800; line-height:1.2; letter-spacing:-0.02em; font-variant-numeric:tabular-nums;}
+.rows .num span{font-size:.85rem; font-weight:400; color:var(--ink-3); margin-left:2px;}
+.rows.key .num{color:var(--accent);}
+.rows .when{font-size:13.5px; color:var(--ink-3); margin:0 0 10px;}
 
-.steps h4{margin:0 0 3px;}
-.steps p{margin:0; font-size:14.5px; color:var(--ink-2); font-weight:300; line-height:1.76; max-width:44em;}
-.steps p b{color:var(--ink); font-weight:600;}
+/* ═══ 본문 덩어리 ═══ */
+.block{margin-bottom:52px;}
+.block > .lbl{font-size:13.5px; color:var(--ink-3); margin:0 0 7px;}
+.block ul{margin:0 0 16px; padding-left:0; list-style:none; max-width:var(--measure);}
+.block ul li{font-size:15px; color:var(--ink-2); font-weight:300; line-height:1.78; padding-left:18px; position:relative; margin-bottom:7px;}
+.block ul li::before{content:""; position:absolute; left:0; top:.8em; width:5px; height:5px; background:var(--rule);}
+.block ul li b{color:var(--ink); font-weight:600;}
+.point{font-size:1.02rem; font-weight:400; line-height:1.8; color:var(--ink); margin-bottom:24px;}
+.point b{font-weight:700;}
+
+/* ═══ 삼양 적용 블록 ═══ */
+.sofar{border-top:2px solid var(--ink); padding-top:20px; margin-top:40px; margin-bottom:8px; max-width:var(--measure);}
+.sofar h4{color:var(--accent); font-size:.95rem; margin:0 0 10px;}
+.sofar p{font-size:15px; font-weight:300; color:var(--ink-2); line-height:1.8; margin:0 0 10px;}
+.sofar p:last-child{margin:0;}
+.sofar p b{color:var(--ink); font-weight:600;}
+
+/* ═══ 인용 ═══ */
+.pull{margin:48px 0 48px var(--indent); max-width:var(--measure); font-size:1.24rem; font-weight:300; line-height:1.68; color:var(--ink);}
+.pull .src{display:block; margin-top:12px; font-size:13px; color:var(--ink-3); font-weight:400;}
+.anon{font-size:13.5px; color:var(--ink-3); font-weight:300; max-width:var(--measure); margin:0 0 24px var(--indent);}
+.qgroup{font-size:13.5px; color:var(--ink-3); margin:48px 0 4px var(--indent);}
+.qgroup:first-of-type{margin-top:0;}
+
+/* ═══ 성과·수치 ═══ */
+.out-line{display:flex; flex-wrap:wrap; border-top:2px solid var(--ink); margin-top:44px;}
+.out-line div{padding:20px 36px 0 0;}
+.out-line b{display:block; font-size:1.5rem; font-weight:800; letter-spacing:-0.02em; color:var(--accent); font-variant-numeric:tabular-nums;}
+.out-line span{display:block; font-size:13px; color:var(--ink-3); margin-top:1px;}
+.inline-figs{display:flex; flex-wrap:wrap; gap:0 40px; padding:0 0 26px; border-bottom:1px solid var(--hair); margin-bottom:26px;}
+.inline-figs div b{display:block; font-size:1.5rem; font-weight:800; letter-spacing:-0.02em; font-variant-numeric:tabular-nums; line-height:1.2;}
+.inline-figs div span{display:block; font-size:13px; color:var(--ink-3);}
+.tools{font-size:14px; color:var(--ink-3); font-weight:300; line-height:1.95; max-width:var(--measure); margin-bottom:0;}
+.tools i{font-style:normal; color:var(--ink-2);}
+
+/* ═══ 표 ═══ */
+.tablewrap{overflow-x:auto; margin-bottom:48px;}
+table{border-collapse:collapse; width:100%; min-width:560px;}
+caption{text-align:left; font-size:14.5px; font-weight:700; padding:0 0 14px; color:var(--ink);}
+th,td{text-align:left; padding:15px 20px 15px 0; vertical-align:top;}
+thead th{font-size:13px; font-weight:400; color:var(--ink-3); border-bottom:1px solid var(--rule); padding-bottom:10px;}
+tbody td{border-bottom:1px solid var(--hair); font-size:14px; color:var(--ink-2); font-weight:300; line-height:1.72;}
+tbody td:first-child{color:var(--ink); font-weight:400;}
+tbody td b{font-weight:700; color:var(--ink);}
+tbody td i{font-style:normal; color:var(--ink-3);}
+table.wide tbody td:first-child{width:28%;}
 
 /* ═══ 차트 ═══ */
-.chart{display:flex; flex-wrap:wrap; gap:44px; align-items:center; margin:0 0 52px;}
-.chart p{margin:0; font-size:15px; font-weight:300; color:var(--ink-2); max-width:26em;}
+.chart{display:flex; flex-wrap:wrap; gap:36px; align-items:center; margin-bottom:48px;}
+.chart p{margin:0; font-size:14.5px; font-weight:300; color:var(--ink-2); max-width:26rem;}
 .chart p b{color:var(--ink); font-weight:600;}
 svg .grid{stroke:var(--hair);}
 svg .ln{stroke:var(--accent); stroke-width:2.5; fill:none; stroke-linecap:round;}
 svg .dot{fill:var(--accent);}
 svg .lbl{fill:var(--ink-3); font-family:var(--font); font-size:11px; letter-spacing:-0.015em;}
-svg .val{fill:var(--ink); font-family:var(--font); font-size:14px; font-weight:800; letter-spacing:-0.015em;}
-
-/* ═══ 신념 ═══ */
-.beliefs{margin:0; padding:0; list-style:none;}
-.beliefs li{display:grid; grid-template-columns:1fr; gap:5px; padding:26px 0; border-top:1px solid var(--hair);}
-@media(min-width:760px){.beliefs li{grid-template-columns:17rem 1fr; gap:0 32px; align-items:baseline;}}
-.beliefs li:last-child{border-bottom:1px solid var(--hair);}
-.beliefs .en{font-size:15px; font-weight:700; line-height:1.5;}
-.beliefs .en i{font-style:normal; color:var(--accent); margin-right:7px;}
-.beliefs p{margin:0; font-size:14.5px; color:var(--ink-2); font-weight:300; line-height:1.75;}
-.beliefs p b{color:var(--ink); font-weight:600;}
-
-/* ═══ 연혁 ═══ */
-.career{margin:0; padding:0; list-style:none;}
-.career li{display:grid; grid-template-columns:1fr; gap:4px; padding:28px 0; border-top:1px solid var(--hair);}
-@media(min-width:700px){.career li{grid-template-columns:10.5rem 1fr; gap:0 32px;}}
-
-.career time{font-size:14px; color:var(--ink-3); padding-top:4px; font-variant-numeric:tabular-nums;}
-.career h3{font-size:1.04rem; margin:0 0 4px;}
-.career p{margin:0; font-size:14.5px; color:var(--ink-2); font-weight:300; line-height:1.74;}
+svg .val{fill:var(--ink); font-family:var(--font); font-size:13px; font-weight:800; letter-spacing:-0.015em;}
 
 /* ═══ 맺음 ═══ */
-.closing{margin-top:104px; padding-top:44px; border-top:2px solid var(--ink);}
-.closing p{font-size:1.62rem; font-weight:300; line-height:1.6; color:var(--ink); max-width:22em; margin:0 0 36px;}
+.closing{margin-top:104px; padding-top:40px; border-top:2px solid var(--ink);}
+.closing p{font-size:1.34rem; font-weight:300; line-height:1.62; color:var(--ink); max-width:var(--measure); margin:0 0 30px var(--indent);}
 .closing p b{font-weight:700;}
-.closing .lk{display:flex; flex-wrap:wrap; gap:20px;}
-.closing .lk a{font-size:15px; color:var(--ink-2); text-decoration:none; border-bottom:1px solid var(--rule); padding-bottom:1px;}
+.closing .lk{display:flex; flex-wrap:wrap; gap:18px;}
+.closing .lk a{font-size:14.5px; color:var(--ink-2); text-decoration:none; border-bottom:1px solid var(--rule); padding-bottom:1px;}
 .closing .lk a:hover{color:var(--accent); border-bottom-color:var(--accent);}
 footer{
-  margin-top:64px; padding-top:20px; border-top:1px solid var(--hair);
-  font-size:13px; color:var(--ink-3); font-weight:300;
-  display:flex; flex-wrap:wrap; gap:6px 26px; justify-content:space-between;
+  margin-top:56px; padding-top:20px; border-top:1px solid var(--hair);
+  font-size:12.5px; color:var(--ink-3); font-weight:300;
+  display:flex; flex-wrap:wrap; gap:6px 24px; justify-content:space-between;
 }
 </style>
 </head>
 <body>
 <div class="wrap">
 
-<!-- ══════════ 표제 ══════════ -->
 <header class="mast">
   <div class="id">
-    <svg class="sym" width="21" height="21" viewBox="0 0 32 32" aria-hidden="true">
+    <svg class="sym" width="19" height="19" viewBox="0 0 32 32" aria-hidden="true">
       <rect x="2" y="10" width="18" height="18"/><circle cx="20" cy="14" r="9.5"/>
     </svg>
     <p>삼양라운드스퀘어 AX전략팀 지원 포트폴리오 · 2026년 8월</p>
@@ -270,11 +217,10 @@ footer{
 
   <p class="lede">
     'AI 도구를 쓸 줄 아는 것'과 '회사 업무가 실제로 바뀌는 것'은 다릅니다.
-    저는 2024년 3월부터 <b>12시즌</b> 동안 개발자가 아닌 직장인들에게 AI를 가르쳤습니다.
+    저는 개발자가 아닌 직장인에게 AI를 가르치는 과정을 2022년 12월에 기획해
+    2024년 3월 첫 기수를 열었고, <b>지금까지 12시즌</b> 이어왔습니다.
     전자·통신·자동차·화학·유통·금융·제약·식품·플랫폼에서 온 실무자들이었고,
     회고에 같은 말이 계속 나왔습니다. <b>"회사 데이터를 밖으로 못 빼는데 무엇을 할 수 있을까."</b>
-    이 목록이 곧 AX 과제 목록이라고 생각합니다.
-    이 페이지는 그 목록을 어떻게 모았고, 커리큘럼을 왜 세 번 갈아엎었는지에 대한 기록입니다.
   </p>
 
   <div class="namecard">
@@ -289,21 +235,19 @@ footer{
 
   <p class="applying">
     <strong>AI Transformation(AX) 전략 기획</strong> 직무에 지원합니다.
-    공고에 적힌 주요 업무 다섯 가지 중 'AI 리터러시 교육 기획 및 변화관리'와
-    'AX 관련 임직원 대상 전략 커뮤니케이션'이 제가 7년간 해온 일입니다.
-    나머지 세 가지의 근거는 10번 항목에 정리했습니다.
+    아래 01번에 <strong>무엇을 했고, 어떤 결과가 나왔고, 삼양라운드스퀘어에서 어떻게 쓸 것인지</strong>를 먼저 정리했습니다.
   </p>
 
   <nav class="toc">
     <ol>
-      <li><a href="#asks"><span>01</span>일하면서 붙잡고 있던 질문</a></li>
-      <li><a href="#gens"><span>02</span>커리큘럼을 세 번 갈아엎다</a></li>
+      <li><a href="#summary"><span>01</span>한눈에 보기</a></li>
+      <li><a href="#busasu"><span>02</span>AI 리터러시 교육 12시즌</a></li>
       <li><a href="#star"><span>03</span>무엇을 시킬지 찾아내는 도구</a></li>
       <li><a href="#howto"><span>04</span>한 회차를 어떻게 운영했나</a></li>
       <li><a href="#trials"><span>05</span>참여자들이 실제로 만든 것</a></li>
-      <li><a href="#voices"><span>06</span>회고 원문 — 말이 바뀌는 과정</a></li>
-      <li><a href="#blockers"><span>07</span>회사 안에서 막힌 지점</a></li>
-      <li><a href="#automation"><span>08</span>제 업무를 먼저 바꿨습니다</a></li>
+      <li><a href="#blockers"><span>06</span>회사 안에서 막힌 지점</a></li>
+      <li><a href="#automation"><span>07</span>제 업무를 먼저 바꿨습니다</a></li>
+      <li><a href="#voices"><span>08</span>회고 원문</a></li>
       <li><a href="#numbers"><span>09</span>숫자</a></li>
       <li><a href="#fit"><span>10</span>공고 요구사항 대조</a></li>
       <li><a href="#beliefs"><span>11</span>S-Beliefs와 제 기록</a></li>
@@ -312,190 +256,96 @@ footer{
   </nav>
 </header>
 
-<!-- ══════════ 01 고민 ══════════ -->
-<section id="asks">
+<!-- ══════════ 01 한눈에 보기 ══════════ -->
+<section id="summary">
   <div class="sechead">
     <span class="no">01</span>
-    <h2>일하면서 붙잡고 있던 질문</h2>
-    <p class="sub">무엇을 만들었는지보다, 무엇이 안 돼서 다시 만들었는지가 제가 실제로 한 일입니다. 시간 순으로 여섯 가지를 정리했습니다.</p>
+    <h2>한눈에 보기</h2>
+    <p class="sub">세 가지 일을 했습니다. 각각 무엇을 했고, 어떤 결과가 나왔고, 삼양라운드스퀘어에서 어떻게 쓸 수 있는지 먼저 적었습니다.</p>
   </div>
-
-  <ol class="asks">
-    <li>
-      <div class="q"><span class="idx">Q1</span>
-        <h3>만족도는 괜찮은데 왜 업무는 그대로일까</h3>
-      </div>
-      <div class="a">
-        <p class="when">2025년 가을 · 1기 네 시즌을 마치고</p>
-        <p>
-          처음 커리큘럼은 AI가 무엇인지 설명하고, 코딩 없이 쓰는 자동화 도구를 실습하고,
-          질문 잘 쓰는 법을 알려주는 순서였습니다. 만족도 점수는 나쁘지 않았습니다.
-          그런데 회고에 적힌 문장을 모아 보니 종류가 하나였습니다.
-          "다양한 도구가 있는 줄 몰랐다", "실제로 손에 익히는 게 중요하겠다".
-        </p>
-        <p>
-          전부 <b>알게 되었다는 말</b>이고, <b>해봤다는 말은 하나도 없었습니다.</b>
-          만족도 점수는 이 차이를 알려주지 않습니다. 그래서 그 뒤로는 점수 대신
-          회고에 어떤 종류의 말이 적혔는지를 셌습니다.
-        </p>
-      </div>
-    </li>
-
-    <li>
-      <div class="q"><span class="idx">Q2</span>
-        <h3>도구를 더 알려줘야 할까, 아예 바꿔야 할까</h3>
-      </div>
-      <div class="a">
-        <p class="when">2026년 봄 · 2기를 설계하며</p>
-        <p>
-          그때까지 쓰던 건 코딩 없이 화면에서 블록을 이어 붙여 자동화를 만드는 도구였습니다.
-          시작하기는 쉬운데, 정작 <b>자기 회사 파일과 데이터에는 닿지 못했습니다.</b>
-          더 쉬운 도구를 얹는 길과, 반대로 개발자들이 쓰는 프로그램을 직접 깔게 하는 길이 있었습니다.
-          개발자가 아닌 분들에게 후자는 중간에 그만둘 위험이 큰 선택입니다.
-        </p>
-        <p>
-          <b>쉬운 도구를 버리는 쪽을 골랐습니다.</b> 코드 편집 프로그램(VS Code)과
-          AI가 내 컴퓨터의 파일을 직접 다루게 해주는 도구(Claude Code)를 각자 노트북에 설치하게 했고,
-          유료 결제를 준비물로 요구했습니다. 실제로 힘들어하는 분이 나왔습니다.
-          윈도우에서 설치를 세 번째 시도하고 있다는 회고가 남아 있습니다.
-          그래도 그 시즌에 처음으로 "해보겠다"는 말이 나왔습니다.
-        </p>
-      </div>
-    </li>
-
-    <li>
-      <div class="q"><span class="idx">Q3</span>
-        <h3>도구를 줘도 왜 아무것도 시작하지 않을까</h3>
-      </div>
-      <div class="a">
-        <p class="when">2026년 봄 · 2기 1회차 직후</p>
-        <p>
-          환경은 다 깔렸는데 진도가 안 나갔습니다. 회고를 다시 읽다가 원인을 찾았습니다.
-          한 분이 정확하게 써 두었습니다. "업무 관련 기초 데이터가 정리되어 있지 않고,
-          이걸로 뭘 하겠다는 목적이 아직 명확하지 않아서."
-        </p>
-        <p>
-          도구 사용법이 문제가 아니었습니다. <b>AI에게 시킬 일이 정해지지 않은 것</b>이 문제였습니다.
-          "AI로 뭐든 해보세요"는 시킬 일이 빠진 말입니다.
-          그래서 각자 자기 업무에서 시킬 일을 찾아내게 하는 도구를 따로 만들었습니다.
-          3번 항목의 STAR입니다.
-        </p>
-      </div>
-    </li>
-
-    <li>
-      <div class="q"><span class="idx">Q4</span>
-        <h3>수업에서는 되는데 왜 2주 뒤엔 멈춰 있을까</h3>
-      </div>
-      <div class="a">
-        <p class="when">2026년 여름 · 3기를 설계하며</p>
-        <p>
-          세션 중에는 다들 만듭니다. 문제는 그다음 2주입니다. 한 분의 회고가 이 구간을 그대로 보여줍니다.
-          "2시간 만에 이렇게 할 수 있었는데 2주간 하나도 하지 못한 게 너무 후회된다."
-        </p>
-        <p>
-          숙제를 강제할 방법은 없었습니다. 대신 <b>말해야 하는 자리</b>를 만들었습니다.
-          매 회차 두 번째 순서를 "지난 2주 동안 각자 뭘 해봤는지 공유"로 고정하고,
-          그걸 수업 맨 앞에 뒀습니다. 세션과 세션 사이 2주가 과제 기간이 되고,
-          안 해오면 할 말이 없는 구조가 됩니다. 남이 만든 걸 보고 "나도 해봐야겠다"고 하는 경우도 많았습니다.
-        </p>
-      </div>
-    </li>
-
-    <li>
-      <div class="q"><span class="idx">Q5</span>
-        <h3>어디까지 자동화하고, 어디부터 사람이 봐야 할까</h3>
-      </div>
-      <div class="a">
-        <p class="when">2024년 ~ 현재 · 제 운영 업무를 자동화하며</p>
-        <p>
-          자동화를 125개까지 만들면서 계속 부딪힌 질문입니다.
-          할 수 있다와 해도 된다는 다릅니다. 한 참여자가 같은 결론에 먼저 도착해 회고에 남겼습니다.
-          "AI에게 처음부터 끝까지 다 맡기는 건 실무에서 어렵다.
-          <b>중간까지만 맡기고 사람이 검토하는 방식을 많이 만드는 게 낫다.</b>"
-        </p>
-        <p>
-          제 기준은 세 가지입니다. 자주 반복되는 일부터, 사람이 실수하기 쉬운 일은
-          <b>결과만 보고서로 뽑고 고치는 건 사람이</b>, 판단이 필요한 일은 자동화하지 않습니다.
-          회원에게 나가는 메시지는 발송 전에 제가 반드시 미리 보고,
-          환불과 회원 이동은 확인을 거친 뒤에 실행됩니다.
-          <b>무엇을 자동화하지 않을지 정하는 것이 과제 목록의 절반입니다.</b>
-        </p>
-      </div>
-    </li>
-
-    <li>
-      <div class="q"><span class="idx">Q6</span>
-        <h3>기록은 왜 늘 사라진 다음에 알게 될까</h3>
-      </div>
-      <div class="a">
-        <p class="when">2026년 8월 · 12개 대화방을 전부 내려받으며</p>
-        <p>
-          2년 반 치 기록을 정리하다가 <b>초기 네 시즌의 대화가 이미 사라진 것</b>을 확인했습니다.
-          쓰던 메신저가 무료 요금제라 대화 내용이 90일만 남는데,
-          대화방 자체는 그대로 열려서 눈치채지 못했습니다.
-          들어가 보면 참여자 명단도 파일도 다 있는데 대화만 0건이었습니다.
-        </p>
-        <p>
-          살아남은 건 회고를 적어 둔 공유 문서뿐이었습니다.
-          회고를 시키려고 만든 장치가 결국 <b>유일한 기록 보관소</b>가 됐습니다.
-          이 페이지에 실린 인용도 전부 거기서 나온 것입니다.
-          그 뒤로 시즌이 끝날 때 대화방을 내려받는 절차를 운영 체크리스트에 넣었습니다.
-          <b>기록을 남기는 설계는 나중에 붙일 수 없습니다.</b>
-        </p>
-      </div>
-    </li>
-  </ol>
-</section>
-
-<!-- ══════════ 02 3기 ══════════ -->
-<section id="gens">
-  <div class="sechead">
-    <span class="no">02</span>
-    <h2>커리큘럼을 세 번 갈아엎다</h2>
-    <p class="sub">AI부사수 · 2024년 3월부터 2026년 8월까지 12시즌 · 한 시즌은 3개월 6회차 · 회고를 남긴 사람만 연인원 110명 이상.</p>
-  </div>
-
-  <ol class="gens">
-    <li>
-      <span class="era">1기 · 24겨울–25가을<br>네 시즌</span>
-      <div class="body">
-        <h4>도구를 소개하다</h4>
-        <p>AI 개념 설명 → 코딩 없이 쓰는 자동화 도구 실습 → 질문 잘 쓰는 법 → 단순 반복 작업 줄이기. 외부 강사 두 분이 진행하고 저는 기획과 운영을 맡았습니다.</p>
-      </div>
-      <p class="out">회고가 전부 "알겠다"는 말. 업무는 그대로.</p>
-    </li>
-    <li>
-      <span class="era">2기 · 26봄<br>한 시즌</span>
-      <div class="body">
-        <h4>쉬운 도구를 버리고 제가 직접 진행하다</h4>
-        <p>외부 강사 대신 <b>제가 직접 진행하는 방식</b>으로 바꿨습니다. 제가 실제로 쓰는 업무 화면을 그대로 열어 보여주고, 프로그램 설치부터 함께 했습니다. 시킬 일을 찾아내는 도구(STAR)를 이때 처음 넣었습니다.</p>
-      </div>
-      <p class="out">처음으로 "해보겠다"는 말이 나옴. 대신 설치 단계에서 그만둘 뻔한 분들이 생김.</p>
-    </li>
-    <li class="win">
-      <span class="era">3기 · 26여름<br>주중·주말 2개 반</span>
-      <div class="body">
-        <h4>2주를 과제 기간으로 만들다</h4>
-        <p>매 회차를 ①이번 2주 AI 소식 ②지난 2주 동안 각자 해본 것 공유 ③그날의 실습, 세 순서로 고정했습니다. 두 개 반을 동시에 운영하면서, 한쪽 반에 못 온 분이 다른 반에서 보충할 수 있게 열었습니다.</p>
-      </div>
-      <p class="out">공지만 올라오던 대화방에 <em>서로 묻고 답하는 댓글이</em> 붙기 시작함. 회고 기록량 최다.</p>
-    </li>
-  </ol>
 
   <div class="tablewrap">
-    <table>
-      <caption>3기 회차 구성 (26여름 · 3개월 6회차 · 회차당 2시간 30분)</caption>
-      <thead><tr><th>회차</th><th>내용</th></tr></thead>
+    <table class="wide">
+      <thead><tr><th>한 일</th><th>결과</th><th>삼양라운드스퀘어에서</th></tr></thead>
       <tbody>
-        <tr><td>1회차</td><td>자기소개 · 핵심 개념 · <b>제가 실제로 쓰는 사례 공개.</b> 노트북 없이 오는 회차입니다. 개념과 사례를 최대한 많이 보는 데 집중합니다</td></tr>
-        <tr><td>2회차</td><td>데이터 다루기 · 프로그램 설치 · 할 일 목록 연동 실습 · <b>STAR로 내 업무를 네 종류로 나누기</b></td></tr>
-        <tr><td>3회차</td><td>AI 소식 · 2주 경험 공유 · <b>S(미뤄둔 일)</b> — 미뤄둔 일 하나를 골라 자동화로 만들기. 구글 계정 연결과, 인증 키를 코드에 그대로 쓰지 않고 안전하게 숨기는 방법까지</td></tr>
-        <tr><td>4회차</td><td>AI 소식 · 2주 경험 공유 · <b>T(못한다고 생각한 일)</b> — 평소 "나는 못한다"고 여긴 일에 도전</td></tr>
-        <tr><td>5회차</td><td>AI 소식 · 2주 경험 공유 · <b>A(이미 잘하는 일)</b> — 강점·한계·목표·제약 네 칸으로 정리해 한 단계 끌어올리기</td></tr>
-        <tr><td>6회차</td><td>AI 소식 · 2주 경험 공유 · <b>R(반복 업무)</b> — 매번 똑같이 하는 일을 넘기고 시간을 되찾기</td></tr>
+        <tr>
+          <td><b>AI 리터러시 교육 과정을 만들고 12시즌 운영</b><br><i>개발자가 아닌 직장인 대상 'AI부사수'. 2022.12 기획, 2024.03 첫 기수</i></td>
+          <td>참여자 <b>80% 이상이 배운 것을 실제 업무에 적용</b>. 회고 기록이 첫 시즌 1.3만 자에서 8.4만 자로 증가</td>
+          <td>임직원 AI 리터러시 교육을 설계·운영합니다. 단발 특강이 아니라 <b>2주 간격 코호트 + 과제 공개</b> 구조로 짜야 업무가 바뀝니다 <i>(02·03·04)</i></td>
+        </tr>
+        <tr>
+          <td><b>대기업 재직자가 사내에서 AI를 못 쓰는 이유를 수집</b><br><i>12시즌 회고 292,003자에서 유형화</i></td>
+          <td>데이터 반출 금지 · 보안 정책 · 파일 암호화 · 사내 AI의 적용 범위 · <b>전파할 사람 부재</b> 등 8개 유형</td>
+          <td>입사 후 첫 과제로 <b>이 목록의 삼양 내부 버전</b>을 만듭니다. 도구 도입보다 '어디까지 허용되는가'를 정하는 게 먼저입니다 <i>(06)</i></td>
+        </tr>
+        <tr>
+          <td><b>제 운영 업무를 AI로 다시 설계</b><br><i>Claude Code 기반 자동화 체계 구축</i></td>
+          <td>백여 개 이상의 자동화를 만들어 <b>분기마다 학습 과정 15개와 행사 20회 이상을 유일한 실무자로 운영</b></td>
+          <td>전사 AX 과제 포트폴리오를 짤 때 <b>같은 세 기준</b>을 씁니다. 특히 '자동화하지 않을 일'을 명시하는 것이 신뢰를 만듭니다 <i>(07)</i></td>
+        </tr>
       </tbody>
     </table>
+  </div>
+
+  <p class="point">
+    이 세 가지를 한 문장으로 줄이면 이렇습니다.
+    <b>AI 도입이 막히는 곳은 기술이 아니라 임직원의 실제 업무이고, 저는 그 구간만 7년을 다뤄왔습니다.</b>
+  </p>
+</section>
+
+<!-- ══════════ 02 AI부사수 ══════════ -->
+<section id="busasu">
+  <div class="sechead">
+    <span class="no">02</span>
+    <h2>AI 리터러시 교육 12시즌</h2>
+    <p class="sub">개발자가 아닌 직장인에게 AI를 가르치는 과정입니다. 한 시즌은 3개월 6회차이고, 회고를 남긴 사람만 연인원 110명 이상입니다.</p>
+  </div>
+
+  <ol class="rows">
+    <li>
+      <div class="lab"><b>1기</b>24겨울–25가을<br>네 시즌</div>
+      <div class="val">
+        <h4>도구를 소개하다</h4>
+        <p>AI 개념 설명 → 코딩 없이 쓰는 자동화 도구 실습 → 질문 잘 쓰는 법. 외부 강사 두 분이 진행하고 저는 기획과 운영을 맡았습니다.</p>
+        <p><b>결과</b> — 만족도는 나쁘지 않았는데 회고가 전부 "알겠다"는 말이었습니다. 업무는 그대로였습니다.</p>
+      </div>
+    </li>
+    <li>
+      <div class="lab"><b>2기</b>26봄<br>한 시즌</div>
+      <div class="val">
+        <h4>쉬운 도구를 버리고 제가 직접 진행하다</h4>
+        <p>외부 강사 대신 제가 직접 진행하고, 제가 실제로 쓰는 업무 화면을 그대로 열어 보여줬습니다. 코드 편집 프로그램(VS Code)과 AI가 내 컴퓨터의 파일을 다루게 해주는 도구(Claude Code)를 각자 노트북에 설치하게 했습니다.</p>
+        <p><b>결과</b> — 처음으로 "다음 회차까지 시도해 보려고 합니다"라는 말이 나왔습니다. 대신 설치 단계에서 막힌 분들이 생겼습니다.</p>
+      </div>
+    </li>
+    <li>
+      <div class="lab"><b>3기</b>26여름<br>주중·주말 2개 반</div>
+      <div class="val">
+        <h4>2주를 과제 기간으로 만들다</h4>
+        <p>매 회차를 ①이번 2주 AI 소식 ②지난 2주 동안 각자 해본 것 공유 ③그날의 실습, 세 순서로 고정했습니다. 가운데를 수업 맨 앞에 둬서 안 해오면 할 말이 없게 만들었습니다.</p>
+        <p><b>결과</b> — 공지만 올라오던 대화방에 댓글이 원글보다 많아졌고(221건 대 135건), 회고 기록량이 최다를 기록했습니다.</p>
+      </div>
+    </li>
+  </ol>
+
+  <div class="out-line">
+    <div><b>80%+</b><span>배운 것을 실제 업무에 적용</span></div>
+    <div><b>6.5배</b><span>회고 기록량 1.3만 자 → 8.4만 자</span></div>
+    <div><b>1.6배</b><span>댓글 221건 / 원글 135건</span></div>
+  </div>
+
+  <div class="sofar">
+    <h4>삼양라운드스퀘어에서는</h4>
+    <p>
+      임직원 AI 리터러시 교육을 맡는다면 <b>같은 순서로 설계하겠습니다.</b>
+      첫째, 부서별로 '지금 미뤄둔 일'을 먼저 모읍니다. 가르칠 도구를 고르는 것보다 먼저 할 일입니다.
+      둘째, 단발 특강이 아니라 2주 간격 코호트로 짜고 그 사이를 과제 기간으로 만듭니다.
+      셋째, 각자 만든 결과를 다음 회차 첫머리에 공개하게 합니다.
+    </p>
+    <p>
+      12시즌을 돌려 보니 <b>이 세 가지가 갖춰졌을 때만 현업 적용률이 올랐습니다.</b>
+      셋 중 하나라도 빠지면 만족도만 높고 업무는 그대로인 1기 상태로 돌아갑니다.
+    </p>
   </div>
 </section>
 
@@ -504,47 +354,57 @@ footer{
   <div class="sechead">
     <span class="no">03</span>
     <h2>무엇을 시킬지 찾아내는 도구</h2>
-    <p class="sub">"AI로 뭐든 해보세요"는 시킬 일이 빠진 말입니다. 참여자가 자기 업무에서 시킬 일을 직접 꺼내게 만드는 장치가 필요했습니다.</p>
+    <p class="sub">"AI로 뭐든 해보세요"는 시킬 일이 빠진 말입니다. 참여자가 자기 업무에서 시킬 일을 직접 꺼내게 만드는 장치가 필요해 직접 만들었습니다.</p>
   </div>
 
-  <div class="tablewrap">
-    <table class="wide">
-      <caption>STAR — 내 업무를 네 종류로 나눕니다</caption>
-      <thead><tr><th>영역</th><th>이렇게 묻습니다</th></tr></thead>
-      <tbody>
-        <tr><td><b>S — 미뤄둔 일</b><br><i>Start</i></td><td>매일 하면 좋은데 안 하고 있는 것, 한 번 시작하면 좋은데 시작이 안 되는 것, 머릿속엔 있는데 손이 안 가는 것</td></tr>
-        <tr><td><b>T — 못한다고 생각한 일</b><br><i>Try</i></td><td>디자인, 데이터 분석처럼 "저건 내 영역이 아니야" 하고 넘겼던 일. 엉성한 지시로 시작해 각자 다듬어 갑니다</td></tr>
-        <tr><td><b>A — 이미 잘하는 일</b><br><i>Amplify</i></td><td>강점 · 한계 · 목표 · 제약 네 칸으로 정리해 한 단계씩 끌어올립니다</td></tr>
-        <tr><td><b>R — 반복 업무</b><br><i>Recover</i></td><td>매번 똑같이 하는 일. 여기서 시간을 되찾습니다</td></tr>
-      </tbody>
-    </table>
-  </div>
+  <ol class="rows">
+    <li>
+      <div class="lab"><b>S</b>Start<br>미뤄둔 일</div>
+      <div class="val">매일 하면 좋은데 안 하고 있는 것, 한 번 시작하면 좋은데 시작이 안 되는 것, 머릿속엔 있는데 손이 안 가는 것</div>
+    </li>
+    <li>
+      <div class="lab"><b>T</b>Try<br>못한다고 생각한 일</div>
+      <div class="val">디자인, 데이터 분석처럼 "저건 내 영역이 아니야" 하고 넘겼던 일. 엉성한 지시로 시작해 각자 다듬어 갑니다</div>
+    </li>
+    <li>
+      <div class="lab"><b>A</b>Amplify<br>이미 잘하는 일</div>
+      <div class="val">강점 · 한계 · 목표 · 제약 네 칸으로 정리해 한 단계씩 끌어올립니다</div>
+    </li>
+    <li>
+      <div class="lab"><b>R</b>Recover<br>반복 업무</div>
+      <div class="val">매번 똑같이 하는 일. 여기서 시간을 되찾습니다</div>
+    </li>
+  </ol>
 
-  <div class="block">
+  <div class="block" style="margin-top:52px;">
     <h3>실습은 네 칸으로 좁힙니다</h3>
-    <p>
-      종류를 나눈 다음에는 바로 만들 수 있게 네 칸으로 좁혔습니다.
-      참여자는 이 네 칸을 그대로 AI에게 적어 주고, 자기 업무용 자동화를 만듭니다.
-    </p>
+    <p>종류를 나눈 다음에는 바로 만들 수 있게 네 칸으로 좁혔습니다. 참여자는 이 네 칸을 그대로 AI에게 적어 주고 자기 업무용 자동화를 만듭니다.</p>
     <ul>
       <li><b>트리거</b> — 언제 이 일을 할 것인가 (예: 매일 아침 9시)</li>
       <li><b>소스</b> — 어디서 정보를 가져올 것인가 (예: 저장해 둔 링크 목록)</li>
       <li><b>처리</b> — 어떻게 가공할 것인가 (예: 3줄 요약하고 왜 중요한지 덧붙이기)</li>
       <li><b>결과</b> — 결과를 어디로 보낼 것인가 (예: 메일함, 메모 앱)</li>
     </ul>
-    <p class="lbl" style="margin-top:24px;">참여자에게 나눠 준 지시문 (그대로 복사해 AI에게 붙여넣습니다)</p>
-    <p style="font-size:14.5px;color:var(--ink-2);font-weight:300;max-width:44em;">
-      ① 내가 직장에서 자주 하는 업무를 STAR 네 종류로 나눠 줘.
-      미뤄둔 일 · 못한다고 생각한 일 · 이미 잘하는 일 · 반복 업무를
+    <p class="lbl" style="margin-top:20px;">참여자에게 나눠 준 지시문 (그대로 복사해 AI에게 붙여넣습니다)</p>
+    <p style="font-size:14.5px;color:var(--ink-2);font-weight:300;">
+      ① 내가 직장에서 자주 하는 업무를 네 종류로 나눠 줘. 미뤄둔 일 · 못한다고 생각한 일 · 이미 잘하는 일 · 반복 업무를
       한 번에 하나씩 물어봐서, 어디서부터 AI로 시작하면 좋을지 정리하게 도와줘. →
-      ② 그중 먼저 자동화할 업무 하나를 골라, 내가 다음에 바로 쓸 결과물로 만들어 줘
-      (주간 보고 초안, 회의록 정리, 메일 답안 등). →
-      ③ 이 과정을 이름 붙인 명령어로 만들어 줘.
-      회사에서 그 일이 생길 때마다 그 명령어를 부르면 같은 결과물이 나오게.
+      ② 그중 먼저 자동화할 업무 하나를 골라, 내가 다음에 바로 쓸 결과물로 만들어 줘. →
+      ③ 이 과정을 이름 붙인 명령어로 만들어 줘. 회사에서 그 일이 생길 때마다 부르면 같은 결과물이 나오게.
     </p>
-    <p class="point">
+    <p class="point" style="margin-left:0;">
       핵심은 <b>대상 고르기, 결과물 만들기, 다음에도 쓸 수 있게 저장하기를 한 번에 묶은 것</b>입니다.
       나누기만 하고 끝나면 그날의 워크숍이고, 명령어로 남으면 그다음에도 계속 씁니다.
+    </p>
+  </div>
+
+  <div class="sofar">
+    <h4>삼양라운드스퀘어에서는</h4>
+    <p>
+      이 네 칸은 <b>부서별 AX 과제를 뽑는 인터뷰 양식으로 그대로 씁니다.</b>
+      현업에 "AI로 뭘 하고 싶으세요"라고 물으면 대답이 안 나옵니다.
+      "미뤄둔 일이 뭔가요", "매번 똑같이 하는 일이 뭔가요"로 물으면 목록이 나옵니다.
+      그렇게 모인 목록이 곧 과제 후보이고, 트리거·소스·처리·결과 네 칸이 채워지는 것부터 시범 적용 대상이 됩니다.
     </p>
   </div>
 </section>
@@ -557,131 +417,64 @@ footer{
     <p class="sub">교육이 실패하는 지점은 대개 내용이 아니라 그 앞뒤의 준비입니다. 3기 기준으로 실제 절차를 적었습니다.</p>
   </div>
 
-  <ol class="steps">
+  <ol class="rows">
     <li>
-      <div>
-        <h4>준비 상태를 6단계로 미리 받습니다</h4>
-        <p>
-          설치 실습이 있는 회차 당일 오후, 대화방에 여섯 단계를 올려 각자 어디쯤인지 답하게 했습니다.
-          <b>①아직 결제 전 ②결제했지만 설치 전 ③설치했는데 못 써봄 ④어느 정도 써봄
-          ⑤쓰다가 하루치 사용량을 다 써봄 ⑥매일 사용량이 모자라 상위 요금제 결제 직전.</b>
-          출석 확인이 아니라, 그날 어느 수준에 맞춰 진행할지 정하는 근거입니다.
-          "7. 이미 상위 요금제 결제했다"고 스스로 항목을 추가한 분도 나왔습니다.
-        </p>
+      <div class="lab">준비 상태<br>사전 파악</div>
+      <div class="val">
+        <p>설치 실습이 있는 회차 당일 오후, 여섯 단계를 올려 각자 어디쯤인지 답하게 했습니다.
+        <b>①아직 결제 전 ②결제했지만 설치 전 ③설치했는데 못 써봄 ④어느 정도 써봄 ⑤하루치 사용량을 다 써봄 ⑥매일 사용량이 모자람.</b>
+        출석 확인이 아니라 그날 어느 수준에 맞춰 진행할지 정하는 근거입니다.</p>
       </div>
     </li>
     <li>
-      <div>
-        <h4>준비물을 결제 단위까지 적습니다</h4>
-        <p>
-          "노트북 지참(태블릿은 안 됩니다), 충전기, 유료 요금제 사전 결제, 프로그램 설치 5분."
-          돈이 드는 준비물은 사흘 전에 안내했습니다.
-          <b>당일에 결제부터 시작하면 그 회차는 통째로 날아갑니다.</b>
-        </p>
-      </div>
+      <div class="lab">준비물<br>결제 단위까지</div>
+      <div class="val"><p>"노트북 지참(태블릿 불가), 충전기, 유료 요금제 사전 결제, 설치 5분." 돈이 드는 준비물은 사흘 전에 안내했습니다. <b>당일에 결제부터 시작하면 그 회차는 통째로 날아갑니다.</b></p></div>
     </li>
     <li>
-      <div>
-        <h4>못 온 분에게 다른 반을 열어 줍니다</h4>
-        <p>
-          주중반과 주말반을 같이 운영하면서, 1회차를 놓친 주중반 참여자에게 주말반 참석을 제안했습니다.
-          앉을 자리 위치까지 안내했고 다섯 분이 왔습니다.
-          <b>개념을 다루는 회차를 놓치면 남은 다섯 회차를 따라오기 어렵습니다.</b>
-        </p>
-      </div>
+      <div class="lab">결석 대응<br>다른 반 개방</div>
+      <div class="val"><p>주중반과 주말반을 같이 운영하면서, 1회차를 놓친 분에게 다른 반 참석을 제안하고 앉을 자리까지 안내했습니다. 다섯 분이 왔습니다. <b>개념 회차를 놓치면 남은 다섯 회차를 따라오기 어렵습니다.</b></p></div>
     </li>
     <li>
-      <div>
-        <h4>오래 걸리는 세팅은 따로 뺍니다</h4>
-        <p>
-          구글 계정 연결처럼 손이 많이 가는 작업을 수업 중에 다루면 나머지 진도를 다 잡아먹습니다.
-          정규 시각 30분 전에 따로 자리를 열어 원하는 분만 받았습니다. 여섯 분이 왔습니다.
-        </p>
-      </div>
+      <div class="lab">긴 세팅<br>본 세션에서 분리</div>
+      <div class="val"><p>구글 계정 연결처럼 손이 많이 가는 작업을 수업 중에 다루면 나머지 진도를 다 잡아먹습니다. 정규 시각 30분 전에 따로 자리를 열어 원하는 분만 받았습니다. 여섯 분이 왔습니다.</p></div>
     </li>
     <li>
-      <div>
-        <h4>세 순서를 고정하고, 가운데를 반드시 넣습니다</h4>
-        <p>
-          ①이번 2주 AI 소식 ②지난 2주 동안 각자 해본 것 공유 ③그날의 실습.
-          <b>가운데 순서가 이 설계의 핵심</b>입니다. 그걸 수업 맨 앞에 둬서,
-          2주 동안 아무것도 안 해오면 할 말이 없게 만들었습니다.
-        </p>
-      </div>
+      <div class="lab">회차 구성<br>세 순서 고정</div>
+      <div class="val"><p>①이번 2주 AI 소식 ②지난 2주 동안 각자 해본 것 공유 ③그날의 실습. <b>가운데가 이 설계의 핵심</b>이고, 수업 맨 앞에 둬서 안 해오면 할 말이 없게 만들었습니다.</p></div>
     </li>
     <li>
-      <div>
-        <h4>제 지난 2주 작업을 매번 열어 보여줍니다</h4>
-        <p>
-          방문자 통계 리포트 자동 작성, AI 소식 자동 수집, 홍보 영상 초안 만들기, 시즌 운영 자동화까지
-          제가 실제로 한 작업을 그대로 열었습니다. 잘된 것만이 아니라 막혔던 지점도 같이 열었습니다.
-          회고에 "슬기님이 최근 하는 작업과 '이렇게 씁니다'를 보여주시는 게
-          최고의 동기부여"라는 말이 여러 시즌에 걸쳐 반복됩니다.
-        </p>
-      </div>
+      <div class="lab">운영자 공개<br>내 작업 그대로</div>
+      <div class="val"><p>방문자 통계 리포트 자동 작성, AI 소식 자동 수집, 홍보 영상 초안 만들기까지 제가 실제로 한 작업을 매 회차 열어 보여줬습니다. 잘된 것만이 아니라 막혔던 지점도 함께요. 회고에 "이렇게 씁니다를 보여주시는 게 최고의 동기부여"라는 말이 여러 시즌 반복됩니다.</p></div>
     </li>
     <li>
-      <div>
-        <h4>발표 자료를 PC용·모바일용 두 벌로 만들어 웹에 올립니다</h4>
-        <p>
-          회차가 끝나면 바로 웹에 올리고 대화방에 링크를 겁니다. 동시에
-          <b>"자료만 봐서는 따라오기 어렵다"고 솔직하게 적었습니다.</b>
-          녹음을 드려도 마찬가지라는 것까지 썼습니다.
-          자료 공유가 결석의 대체재가 아니라는 걸 분명히 하는 편이 결과적으로 참석률에 낫습니다.
-        </p>
-      </div>
+      <div class="lab">자료 배포<br>PC·모바일 두 벌</div>
+      <div class="val"><p>회차가 끝나면 바로 웹에 올리고 링크를 겁니다. 동시에 <b>"자료만 봐서는 따라오기 어렵다"고 솔직하게 적었습니다.</b> 자료 공유가 결석의 대체재가 아니라는 걸 분명히 하는 편이 참석률에 낫습니다.</p></div>
     </li>
     <li>
-      <div>
-        <h4>바로 쓸 수 있는 꾸러미를 나눠 줍니다</h4>
-        <p>
-          유튜브 영상을 요약 노트로 만들어 주는 도구, 블로그 글 작성 도구, 바탕화면 정리 도구를
-          압축 파일로 만들어 나눠 줬습니다. 안에는 <b>따라 하기만 하면 되는 안내서,
-          실행 파일, 설정 파일</b> 세 개를 넣고 이렇게 적었습니다.
-          "처음 세팅은 15분 정도, 무료 키 하나면 됩니다.
-          따라 하시다 막히면 어느 단계에서 어떤 메시지가 떴는지 캡처해서 편하게 물어봐 주세요."
-          참여자들은 이걸 각자 업무에 맞게 고쳐 썼습니다.
-        </p>
-      </div>
+      <div class="lab">실행 꾸러미<br>바로 쓸 수 있게</div>
+      <div class="val"><p>유튜브 영상을 요약 노트로 만드는 도구, 블로그 글 작성 도구, 바탕화면 정리 도구를 압축 파일로 나눠 줬습니다. 안에 <b>따라 하기만 하면 되는 안내서·실행 파일·설정 파일</b>을 넣고 "처음 세팅 15분, 막히면 어느 단계에서 어떤 메시지가 떴는지 캡처해서 물어봐 주세요"라고 적었습니다.</p></div>
     </li>
     <li>
-      <div>
-        <h4>수업 밖 질문에 그 자리에서 답합니다</h4>
-        <p>
-          "하루 만에 사용량을 다 썼다"는 질문에는
-          "계획 모드, 대화 정리, 매일의 작업일지 세 가지는 꼭 챙기시라"고 답하는 식으로
-          대화가 계속 쌓였습니다. 오류 메시지를 그대로 붙여 넣으면 원인을 짚어 드렸습니다.
-        </p>
-      </div>
+      <div class="lab">회고 누적<br>빈칸 미리 생성</div>
+      <div class="val"><p>4L 회고(Liked 좋았던 점 · Learned 배운 점 · Lacked 채우고 싶은 점 · Long for 해보고 싶은 것)를 공유 문서에 적게 했습니다. 회차 제목과 각자 이름 칸을 시즌 시작 때 자동으로 넣어 두고, 수업 다음 날 알림이 자동으로 나가게 했습니다. <b>분량을 강제하지 않았는데도</b> 기록량이 6.5배로 늘었습니다.</p></div>
     </li>
     <li>
-      <div>
-        <h4>회고를 공유 문서에 쌓고, 빈칸은 미리 만들어 둡니다</h4>
-        <p>
-          매 회차 끝에 4L 회고(Liked 좋았던 점 · Learned 배운 점 · Lacked 채우고 싶은 점 ·
-          Long for 해보고 싶은 것)를 공유 문서에 적게 했습니다.
-          회차 제목과 각자 이름 칸을 시즌 시작 때 미리 자동으로 넣어 두고,
-          수업 다음 날 알림이 자동으로 나가게 했습니다. <b>분량을 강제하지 않았는데도</b>
-          기록량이 첫 시즌 1.3만 자에서 8.4만 자로 늘었습니다.
-        </p>
-      </div>
-    </li>
-    <li>
-      <div>
-        <h4>회고 칸의 용도를 못 박습니다</h4>
-        <p>
-          "채우고 싶은 점" 칸 옆에 이렇게 적었습니다.
-          "운영에 대한 피드백을 적는 칸이 아닙니다. 시즌 중반에 별도 설문이 진행됩니다."
-          <b>학습 회고와 서비스 만족도를 한 칸에 섞으면 둘 다 못 씁니다.</b>
-        </p>
-      </div>
+      <div class="lab">칸의 용도<br>명시</div>
+      <div class="val"><p>"채우고 싶은 점" 칸 옆에 "운영 피드백을 적는 칸이 아닙니다. 시즌 중반에 별도 설문이 진행됩니다"라고 적었습니다. <b>학습 회고와 서비스 만족도를 한 칸에 섞으면 둘 다 못 씁니다.</b></p></div>
     </li>
   </ol>
 
-  <div class="out-line">
-    <div><b>1.6배</b><span>댓글 221건이 원글 135건보다 많아짐 (26여름 두 개 반)</span></div>
-    <div><b>6.5배</b><span>회고 기록량 1.3만 자 → 8.4만 자</span></div>
-    <div><b>80%+</b><span>배운 것을 실제 업무에 적용</span></div>
+  <div class="sofar">
+    <h4>삼양라운드스퀘어에서는</h4>
+    <p>
+      사내 교육에서도 성패는 준비 단계에서 갈립니다.
+      <b>사전 자가진단으로 부서별 수준을 먼저 파악하고</b>, 계정 발급·권한 승인·프로그램 설치처럼 오래 걸리는 준비는 본 세션에서 빼고,
+      결석자를 위한 보충 경로를 미리 열어 두겠습니다.
+    </p>
+    <p>
+      특히 사내에서는 <b>보안 승인과 계정 권한이 가장 오래 걸리는 준비물</b>일 가능성이 큽니다.
+      그 절차를 교육 일정의 앞단에 배치하지 않으면, 회차가 통째로 세팅에 소모되는 일이 그대로 반복됩니다.
+    </p>
   </div>
 </section>
 
@@ -729,179 +522,83 @@ footer{
   </div>
 
   <p class="anon">
-    원본 기록에는 실명과 소속이 그대로 들어 있습니다. 외부에 공개하는 이 페이지에는 담지 않았고,
-    인용은 전부 익명으로 처리했습니다. 원본은 따로 보관하며 공유하지 않습니다.
+    원본 기록에는 실명과 소속이 그대로 들어 있습니다. 외부에 공개하는 이 페이지에는 담지 않았고, 인용은 전부 익명으로 처리했습니다.
   </p>
 </section>
 
-<!-- ══════════ 06 회고 ══════════ -->
-<section id="voices">
-  <div class="sechead">
-    <span class="no">06</span>
-    <h2>회고 원문 — 말이 바뀌는 과정</h2>
-    <p class="sub">2년 반 치 회고에서 뽑았습니다. 다듬지 않고 적힌 그대로 두었습니다. 순서는 시간 순입니다.</p>
-  </div>
-
-  <p class="lbl" style="font-size:14px;color:var(--ink-3);margin-bottom:6px;">1기 — 알게는 되는데 업무는 그대로입니다</p>
-  <ul class="quotes">
-    <li>
-      <span class="who">식품 제조 · 마케팅</span>
-      <span class="say">"AI를 활용하기 전에 어떤 역할을 맡길지 고민하며 내 일을 쪼개 보는 시간이 유익했습니다. <b>제 일을 먼저 분석하고</b> 어떤 일을 시킬지 고민을 좀 해봐야겠어요."</span>
-    </li>
-    <li>
-      <span class="who">1기 참여자</span>
-      <span class="say">"어렴풋이 알고 있었던 흐름과, 도구를 바라보는 틀을 배웠습니다. 채우고 싶은 것 — <b>여러 도구를 엮어서 원하는 결과를 끌어내는 능력.</b>"</span>
-    </li>
-    <li>
-      <span class="who">1기 참여자</span>
-      <span class="say">"굳이 어려운 길로 알려주는 AI가 원망스럽다. 평소 칭찬을 너무 안 했나 싶어 반성 중." <span style="color:var(--ink-3)">— 다음 회차</span> "역시 반복의 힘. 지난 완패에 리벤지 성공."</span>
-    </li>
-  </ul>
-
-  <p class="lbl" style="font-size:14px;color:var(--ink-3);margin:56px 0 8px;">2기 — 도구를 바꾸자 참여자들이 헤맸습니다</p>
-  <ul class="quotes">
-    <li>
-      <span class="who">교육출판 · 홍보</span>
-      <span class="say">"<b>업무 관련 기초 데이터가 정리되어 있지 않고, 뭘 하겠다는 목적이 아직 명확하지 않아서</b> 다음 회차까지 생각을 정리해 와야 할 듯."</span>
-    </li>
-    <li>
-      <span class="who">2기 참여자</span>
-      <span class="say">"좋았던 점: <b>오늘은 없다. 에러 땜에.</b> 친해질 수 있을까. 수없는 에러를 수정하는 길고 긴 시간……. 캘린더에 일정 넣어 달랬더니 음성 비서한테 말하는 게 더 쉽겠다는 대답을 듣고 현타가 옴. 무엇이 더 자동화인가."</span>
-    </li>
-    <li>
-      <span class="who">방송기술 · 기획</span>
-      <span class="say">"윈도우에서 설치를 <b>세 번째</b> 해보는데도 간단치 않음. 설치 요령과 원인을 파악하고자 함."</span>
-    </li>
-    <li>
-      <span class="who">진로 전환기</span>
-      <span class="say">"매일 기사 정리를 해서 표에 모아 두고 주말에 보려고 했는데, <b>실현해 볼 수 있을 것 같아서 다음 회차까지 시도해 보려고 합니다.</b>"</span>
-    </li>
-    <li>
-      <span class="who">완성차 · 기획</span>
-      <span class="say">"<b>2시간 만에 이렇게 할 수 있었는데 2주간 하나도 하지 못한 게 너무 후회된다.</b>"</span>
-    </li>
-    <li>
-      <span class="who">2기 참여자</span>
-      <span class="say">"역시 <b>남이 만든 건 나한테는 별로 쓸모가 없다.</b>" <span style="color:var(--ink-3)">— 이 말 때문에 3기에서 나눠 주는 방식을 '완성품 제공'에서 '꾸러미를 주고 각자 고쳐 쓰기'로 바꿨습니다.</span></span>
-    </li>
-  </ul>
-
-  <p class="lbl" style="font-size:14px;color:var(--ink-3);margin:56px 0 8px;">3기 — 남이 해본 걸 보고 따라 합니다</p>
-  <ul class="quotes">
-    <li>
-      <span class="who">브랜드 컨설팅</span>
-      <span class="say">"<b>혼자서 가장 하기 힘든 일을 쪼개서 시작하기.</b> 혼자서는 버거웠던 취약성을 AI와 함께 보완하고 싶어요."</span>
-    </li>
-    <li>
-      <span class="who">유통 · 백화점</span>
-      <span class="say">"역시 <b>강제로 자리에 앉아서 시킨 걸 해야</b> 새로운 일을 시작할 수 있구나. 그 계기를 얻게 되어 좋았다."</span>
-    </li>
-    <li>
-      <span class="who">브랜딩 · 디자인</span>
-      <span class="say">"시작이 엄두가 안 날 땐 <b>AI에게 시작 자체를 도와달라고</b> 하면 허들이 확 낮아진다."</span>
-    </li>
-    <li>
-      <span class="who">헤드헌팅 · 세일즈</span>
-      <span class="say">"맡길 수 있는 부분을 잘 맡기면, <b>시간이 무한한 사람처럼 일하지 않아도 된다.</b>"</span>
-    </li>
-    <li>
-      <span class="who">방송기술 · 기획</span>
-      <span class="say">"AI 시대의 학습법은 <b>결과물이 먼저 나오고 개념은 나중에 채워지는 방식</b>이라고 들었습니다. 결과물을 만드는 것부터 시작해 봐야겠습니다."</span>
-    </li>
-    <li>
-      <span class="who">방송기술 · 기획</span>
-      <span class="say">"경험이 쌓이다 보니, 시키는 대로 만들어 주는 실행 담당만이 아니라 <b>무엇이 어디까지 가능한지를 함께 고민하는 상의 상대</b> 역할도 할 수 있겠어요."</span>
-    </li>
-    <li>
-      <span class="who">에너지 · B2B 영업</span>
-      <span class="say">"챗봇을 쓰거나 질문을 고민하는 정도였는데 <b>이미 다음 단계로 넘어왔다는 게 놀라웠고</b>, 계속 되돌아보며 고쳐 나가는 구조를 만드는 게 대단하다는 생각이 들었습니다."</span>
-    </li>
-  </ul>
-
-  <p class="pull">
-    "다양한 도구가 있는 줄 몰랐다"에서<br>"다음 회차까지 시도해 보려고 합니다"로.<br>
-    두 문장 사이가 두 시즌입니다.
-    <span class="src">만족도 점수는 이 차이를 알려주지 않았습니다.</span>
-  </p>
-</section>
-
-<!-- ══════════ 07 장벽 ══════════ -->
+<!-- ══════════ 06 장벽 ══════════ -->
 <section id="blockers">
   <div class="sechead">
-    <span class="no">07</span>
+    <span class="no">06</span>
     <h2>회사 안에서 막힌 지점</h2>
     <p class="sub">이 페이지에서 AX 직무와 가장 가까운 부분입니다. 12시즌 동안 대기업에 다니는 참여자들의 회고에 반복해 나온 말을 유형별로 모았습니다.</p>
   </div>
 
-  <ul class="quotes">
+  <ol class="rows">
     <li>
-      <span class="who"><b style="color:var(--ink);">데이터를 못 빼냄</b><br>유통 · 백화점</span>
-      <span class="say">"근데 사실 뭘 할 수 있을지 잘 모르겠다. <b>회사에서 다루는 데이터를 반출할 수 없는데 무엇을 할 수 있을까?</b>"</span>
+      <div class="lab"><b>데이터를 못 빼냄</b>유통 · 백화점</div>
+      <div class="val">"근데 사실 뭘 할 수 있을지 잘 모르겠다. <b>회사에서 다루는 데이터를 반출할 수 없는데 무엇을 할 수 있을까?</b>"</div>
     </li>
     <li>
-      <span class="who"><b style="color:var(--ink);">보안 정책</b><br>에너지 · B2B 영업</span>
-      <span class="say">"회사에선 AI 접근이 보안 이슈로 너무 제한적이라. 그럼에도 좀 더 적극적으로 활용할 방안을 고민해 봐야겠습니다."</span>
+      <div class="lab"><b>보안 정책</b>에너지 · B2B 영업</div>
+      <div class="val">"회사에선 AI 접근이 보안 이슈로 너무 제한적이라. 그럼에도 좀 더 적극적으로 활용할 방안을 고민해 봐야겠습니다."</div>
     </li>
     <li>
-      <span class="who"><b style="color:var(--ink);">사내 AI를 깔아도 남는 문제</b><br>통신 · 기획</span>
-      <span class="say">"고객 정보를 많이 보관·관리하는 회사에서는 어느 범위까지 적용할 수 있을지, <b>회사 전용 AI가 따로 있더라도 대외비가 많은 부서에서는</b> 어디까지 쓸 수 있을지 고민이 됩니다."</span>
+      <div class="lab"><b>사내 AI를 깔아도 남는 문제</b>통신 · 기획</div>
+      <div class="val">"고객 정보를 많이 보관·관리하는 회사에서는 어느 범위까지 적용할 수 있을지, <b>회사 전용 AI가 따로 있더라도 대외비가 많은 부서에서는</b> 어디까지 쓸 수 있을지 고민이 됩니다."</div>
     </li>
     <li>
-      <span class="who"><b style="color:var(--ink);">파일이 잠겨 있음</b><br>소비재 · 프로덕트 마케팅</span>
-      <span class="say">"<b>회사 파일들은 모두 암호화되어 있는데</b> 과연 이것이 회사 업무에서 적용 가능한 범위의 것일지. 아니라면 어떤 방식으로 반자동화할 수 있을런지."</span>
+      <div class="lab"><b>파일이 잠겨 있음</b>소비재 · 프로덕트 마케팅</div>
+      <div class="val">"<b>회사 파일들은 모두 암호화되어 있는데</b> 과연 이것이 회사 업무에서 적용 가능한 범위의 것일지. 아니라면 어떤 방식으로 반자동화할 수 있을런지."</div>
     </li>
     <li>
-      <span class="who"><b style="color:var(--ink);">원격 근무 환경 제약</b><br>통신 · 기획</span>
-      <span class="say">"개인 비서 웹페이지 만들기. <b>회사 원격 근무 환경 안에서 안 되는 부분 확인하기.</b>"</span>
+      <div class="lab"><b>원격 근무 환경 제약</b>통신 · 기획</div>
+      <div class="val">"개인 비서 웹페이지 만들기. <b>회사 원격 근무 환경 안에서 안 되는 부분 확인하기.</b>"</div>
     </li>
     <li>
-      <span class="who"><b style="color:var(--ink);">전부 맡기면 안 됨</b><br>통신 · 기획</span>
-      <span class="say">"AI에게 처음부터 끝까지 다 맡기는 건 실무에서 어렵다. <b>중간까지만 맡기고 사람이 검토하는 방식을 많이 만드는 게 낫다.</b>"</span>
+      <div class="lab"><b>전부 맡기면 안 됨</b>통신 · 기획</div>
+      <div class="val">"AI에게 처음부터 끝까지 다 맡기는 건 실무에서 어렵다. <b>중간까지만 맡기고 사람이 검토하는 방식을 많이 만드는 게 낫다.</b>"</div>
     </li>
     <li>
-      <span class="who"><b style="color:var(--ink);">쓸 데이터 자체가 없음</b><br>여러 시즌에서 반복</span>
-      <span class="say">"기반은 <b>데이터를 빠뜨리지 않는 것</b>에서 시작되는데, 여기저기 흩어져 있는 자료를 먼저 정리해야겠다고 생각했어요."</span>
+      <div class="lab"><b>쓸 데이터 자체가 없음</b>여러 시즌에서 반복</div>
+      <div class="val">"기반은 <b>데이터를 빠뜨리지 않는 것</b>에서 시작되는데, 여기저기 흩어져 있는 자료를 먼저 정리해야겠다고 생각했어요."</div>
     </li>
     <li>
-      <span class="who"><b style="color:var(--ink);">알려줄 사람이 없음</b><br>소비재 · 프로덕트 마케팅</span>
-      <span class="say">"회사에서 저도 AI 도구로 분석 툴을 만드는 프로젝트의 1년 리더가 되었는데, <b>사람들에게 어떻게 가르쳐 주고 인도해 줄지는 아직 모르겠어요.</b>"</span>
+      <div class="lab"><b>알려줄 사람이 없음</b>소비재 · 프로덕트 마케팅</div>
+      <div class="val">"회사에서 저도 AI 도구로 분석 툴을 만드는 프로젝트의 1년 리더가 되었는데, <b>사람들에게 어떻게 가르쳐 주고 인도해 줄지는 아직 모르겠어요.</b>"</div>
     </li>
-  </ul>
+  </ol>
 
-  <div class="block">
-    <h3>이 목록을 어떻게 쓸 것인가</h3>
+  <div class="sofar">
+    <h4>삼양라운드스퀘어에서는</h4>
     <p>
-      마지막 인용이 이 직무의 문제를 그대로 말하고 있습니다.
-      도구를 잘 쓰게 된 사람이 회사에서 리더를 맡았는데, <b>알려주는 방법을 모릅니다.</b>
-      한 부서에서 성공한 걸 회사 전체로 못 넓히는 이유가 대개 여기 있습니다.
+      마지막 인용이 이 직무의 문제를 그대로 말합니다. 도구를 잘 쓰게 된 사람이 회사에서 리더를 맡았는데
+      <b>알려주는 방법을 모릅니다.</b> 한 부서의 성공이 회사 전체로 안 넘어가는 이유가 대개 여기 있습니다.
     </p>
     <p>
-      나머지 일곱 개는 기술 문제가 아니라 <b>규정과 데이터의 문제</b>입니다.
-      반출 금지, 암호화, 원격 근무 환경, 대외비.
-      도구를 바꾼다고 풀리지 않고, "어디까지 써도 되는가"를 회사가 정해 줘야 풀립니다.
-      제가 본 바로는 어디까지 되는지 아무도 안 알려줄 때 구성원은 시도 자체를 멈춥니다.
-      <b>허용 범위를 명확히 적어 주는 것만으로 열리는 과제가 꽤 있습니다.</b>
+      나머지 일곱 개는 기술이 아니라 <b>규정과 데이터의 문제</b>입니다. 도구를 바꾼다고 풀리지 않고,
+      "어디까지 써도 되는가"를 회사가 정해 줘야 풀립니다. 제가 본 바로는 그 선을 아무도 안 알려줄 때 구성원은 시도 자체를 멈춥니다.
     </p>
-    <p class="point">
-      AX 전략을 세울 때 저는 <b>도입할 도구 목록보다 이 막힌 지점 목록을 먼저 만들겠습니다.</b>
-      12시즌 동안 회사 밖에서 모았고, 안에서는 훨씬 정확하게 모을 수 있습니다.
+    <p>
+      그래서 <b>입사 후 첫 과제로 이 목록의 삼양 내부 버전을 만들겠습니다.</b>
+      부서별로 "지금 AI로 못 하는 일과 그 이유"를 모으면, 이유가 보안 정책인지·데이터 부재인지·권한 문제인지에 따라
+      해결할 사람이 달라집니다. <b>도구 도입보다 이 분류가 먼저입니다.</b>
     </p>
   </div>
 </section>
 
-<!-- ══════════ 08 자동화 ══════════ -->
+<!-- ══════════ 07 자동화 ══════════ -->
 <section id="automation">
   <div class="sechead">
-    <span class="no">08</span>
+    <span class="no">07</span>
     <h2>제 업무를 먼저 바꿨습니다</h2>
-    <p class="sub">분기마다 학습 과정 15개와 행사 20회가 돌아갑니다. 담당자는 저 한 명입니다. 사람을 늘리는 대신 일을 옮겼습니다.</p>
+    <p class="sub">분기마다 학습 과정 15개와 행사 20회 이상이 돌아갑니다. 실무자는 저 한 명입니다. 사람을 늘리는 대신 일을 옮겼습니다.</p>
   </div>
 
   <div class="inline-figs">
-    <div><b>125</b><span>명령어 하나로 도는 자동화</span></div>
-    <div><b>305</b><span>직접 만든 프로그램</span></div>
-    <div><b>62</b><span>사람 없이 정해진 시각에 도는 작업</span></div>
-    <div><b>2,815</b><span>자동으로 기록된 발송 이력</span></div>
+    <div><b>100+</b><span>명령어 하나로 도는 자동화</span></div>
+    <div><b>15 + 20</b><span>분기당 학습 과정 + 행사</span></div>
+    <div><b>1</b><span>유일한 실무자</span></div>
   </div>
 
   <p class="tools">
@@ -910,22 +607,99 @@ footer{
     슬랙 · 구글 캘린더 · 홈페이지 · 방문자 통계를 서로 연결해 두었습니다.
   </p>
 
-  <div class="block" style="margin-top:56px;">
-    <h3>교육에서 얻은 원칙을 제 운영에 그대로 적용했습니다</h3>
+  <div class="block" style="margin-top:44px;">
+    <h3>세 가지 기준으로 골랐습니다</h3>
     <ul>
       <li><b>자주 반복되고 시간이 오래 걸리는 일부터</b> — 주간 공지 예약, 출석 정리, 상품 정보 백업</li>
-      <li><b>사람이 실수하기 쉬운 일</b> — 회원 명단이 세 곳(관리 시트·대화방·출석부)에서 서로 어긋나지 않는지 매주 대조합니다. 다만 <b>결과를 보고서로 뽑아 주기만 하고, 고치는 건 사람이</b> 판단합니다</li>
+      <li><b>사람이 실수하기 쉬운 일</b> — 회원 명단이 세 곳(관리 시트·대화방·출석부)에서 어긋나지 않는지 매주 대조합니다. 다만 <b>결과를 보고서로 뽑아 주기만 하고 고치는 건 사람이</b> 판단합니다</li>
       <li><b>판단이 필요한 일은 자동화하지 않음</b> — 회원에게 나가는 메시지는 발송 전 미리보기가 필수, 환불과 회원 이동은 확인을 거친 뒤 실행</li>
-      <li><b>끝난 뒤가 아니라 진행 중에 개입</b> — 시즌 도중 출석 기록을 보고 결석이 쌓인 분을 미리 찾아냅니다</li>
-      <li><b>밖으로 나가는 글은 발행 전에 검수</b> — 금지어와 어색한 표현을 한 번에 점검하는 단계를 고정해 두었습니다</li>
     </ul>
-    <p class="point">
-      규모는 다르지만 순서는 같습니다. <b>업무를 목록으로 만들고 → 자동화할 범위를 정하고 →
-      우선순위를 매기고 → 시범 적용하고 → 효과를 확인하고 → 정식으로 전환하고 →
-      점검 체계를 붙여 믿을 수 있게 만든다.</b>
+    <p class="point" style="margin-left:0;">
+      규모는 다르지만 순서는 같습니다. <b>업무를 목록으로 만들고 → 자동화할 범위를 정하고 → 우선순위를 매기고 →
+      시범 적용하고 → 효과를 확인하고 → 정식으로 전환하고 → 점검 체계를 붙여 믿을 수 있게 만든다.</b>
       이 순서를 책에서 읽은 게 아니라 2년 넘게 매주 직접 돌렸습니다.
     </p>
   </div>
+
+  <div class="sofar">
+    <h4>삼양라운드스퀘어에서는</h4>
+    <p>
+      전사 과제 포트폴리오를 짤 때 <b>같은 세 기준을 쓰겠습니다.</b>
+      반복 빈도가 높은 일, 사람이 틀리기 쉬워 점검이 필요한 일, 판단이 필요해 자동화하면 안 되는 일.
+    </p>
+    <p>
+      특히 <b>세 번째를 명시적으로 남기는 것이 신뢰를 만듭니다.</b>
+      식품 기업에서는 품질·안전·표시사항처럼 틀리면 안 되는 영역이 분명히 있습니다.
+      그 영역을 처음부터 "여기는 사람이 확인한다"로 정해 두면, 나머지 영역에서 훨씬 과감하게 밀어붙일 수 있습니다.
+    </p>
+  </div>
+</section>
+
+<!-- ══════════ 08 회고 ══════════ -->
+<section id="voices">
+  <div class="sechead">
+    <span class="no">08</span>
+    <h2>회고 원문</h2>
+    <p class="sub">2년 반 치 회고 292,003자에서 뽑았습니다. 다듬지 않고 적힌 그대로 두었습니다. 순서는 시간 순입니다.</p>
+  </div>
+
+  <p class="qgroup">1기 — 알게는 되는데 업무는 그대로입니다</p>
+  <ol class="rows">
+    <li>
+      <div class="lab">식품 제조 · 마케팅</div>
+      <div class="val">"AI를 활용하기 전에 어떤 역할을 맡길지 고민하며 내 일을 쪼개 보는 시간이 유익했습니다. <b>제 일을 먼저 분석하고</b> 어떤 일을 시킬지 고민을 좀 해봐야겠어요."</div>
+    </li>
+    <li>
+      <div class="lab">1기 참여자</div>
+      <div class="val">"어렴풋이 알고 있었던 흐름과, 도구를 바라보는 틀을 배웠습니다. 채우고 싶은 것 — <b>여러 도구를 엮어서 원하는 결과를 끌어내는 능력.</b>"</div>
+    </li>
+  </ol>
+
+  <p class="qgroup">2기 — 도구를 바꾸자 참여자들이 헤맸습니다</p>
+  <ol class="rows">
+    <li>
+      <div class="lab">교육출판 · 홍보</div>
+      <div class="val">"<b>업무 관련 기초 데이터가 정리되어 있지 않고, 뭘 하겠다는 목적이 아직 명확하지 않아서</b> 다음 회차까지 생각을 정리해 와야 할 듯."</div>
+    </li>
+    <li>
+      <div class="lab">진로 전환기</div>
+      <div class="val">"매일 기사 정리를 해서 표에 모아 두고 주말에 보려고 했는데, <b>실현해 볼 수 있을 것 같아서 다음 회차까지 시도해 보려고 합니다.</b>"</div>
+    </li>
+    <li>
+      <div class="lab">완성차 · 기획</div>
+      <div class="val">"<b>2시간 만에 이렇게 할 수 있었는데 2주간 하나도 하지 못한 게 너무 후회된다.</b>"</div>
+    </li>
+    <li>
+      <div class="lab">2기 참여자</div>
+      <div class="val">"역시 <b>남이 만든 건 나한테는 별로 쓸모가 없다.</b>" <span style="color:var(--ink-3)">— 이 말 때문에 3기에서 나눠 주는 방식을 '완성품 제공'에서 '꾸러미를 주고 각자 고쳐 쓰기'로 바꿨습니다.</span></div>
+    </li>
+  </ol>
+
+  <p class="qgroup">3기 — 남이 해본 걸 보고 따라 합니다</p>
+  <ol class="rows">
+    <li>
+      <div class="lab">브랜드 컨설팅</div>
+      <div class="val">"<b>혼자서 가장 하기 힘든 일을 쪼개서 시작하기.</b> 혼자서는 버거웠던 취약성을 AI와 함께 보완하고 싶어요."</div>
+    </li>
+    <li>
+      <div class="lab">유통 · 백화점</div>
+      <div class="val">"역시 <b>강제로 자리에 앉아서 시킨 걸 해야</b> 새로운 일을 시작할 수 있구나. 그 계기를 얻게 되어 좋았다."</div>
+    </li>
+    <li>
+      <div class="lab">헤드헌팅 · 세일즈</div>
+      <div class="val">"맡길 수 있는 부분을 잘 맡기면, <b>시간이 무한한 사람처럼 일하지 않아도 된다.</b>"</div>
+    </li>
+    <li>
+      <div class="lab">방송기술 · 기획</div>
+      <div class="val">"경험이 쌓이다 보니, 시키는 대로 만들어 주는 실행 담당만이 아니라 <b>무엇이 어디까지 가능한지를 함께 고민하는 상의 상대</b> 역할도 할 수 있겠어요."</div>
+    </li>
+  </ol>
+
+  <p class="pull">
+    "다양한 도구가 있는 줄 몰랐다"에서<br>"다음 회차까지 시도해 보려고 합니다"로.<br>
+    두 문장 사이가 두 시즌입니다.
+    <span class="src">만족도 점수는 이 차이를 알려주지 않았습니다.</span>
+  </p>
 </section>
 
 <!-- ══════════ 09 숫자 ══════════ -->
@@ -936,40 +710,55 @@ footer{
     <p class="sub">2019년 6월부터 2026년 8월까지, HBR Forum Korea에서 혼자 운영한 결과입니다.</p>
   </div>
 
-  <ul class="figs key">
-    <li><span class="n">12<span>시즌</span></span><span class="d">AI부사수를 <b>한 번도 거르지 않고</b> 이어서 운영했습니다. 2024년 3월에 열어 지금까지</span></li>
-    <li><span class="n">80<span>%+</span></span><span class="d">참여자가 <b>배운 것을 실제 업무에 적용</b>했습니다. 만족도가 아니라 적용 여부로 확인한 숫자입니다</span></li>
-    <li><span class="n">66→78<span>%</span></span><span class="d">설문 체계를 도입한 뒤 <b>다음 시즌에 다시 등록하는 비율</b>. 정원이 안 차는 과정도 함께 줄었습니다</span></li>
-  </ul>
+  <ol class="rows key">
+    <li>
+      <div class="lab"><span class="num">12<span>시즌</span></span></div>
+      <div class="val">AI 리터러시 과정을 <b>한 번도 거르지 않고</b> 이어서 운영했습니다. 2022년 12월 기획, 2024년 3월 첫 기수</div>
+    </li>
+    <li>
+      <div class="lab"><span class="num">80<span>%+</span></span></div>
+      <div class="val">참여자가 <b>배운 것을 실제 업무에 적용</b>했습니다. 만족도가 아니라 적용 여부로 확인한 숫자입니다</div>
+    </li>
+    <li>
+      <div class="lab"><span class="num">66→78<span>%</span></span></div>
+      <div class="val">설문 체계를 도입한 뒤 <b>다음 시즌에 다시 등록하는 비율</b>. 정원이 안 차는 과정도 함께 줄었습니다</div>
+    </li>
+  </ol>
 
-  <ul class="figs" style="margin-top:52px;">
-    <li><span class="n">292,003<span>자</span></span><span class="d">2년 반 동안 쌓인 회고 기록. 이 페이지의 인용은 전부 여기서 나왔습니다</span></li>
-    <li><span class="n">30<span>개</span></span><span class="d">기획하고 만든 학습 과정. 과정당 3개월 6회차 18시간, 300회 이상 운영했습니다</span></li>
-    <li><span class="n">2,500<span>명+</span></span><span class="d">직접 만난 중간관리자와 시니어. 300여 개 회사에서 왔고, 누적 참여자는 3,000명이 넘습니다</span></li>
-    <li><span class="n">1<span>인</span></span><span class="d">운영 인원. 분기마다 학습 과정 15개와 행사 20회를 혼자 감당합니다</span></li>
-  </ul>
+  <ol class="rows" style="margin-top:44px;">
+    <li>
+      <div class="lab"><span class="num">292,003<span>자</span></span></div>
+      <div class="val">2년 반 동안 쌓인 회고 기록. 이 페이지의 인용은 전부 여기서 나왔습니다</div>
+    </li>
+    <li>
+      <div class="lab"><span class="num">30<span>개+</span></span></div>
+      <div class="val">기획하고 만든 학습 과정. 과정당 3개월 6회차 18시간, 300회 이상 운영했습니다</div>
+    </li>
+    <li>
+      <div class="lab"><span class="num">2,500<span>명+</span></span></div>
+      <div class="val">직접 만난 중간관리자와 시니어. 300여 개 회사에서 왔고, 누적 참여자는 3,000명이 넘습니다</div>
+    </li>
+  </ol>
 
-  <div class="chart" style="margin-top:56px;">
-    <svg width="286" height="128" viewBox="0 0 286 128" role="img" aria-label="재등록률 66퍼센트에서 78퍼센트로 상승">
-      <line class="grid" x1="44" y1="16" x2="276" y2="16"/>
-      <line class="grid" x1="44" y1="60" x2="276" y2="60"/>
-      <line class="grid" x1="44" y1="104" x2="276" y2="104"/>
-      <text class="lbl" x="4" y="20">80%</text>
-      <text class="lbl" x="4" y="64">70%</text>
-      <text class="lbl" x="4" y="108">60%</text>
-      <path class="ln" d="M76,78 L244,25"/>
-      <circle class="dot" cx="76" cy="78" r="5"/>
-      <circle class="dot" cx="244" cy="25" r="5"/>
-      <text class="val" x="58" y="100">66%</text>
-      <text class="val" x="226" y="17">78%</text>
-      <text class="lbl" x="52" y="122">도입 전</text>
-      <text class="lbl" x="220" y="122">도입 후</text>
+  <div class="chart" style="margin-top:52px;">
+    <svg width="270" height="124" viewBox="0 0 270 124" role="img" aria-label="재등록률 66퍼센트에서 78퍼센트로 상승">
+      <line class="grid" x1="42" y1="14" x2="262" y2="14"/>
+      <line class="grid" x1="42" y1="58" x2="262" y2="58"/>
+      <line class="grid" x1="42" y1="102" x2="262" y2="102"/>
+      <text class="lbl" x="4" y="18">80%</text>
+      <text class="lbl" x="4" y="62">70%</text>
+      <text class="lbl" x="4" y="106">60%</text>
+      <path class="ln" d="M74,76 L232,24"/>
+      <circle class="dot" cx="74" cy="76" r="5"/>
+      <circle class="dot" cx="232" cy="24" r="5"/>
+      <text class="val" x="56" y="98">66%</text>
+      <text class="val" x="214" y="16">78%</text>
+      <text class="lbl" x="50" y="120">도입 전</text>
+      <text class="lbl" x="208" y="120">도입 후</text>
     </svg>
     <p>
-      과정 기획이 운영자의 감에 의존해 정원이 안 차는 일이 반복됐습니다.
-      과정 초안을 미리 공유하고 참여 목적과 가능한 요일을 먼저 물어본 뒤,
+      과정 기획이 감에 의존해 정원이 안 차는 일이 반복됐습니다. 과정 초안을 미리 공유하고 참여 목적과 가능한 요일을 먼저 물어본 뒤,
       그 답을 다음 시즌 구성에 그대로 반영했습니다. 그 결과 <b>다시 등록하는 비율이 12%p 올랐습니다.</b>
-      설문의 가치는 점수를 확인하는 데 있지 않습니다. <b>받은 답을 다음 시즌 설계에 반드시 반영하는 절차를 만드는 데</b> 있습니다.
     </p>
   </div>
 </section>
@@ -986,12 +775,12 @@ footer{
     <table class="wide">
       <thead><tr><th>주요 업무</th><th>근거</th></tr></thead>
       <tbody>
-        <tr><td><b>AI 리터러시 교육 기획 및 변화관리</b></td><td>AI부사수 12시즌 설계·운영. 커리큘럼 3회 전면 개편, STAR 직접 개발, 2기부터 제가 직접 진행. 참여자 80% 이상이 실제 업무에 적용 <i>(02·03·04)</i></td></tr>
+        <tr><td><b>AI 리터러시 교육 기획 및 변화관리</b></td><td>AI 리터러시 과정 12시즌 설계·운영. 커리큘럼 3회 전면 개편, 과제 발굴 도구 직접 개발, 2기부터 제가 직접 진행. 참여자 80% 이상이 실제 업무에 적용 <i>(02·03·04)</i></td></tr>
         <tr><td><b>AX 관련 임직원 대상 전략 커뮤니케이션</b></td><td>100명 규모 컨퍼런스 3회, 세미나·워크숍 50회 이상. 매 회차 AI 소식을 비전문가가 알아들을 말로 바꿔 전달했습니다 <i>(04)</i></td></tr>
-        <tr><td>전사 AX 전략 수립 및 과제 포트폴리오 운영</td><td>자동화 범위를 세 가지 기준으로 정하고 우선순위를 매겨 125개를 쌓았습니다. 판단이 필요한 영역은 일부러 제외했습니다 <i>(08)</i></td></tr>
-        <tr><td>PoC(시범 적용) 후 성과 분석과 내재화</td><td>해보고 → 효과를 확인하고 → 정식으로 전환하는 과정을 반복했습니다. 1·2기의 실패도 회고 데이터로 판정해 3기 설계에 반영했습니다 <i>(01·02)</i></td></tr>
-        <tr><td>AI 기술 트렌드 분석 및 적용 방안 제시</td><td>AI 소식을 매주 자동으로 모으고, 어떤 모델을 쓸지 정기적으로 점검하는 체계를 운영합니다. 매 회차 최신 소식을 실무에 어떻게 쓰는지까지 정리해 배포했습니다 <i>(04)</i></td></tr>
-        <tr><td><i>우대 — 해커톤 · 교육 프로그램 설계 · 퍼실리테이션</i></td><td>3개월 6회차라는 공통 형식을 만들어 30개 과정에 적용했습니다. 토론은 참여자가 직접 진행하도록 별도로 교육했습니다</td></tr>
+        <tr><td>전사 AX 전략 수립 및 과제 포트폴리오 운영</td><td>자동화 범위를 세 가지 기준으로 정하고 우선순위를 매겨 백여 개를 쌓았습니다. 판단이 필요한 영역은 일부러 제외했습니다 <i>(07)</i></td></tr>
+        <tr><td>PoC(시범 적용) 후 성과 분석과 내재화</td><td>해보고 → 효과를 확인하고 → 정식으로 전환하는 과정을 반복했습니다. 1·2기의 결과도 회고 데이터로 판정해 3기 설계에 반영했습니다 <i>(02)</i></td></tr>
+        <tr><td>AI 기술 트렌드 분석 및 적용 방안 제시</td><td>AI 소식을 매주 자동으로 모으고, 어떤 모델을 쓸지 정기적으로 점검하는 체계를 운영합니다 <i>(04)</i></td></tr>
+        <tr><td><i>우대 — 해커톤 · 교육 프로그램 설계 · 퍼실리테이션</i></td><td>3개월 6회차라는 공통 형식을 만들어 30개 이상 과정에 적용했습니다. 토론은 참여자가 직접 진행하도록 별도로 교육했습니다</td></tr>
         <tr><td><i>우대 — 전략 컨설팅 / DX·AX 기획</i></td><td>퍼셉션 주니어 컨설턴트(신기술을 사용자가 쓸 제품으로 옮기는 일), 칸타 64개국 리서치. 공유공간 예약 시스템을 만들어 수기 업무를 디지털로 전환 <i>(12)</i></td></tr>
       </tbody>
     </table>
@@ -1006,34 +795,34 @@ footer{
     <p class="sub">일곱 가지 신념에 제 경험 중 어떤 것이 걸리는지 대조했습니다. 없는 것을 만들지는 않았습니다.</p>
   </div>
 
-  <ol class="beliefs">
+  <ol class="rows">
     <li>
-      <p class="en"><i>①</i>Disrespect the status quo</p>
-      <p>잘 돌아가던 1기 커리큘럼을 버리고, 개발자가 아닌 분들에게 개발 프로그램을 직접 깔게 했습니다. <b>만족도가 나쁘지 않았기 때문에 바꾸지 않을 이유가 더 많았습니다.</b></p>
+      <div class="lab"><b>①</b>Disrespect<br>the status quo</div>
+      <div class="val">잘 돌아가던 1기 커리큘럼을 버리고, 개발자가 아닌 분들에게 개발 프로그램을 직접 깔게 했습니다. <b>만족도가 나쁘지 않았기 때문에 바꾸지 않을 이유가 더 많았습니다.</b></div>
     </li>
     <li>
-      <p class="en"><i>②</i>Spend time defining the problem</p>
-      <p>"AI를 못 배운다"는 겉으로 드러난 증상이었고, 진짜 원인은 <b>AI에게 시킬 일이 정해지지 않은 것</b>이었습니다. 회고를 다시 읽고 나서야 찾았고, 그 답이 STAR가 됐습니다.</p>
+      <div class="lab"><b>②</b>Spend time defining<br>the problem</div>
+      <div class="val">"AI를 못 배운다"는 겉으로 드러난 증상이었고, 진짜 원인은 <b>AI에게 시킬 일이 정해지지 않은 것</b>이었습니다. 회고를 다시 읽고 나서야 찾았습니다.</div>
     </li>
     <li>
-      <p class="en"><i>③</i>Obsess over the specifics</p>
-      <p>준비물을 결제 단위까지 적고, 준비 상태를 6단계로 받고, 오래 걸리는 세팅은 30분 일찍 따로 뺐습니다. <b>교육의 성패는 대개 이 앞뒤 30분에서 갈립니다.</b></p>
+      <div class="lab"><b>③</b>Obsess over<br>the specifics</div>
+      <div class="val">준비물을 결제 단위까지 적고, 준비 상태를 6단계로 받고, 오래 걸리는 세팅은 30분 일찍 따로 뺐습니다. <b>교육의 성패는 대개 이 앞뒤 30분에서 갈립니다.</b></div>
     </li>
     <li>
-      <p class="en"><i>④</i>Cultivate your taste</p>
-      <p>만족도 점수가 아니라 회고에 적힌 <b>말의 종류</b>로 방향을 판단했습니다. "알겠다"와 "해보겠다"는 다른 신호입니다.</p>
+      <div class="lab"><b>④</b>Cultivate<br>your taste</div>
+      <div class="val">만족도 점수가 아니라 회고에 적힌 <b>말의 종류</b>로 방향을 판단했습니다. "알겠다"와 "해보겠다"는 다른 신호입니다.</div>
     </li>
     <li>
-      <p class="en"><i>⑤</i>Have a point of view worth defending</p>
-      <p>중간에 그만두는 사람이 생길 걸 알면서 2기 개편을 밀어붙였습니다. 그리고 잘 안 됐다는 기록("오늘은 없다. 에러 땜에")을 <b>지우지 않고 그대로 남겼습니다.</b></p>
+      <div class="lab"><b>⑤</b>Have a point of view<br>worth defending</div>
+      <div class="val">중간에 그만두는 사람이 생길 걸 알면서 2기 개편을 밀어붙였습니다. 그리고 잘 안 됐다는 기록도 <b>지우지 않고 그대로 남겼습니다.</b></div>
     </li>
     <li>
-      <p class="en"><i>⑥</i>Own the outcome, not just your part</p>
-      <p>기획에서 멈추지 않고 모집 · 진행 · 자료 제작 · 데이터 · 자동화 · 기록 보관까지 혼자 끝까지 감당했습니다. 2기부터는 외부 강사 대신 <b>제가 직접 진행</b>했습니다.</p>
+      <div class="lab"><b>⑥</b>Own the outcome,<br>not just your part</div>
+      <div class="val">기획에서 멈추지 않고 모집 · 진행 · 자료 제작 · 데이터 · 자동화 · 기록 보관까지 혼자 끝까지 감당했습니다. 2기부터는 외부 강사 대신 <b>제가 직접 진행</b>했습니다.</div>
     </li>
     <li>
-      <p class="en"><i>⑦</i>Earn your failures</p>
-      <p>1기는 네 시즌을 돌리고도 행동을 바꾸지 못했고, 2기는 커리큘럼을 통째로 바꿨다가 설치 단계에서 여러 명이 막혔습니다. <b>두 번 실패한 뒤 세 번째에</b> 숫자가 나왔습니다. 실패한 두 시기의 회고를 지우지 않고 남겨 둔 것이 세 번째 설계의 유일한 근거였습니다.</p>
+      <div class="lab"><b>⑦</b>Earn<br>your failures</div>
+      <div class="val">1기는 네 시즌을 돌리고도 행동을 바꾸지 못했고, 2기는 통째로 바꿨다가 설치 단계에서 여러 명이 막혔습니다. <b>두 번을 거치고 세 번째에</b> 숫자가 나왔습니다.</div>
     </li>
   </ol>
 </section>
@@ -1046,38 +835,38 @@ footer{
     <p class="sub">통계로 시작해 공간과 사람을 거쳐, 지금은 AI로 일하는 방식을 다시 짜고 있습니다.</p>
   </div>
 
-  <ol class="career">
+  <ol class="rows">
     <li>
-      <time>2019.06 – 현재</time>
-      <div>
+      <div class="lab">2019.06<br>– 현재</div>
+      <div class="val">
         <h3>위어드벤처 · HBR Forum Korea — 학습 프로그램 설계 · 운영 총괄</h3>
-        <p>누적 3,000명이 참여한 학습 조직입니다. 과정 30개를 만들어 300회 이상 운영했고, 100명 규모 컨퍼런스 3회를 포함해 행사를 50회 이상 열었습니다. AI부사수 12시즌 설계와 진행, 운영 자동화 체계 구축, 4L 회고와 AAR(실행 후 되짚어 보기) 방법론 정착을 담당했습니다.</p>
+        <p>누적 3,000명이 참여한 학습 조직입니다. 과정 30개 이상을 만들어 300회 이상 운영했고, 100명 규모 컨퍼런스 3회를 포함해 행사를 50회 이상 열었습니다. AI 리터러시 과정 12시즌 설계와 진행, 운영 자동화 체계 구축, 4L 회고와 AAR(실행 후 되짚어 보기) 방법론 정착을 담당했습니다.</p>
       </div>
     </li>
     <li>
-      <time>2017.03 – 2019.05</time>
-      <div>
+      <div class="lab">2017.03<br>– 2019.05</div>
+      <div class="val">
         <h3>중앙화동재단 (구 월드컬처오픈) — 공간 운영 매니저</h3>
         <p>공연장·사무실·공유주방 등 5개 공간을 운영했습니다. 공유공간 예약 시스템을 만드는 프로젝트를 이끌어 수기로 하던 예약을 온라인으로 바꾸고, 이용 데이터를 운영 판단의 근거로 만들었습니다. 지역 페스티벌을 기획해 행사마다 관람객 500명 이상을 모았습니다.</p>
       </div>
     </li>
     <li>
-      <time>2014.10 – 2015.02</time>
-      <div>
+      <div class="lab">2014.10<br>– 2015.02</div>
+      <div class="val">
         <h3>퍼셉션 — 주니어 컨설턴트</h3>
         <p>차세대 스마트 전자칠판의 기술·디자인 컨설팅을 맡았습니다. 새로 나온 기술을 사용자가 실제로 쓸 제품의 모습으로 옮기는 작업이었습니다.</p>
       </div>
     </li>
     <li>
-      <time>2011.06 – 2011.12</time>
-      <div>
+      <div class="lab">2011.06<br>– 2011.12</div>
+      <div class="val">
         <h3>칸타 (Kantar) — 마케팅 리서치 인턴</h3>
         <p>64개국을 대상으로 한 글로벌 마케팅 리서치 리포트 제작을 지원했습니다. 통계 데이터 분석과 시각화를 맡아 국가별 시장 특성과 소비자 인사이트를 뽑았습니다.</p>
       </div>
     </li>
     <li>
-      <time>2008.03 – 2013.08</time>
-      <div>
+      <div class="lab">2008.03<br>– 2013.08</div>
+      <div class="val">
         <h3>연세대학교 미래캠퍼스 정보통계학과 학사</h3>
         <p>2012년 캐나다 Saint Mary's University 교환학생. AICE Associate(국가공인 AI 자격) 2026년 9월, SQLD(데이터 자격) 2026년 11월 응시 예정입니다.</p>
       </div>
@@ -1085,9 +874,8 @@ footer{
   </ol>
 </section>
 
-<!-- ══════════ 맺음 ══════════ -->
 <div class="closing">
-  <p>좋은 도구를 들여와도 임직원의 업무가 그대로면 아무 일도 일어나지 않습니다. 저는 그 구간에서 <b>12번 실패하고 고쳐 왔습니다.</b></p>
+  <p>좋은 도구를 들여와도 임직원의 업무가 그대로면 아무 일도 일어나지 않습니다. 제가 잘하는 일은 <b>그 사이를 번역하는 것</b>입니다.</p>
   <nav class="lk">
     <a href="mailto:skaug12@gmail.com">skaug12@gmail.com</a>
     <a href="tel:01071624923">010-7162-4923</a>
