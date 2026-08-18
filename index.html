@@ -4,7 +4,6 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>이슬기 · 삼양라운드스퀘어 AX 전략 기획 지원 포트폴리오</title>
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/reveal.css">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable.min.css">
 <style>
   /* 삼양라운드스퀘어 AX 덱 — 종이 흰색 + 잉크, 강조는 Evolving Orange 한 색만.
@@ -155,6 +154,32 @@
   .cv .cr .dt{ font-size:12.5px; color:var(--sub); font-weight:600; padding-top:2px; }
   .cv .cr .og{ font-size:14px; font-weight:700; letter-spacing:-0.026em; line-height:1.45; }
   .cv .cr .de{ font-size:12.5px; color:var(--body); line-height:1.62; }
+
+  /* ── reveal 없이 세로로 쌓이는 페이지 ── */
+  html,body{margin:0;padding:0;background:#EDE7E0;}
+  .reveal{display:block;}
+  .reveal .slides{
+    display:flex; flex-direction:column; align-items:center; gap:20px;
+    padding:20px 0 56px; text-align:left; width:auto;
+  }
+  .reveal .slides > section{
+    width:100%; max-width:1280px; height:720px; position:relative;
+    background:var(--paper); overflow:hidden; box-sizing:border-box;
+    box-shadow:0 1px 4px rgba(40,30,20,.10);
+  }
+  @media (max-width:1320px){ .reveal .slides{ padding-left:16px; padding-right:16px; } }
+  @media (max-width:860px){
+    .reveal .slides > section{ height:auto; padding:52px 0 30px; }
+    .body{ position:static !important; left:auto !important; right:auto !important;
+           top:auto !important; bottom:auto !important; padding:0 26px; }
+    .foot{ position:static !important; left:auto !important; right:auto !important;
+           bottom:auto !important; padding:26px 26px 0; }
+    .cover .contact, .close .links{ position:static !important; left:auto !important;
+           bottom:auto !important; padding:34px 26px 0; }
+    .note,.result,.band{ position:static !important; left:auto !important; right:auto !important;
+           bottom:auto !important; margin-top:26px; }
+    .stats,.cols3,.qs,.outs,.split,.mx{ grid-template-columns:1fr !important; gap:26px !important; }
+  }
 </style>
 </head>
 <body>
@@ -355,9 +380,5 @@
 </section>
 
 </div></div>
-<script src="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/reveal.js"></script>
-<script>
-  Reveal.initialize({ width:1280, height:720, margin:0, hash:true, controls:true, progress:false, pdfMaxPagesPerSlide:1 });
-</script>
 </body>
 </html>
