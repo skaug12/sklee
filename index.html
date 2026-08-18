@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="ko">
+<html lang="ko" data-theme="light">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -11,6 +11,7 @@
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect x='3' y='9' width='17' height='17' fill='%23323232'/%3E%3Ccircle cx='20' cy='14' r='9' fill='%23FF6400' fill-opacity='.85'/%3E%3C/svg%3E">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard-dynamic-subset.css">
 <style>
+:root{color-scheme:light;}
 :root{
   --orange:#FF6400; --burgundy:#5F0A32; --sand:#F7DECB;
   --paper:#FCFAF8; --ink:#17150F; --ink-2:#463F39; --ink-3:#867D75;
@@ -23,18 +24,6 @@
   --gap:1.75rem;        /* 라벨과 본문 사이 */
   --indent:8.75rem;     /* = rail + gap. 모든 본문의 왼쪽 시작점 */
   --measure:34rem;      /* 본문 최대 폭. 한 줄 40~45자로 끊어 읽기 쉽게 */
-}
-@media (prefers-color-scheme:dark){
-  :root:not([data-theme="light"]){
-    --paper:#131110; --ink:#F0EBE6; --ink-2:#ADA49D; --ink-3:#7C736C;
-    --rule:#332C27; --hair:#241F1B; --sand:#3A2A1E; --accent:#FF7D26;
-    --tint:#1D1916; --tint-2:#2B1F16;
-  }
-}
-:root[data-theme="dark"]{
-  --paper:#131110; --ink:#F0EBE6; --ink-2:#ADA49D; --ink-3:#7C736C;
-  --rule:#332C27; --hair:#241F1B; --sand:#3A2A1E; --accent:#FF7D26;
-  --tint:#1D1916; --tint-2:#2B1F16;
 }
 @media (max-width:760px){ :root{ --indent:0rem; } }
 
@@ -54,13 +43,6 @@ em{font-style:normal;}
 
 .sym rect{fill:var(--ink);}
 .sym circle{fill:var(--accent); mix-blend-mode:multiply;}
-@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .sym circle{mix-blend-mode:screen;}}
-:root[data-theme="dark"] .sym circle{mix-blend-mode:screen;}
-
-/* 머리말·맺음말도 본문과 같은 왼쪽 시작점 */
-.mast .id,.mast h1,.lede,.applying,.closing p,.closing .lk{
-  margin-left:var(--indent);
-}
 .namecard,.toc,footer{padding-left:var(--indent);}
 .mast h1{max-width:var(--measure);}
 
@@ -235,6 +217,23 @@ svg .val{fill:var(--ink); font-family:var(--font); font-size:13px; font-weight:8
   font-size:13px; font-weight:800; color:var(--accent);
   width:1.4rem; text-align:right;
 }
+
+/* ═══ 숫자 블록 ═══ */
+.stats{
+  margin:0 0 8px var(--indent); padding:0; list-style:none;
+  display:grid; grid-template-columns:1fr; gap:2px;
+}
+@media(min-width:760px){.stats{grid-template-columns:1fr 1fr;}}
+.stats > li{background:var(--tint); padding:26px 28px 28px;}
+.stats .fig{
+  display:block; font-size:2.3rem; font-weight:800; line-height:1.05;
+  letter-spacing:-0.035em; color:var(--ink); font-variant-numeric:tabular-nums;
+  margin-bottom:12px;
+}
+.stats .fig i{font-style:normal; font-size:.94rem; font-weight:600; color:var(--ink-3); margin-left:5px; letter-spacing:0;}
+.stats.key .fig{color:var(--accent);}
+.stats p{margin:0; font-size:15px; font-weight:400; line-height:1.8; color:var(--ink-2); max-width:none;}
+.stats p b{color:var(--ink); font-weight:700;}
 
 /* ═══ 회고 노트 (채움 블록) ═══ */
 .notes{margin:0 0 8px var(--indent); padding:0; list-style:none; display:grid; gap:18px;}
@@ -503,9 +502,12 @@ footer{
     <p class="sub">분기마다 학습 과정 15개와 행사 20회 이상이 돌아갑니다. 그러나 실무자는 저 한 명입니다. 실무 인원을 늘리는 대신 AI를 도입했습니다.</p>
   </div>
 
-  <div class="inline-figs">
-    <div><b>100+</b><span>명령어 하나로 도는 자동화</span></div>
-    <div><b>15 + 20</b><span>분기당 학습 과정 + 행사</span></div>
+  <ol class="stats">
+    <li><span class="fig">100<i>개 이상</i></span><p>명령어 하나로 여러 단계를 대신하는 <b>자동화</b>를 직접 만들었습니다</p></li>
+    <li><span class="fig">15 + 20</span><p>분기마다 돌아가는 <b>학습 과정과 행사</b>. 실무자는 저 한 명입니다</p></li>
+  </ol>
+
+  <div><b>15 + 20</b><span>분기당 학습 과정 + 행사</span></div>
     <div><b>1</b><span>유일한 실무자</span></div>
   </div>
 
@@ -579,11 +581,12 @@ footer{
       </dl>
     </li>
     <li>
-      <p class="who">홍보 · 커뮤니케이션</p>
+      <p class="who">데이터 서비스 · 콘텐츠 발행</p>
       <dl>
-        <dt>좋았던 점</dt><dd><b>팀에 도움이 될 자동 알림을 만들기 시작했다.</b> 내가 먼저 알림을 받고 팀에 알려줄지, 팀 대화방으로 바로 보낼지 고민이지만 오늘 중에 정해서 <b>내일 배포해 보겠다.</b></dd>
-        <dt>배운 점</dt><dd>본격적으로 적용하기 전에 <b>"적용하기 전에 미리보기를 먼저 보여줘"</b>라고 하면 대대적인 수정을 하지 않아도 되어 효율적이라는 말을 주워들었다.</dd>
-        <dt>해보고 싶은 것</dt><dd><b>쾌적한 팀 빌딩에 도움이 되었으면.</b></dd>
+        <dt>지금까지 한 것</dt><dd>업계 소식을 모으는 명령과 블로그를 수집하는 명령으로 <b>다중 출처 수집·요약을 이미 자동화</b>했습니다. 여기에 출처 신뢰도 기준(높음 / 보통 / 벤더 자료 주의)과 인터뷰 기반 작성 원칙을 적용해, 해외 AI 규제 관련 글을 <b>국문과 영문 모두 완성하고 실제 발행까지</b> 마쳤습니다.</dd>
+        <dt>지금의 한계</dt><dd>주제 탐색과 출처 6~10건 수집을 <b>매번 처음부터 새로 하고 있습니다.</b> 이 속도로는 주 2회 발행이 무리입니다.</dd>
+        <dt>다음 목표</dt><dd>소식 수집 명령이 매주 뽑아내는 출처 목록을 <b>글쓰기 명령의 입력으로 그대로 이어받게</b> 만드는 것. 후보 주제가 신뢰도 표시와 함께 준비된 상태에서 인터뷰부터 바로 시작하려고 합니다.</dd>
+        <dt>지킬 것</dt><dd>인터뷰 없이 본문을 자동 생성하지 않습니다. <b>본인 경험이 없는 글은 마케팅 기사가 된다</b>는 원칙을 유지합니다. 신뢰도 높은 출처가 아니면 수치를 근거로 쓰지 않습니다.</dd>
       </dl>
     </li>
   </ol>
@@ -597,48 +600,16 @@ footer{
     <p class="sub">2019년 6월부터 2026년 8월까지, HBR Forum Korea에서 유일한 실무자로 일했습니다.</p>
   </div>
 
-  <ol class="rows key">
-    <li>
-      <div class="lab"><i>14</i>시즌``</div>
-      <div class="val">AI 리터러시 과정을 <b>한 번도 거르지 않고</b> 이어서 운영했습니다. 2022년 12월 기획, 2023년 3월 첫 시작</div>
-    </li>
-    <li>
-      <div class="lab"><span class="num">80<span>%+</span></span></div>
-      <div class="val">참여자가 <b>배운 것을 실제 업무에 적용</b>했습니다. 만족도가 아니라 적용 여부로 확인한 숫자입니다</div>
-    </li>
-    
+  <ol class="stats key">
+    <li><span class="fig">14<i>시즌</i></span><p>AI 리터러시 과정을 <b>한 번도 거르지 않고</b> 이어서 운영했습니다. 2022년 12월 기획, 2023년 3월 첫 시작</p></li>
+    <li><span class="fig">80<i>% 이상</i></span><p>참여자가 <b>배운 것을 실제 업무에 적용</b>했습니다. 만족도가 아니라 적용 여부로 확인한 숫자입니다</p></li>
   </ol>
-
-  <ol class="rows" style="margin-top:44px;">
-    
-    <li>
-      <div class="lab"><span class="num">30<span>개+</span></span></div>
-      <div class="val">기획하고 만든 학습 과정. 과정당 3개월 6회차 18시간, 300회 이상 운영했습니다</div>
-    </li>
-    <li>
-      <div class="lab"><span class="num">2,500<span>명+</span></span></div>
-      <div class="val">직접 만난 중간관리자와 시니어. 300여 개 이상의 회사에서 온 멤버들과 케이스를 공유하고 실무 문제를 해결하기 위한 고민을 나눴습니다. 누적 참여자는 3,000명이 넘습니다</div>
-    </li>
+  <ol class="stats">
+    <li><span class="fig">190<i>명</i></span><p><b>157곳</b>의 회사에서 온 참여자를 직접 만났습니다</p></li>
+    <li><span class="fig">30<i>개 이상</i></span><p>기획하고 만든 학습 과정. 과정당 3개월 6회차 18시간, <b>300회 이상</b> 운영했습니다</p></li>
+    <li><span class="fig">2,500<i>명 이상</i></span><p>직접 만난 중간관리자와 시니어. 300여 개 회사에서 왔고 누적 참여자는 <b>3,000명</b>이 넘습니다</p></li>
+    <li><span class="fig">1<i>명</i></span><p>운영 실무자. 분기마다 <b>학습 과정 15개와 행사 20회 이상</b>을 혼자 감당했습니다</p></li>
   </ol>
-
-  <div class="chart" style="margin-top:52px;">
-    <svg width="270" height="124" viewBox="0 0 270 124" role="img" aria-label="재등록률 66퍼센트에서 78퍼센트로 상승">
-      <line class="grid" x1="42" y1="14" x2="262" y2="14"/>
-      <line class="grid" x1="42" y1="58" x2="262" y2="58"/>
-      <line class="grid" x1="42" y1="102" x2="262" y2="102"/>
-      <text class="lbl" x="4" y="18">80%</text>
-      <text class="lbl" x="4" y="62">70%</text>
-      <text class="lbl" x="4" y="106">60%</text>
-      <path class="ln" d="M74,76 L232,24"/>
-      <circle class="dot" cx="74" cy="76" r="5"/>
-      <circle class="dot" cx="232" cy="24" r="5"/>
-      <text class="val" x="56" y="98">66%</text>
-      <text class="val" x="214" y="16">78%</text>
-      <text class="lbl" x="50" y="120">도입 전</text>
-      <text class="lbl" x="208" y="120">도입 후</text>
-    </svg>
-    
-  </div>
 </section>
 
 <!-- ══════════ 10 대조 ══════════ -->
