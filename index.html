@@ -149,7 +149,7 @@ h4{font-size:.98rem; font-weight:700; margin:0 0 5px;}
 .point b{font-weight:700;}
 
 /* ═══ 삼양 적용 블록 ═══ */
-.sofar{background:var(--tint-2); padding:28px 32px 30px; margin-top:44px; margin-bottom:8px;}
+.sofar{background:var(--tint-2); padding:28px 32px 30px; margin:44px 0 8px var(--indent);}
 .sofar h4,.sofar p{max-width:var(--measure);}
 .sofar h4{color:var(--accent); font-size:.95rem; margin:0 0 10px;}
 .sofar p{font-size:16px; font-weight:400; color:var(--ink-2); line-height:1.85; margin:0 0 14px;}
@@ -217,6 +217,41 @@ svg .val{fill:var(--ink); font-family:var(--font); font-size:13px; font-weight:8
   font-size:13px; font-weight:800; color:var(--accent);
   width:1.4rem; text-align:right;
 }
+
+/* ═══ 요약 카드 (01) — 3열 표 대체 ═══ */
+.cases{margin:0 0 8px var(--indent); padding:0; list-style:none; display:grid; gap:2px;}
+.cases > li{background:var(--tint); padding:30px 32px 32px;}
+.cases h3{margin:0 0 6px; font-size:1.14rem; font-weight:800; letter-spacing:-0.02em;}
+.cases .note{margin:0 0 20px; font-size:14px; color:var(--ink-3);}
+.cases dl{margin:0; display:grid; grid-template-columns:1fr; gap:4px 24px;}
+@media(min-width:700px){.cases dl{grid-template-columns:7rem 1fr;}}
+.cases dt{font-size:13.5px; color:var(--accent); font-weight:700; padding-top:3px;}
+.cases dd{margin:0 0 14px; font-size:15.5px; line-height:1.82; color:var(--ink-2);}
+.cases dd:last-child{margin-bottom:0;}
+.cases dd b{color:var(--ink); font-weight:700;}
+
+/* ═══ 사분면 (03) ═══ */
+.quad{
+  margin:0 0 8px var(--indent); padding:0; list-style:none;
+  display:grid; grid-template-columns:1fr; gap:2px; max-width:46rem;
+}
+@media(min-width:760px){.quad{grid-template-columns:1fr 1fr;}}
+.quad > li{background:var(--tint); padding:24px 26px 26px; min-height:170px;}
+.quad > li.hot{background:var(--tint-2);}
+.quad .axis{
+  display:block; margin:0 0 10px; font-size:12.5px; font-weight:700;
+  color:var(--ink-3); letter-spacing:.01em;
+}
+.quad h4{margin:0 0 8px; font-size:1rem; font-weight:800; color:var(--ink);}
+.quad p{margin:0; font-size:14.5px; line-height:1.78; color:var(--ink-2); max-width:none;}
+.quad-note{margin:16px 0 0 var(--indent); font-size:14px; color:var(--ink-3); max-width:var(--measure);}
+
+/* ═══ 성과 수치 줄 정렬 수정 ═══ */
+.out-line{
+  display:flex; flex-wrap:wrap; gap:0 44px; background:var(--tint);
+  padding:24px 32px 26px; margin:44px 0 0 var(--indent);
+}
+.out-line div{padding:0;}
 
 /* ═══ 숫자 블록 ═══ */
 .stats{
@@ -318,29 +353,32 @@ footer{
     <p class="sub">무엇을 했고, 어떤 결과가 나왔고, 삼양라운드스퀘어에서 어떻게 쓸 수 있는지 정리했습니다.</p>
   </div>
 
-  <div class="tablewrap">
-    <table class="wide">
-      <thead><tr><th>한 일</th><th>결과</th><th>삼양라운드스퀘어에서</th></tr></thead>
-      <tbody>
-        <tr>
-          <td><b>AI 리터러시 교육 과정을 만들고 운영</b><br><i>개발자가 아닌 직장인 대상 'AI부사수'. 2022.12 기획, 2023.03 첫 운영</i></td>
-          <td>참여자 <b>80% 이상이 배운 것을 실제 업무에 적용</b>. 회고 기록이 첫 시즌 1.3만 자에서 8.4만 자로 증가</td>
-          <td>임직원 AI 리터러시 교육을 설계·운영합니다. <b>2주 간격 + 업무 리스트업 + 매 회차 개별 과제</b> 구조로 짜야 업무가 바뀝니다</td>
-        </tr>
-        <tr>
-          <td><b>대기업 재직자가 사내에서 AI를 못 쓰는 이유를 수집</b><br><i>12시즌 회고로부터 축적</i></td>
-          <td>데이터 반출 금지 · 보안 정책 · 파일 암호화 · 사내 AI의 적용 범위 등 8개 유형</td>
-          <td>입사 후 첫 과제로 <b>이 목록의 삼양 내부 버전</b>을 만듭니다.</td>
-        </tr>
-        <tr>
-          <td><b>개인 업무를 AI로 다시 설계</b><br><i>Claude Code 기반 자동화 체계 구축</i></td>
-          <td>백여 개 이상의 자동화를 만들어 <b>분기마다 학습 과정 15개와 행사 20회 이상을 유일한 실무자로서 운영</b></td>
-          <td>전사 AX 과제 포트폴리오를 짤 때 <b>같은 세 기준</b>을 씁니다. 특히 '자동화하지 않을 일'을 명시하는 것이 신뢰를 만듭니다</td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
-
+  <ol class="cases">
+    <li>
+      <h3>AI 리터러시 교육 과정을 만들고 운영</h3>
+      <p class="note">개발자가 아닌 직장인 대상 'AI부사수'. 2022년 12월 기획, 2023년 3월 첫 운영</p>
+      <dl>
+        <dt>결과</dt><dd>참여자 <b>80% 이상이 배운 것을 실제 업무에 적용</b>했습니다. 회고 기록은 첫 시즌 1.3만 자에서 8.4만 자로 늘었습니다.</dd>
+        <dt>삼양에서</dt><dd>임직원 AI 리터러시 교육을 설계·운영합니다. <b>2주 간격 + 업무 리스트업 + 매 회차 개별 과제</b> 구조로 짜야 업무가 바뀝니다.</dd>
+      </dl>
+    </li>
+    <li>
+      <h3>대기업 재직자가 사내에서 AI를 못 쓰는 이유를 수집</h3>
+      <p class="note">14시즌 회고 292,003자에서 유형화</p>
+      <dl>
+        <dt>결과</dt><dd>데이터 반출 금지 · 보안 정책 · 파일 암호화 · 사내 AI의 적용 범위 등 <b>8개 유형</b>으로 정리했습니다.</dd>
+        <dt>삼양에서</dt><dd>입사 후 첫 과제로 <b>이 목록의 삼양 내부 버전</b>을 만듭니다.</dd>
+      </dl>
+    </li>
+    <li>
+      <h3>개인 업무를 AI로 다시 설계</h3>
+      <p class="note">Claude Code 기반 자동화 체계 구축</p>
+      <dl>
+        <dt>결과</dt><dd>백여 개 이상의 자동화를 만들어 <b>분기마다 학습 과정 15개와 행사 20회 이상을 유일한 실무자로서 운영</b>했습니다.</dd>
+        <dt>삼양에서</dt><dd>전사 AX 과제 포트폴리오를 짤 때 <b>같은 세 기준</b>을 씁니다. 특히 자동화하지 않을 일을 명시하는 것이 신뢰를 만듭니다.</dd>
+      </dl>
+    </li>
+  </ol>
   <p class="point"><b>AI 도입이 어려운 것은, 임직원이 자신의 일이 대체된다고 생각하기 때문입니다.</b></p>
   <p class="lead-in">AX로 업무를 효율적으로 하게 되면 이런 것들이 따라옵니다.</p>
   <ol class="ordered">
@@ -398,24 +436,29 @@ footer{
     <p class="sub">AI부사수 팀 진행을 위해 기획한 프레임워크로 자기 업무를 '하고 싶은 일인가(Potential)'와 '반복되는 일인가(Pattern)' 두 축에 놓아 보면, 무엇부터 AI에 넘기고 어디에 시간을 다시 투자할지 드러납니다.</p>
   </div>
 
-  <ol class="rows">
-    <li>
-      <div class="lab"><b>① 반복된다</b><br>이미 하고 있는 일이다</div>
-      <div class="val"><b>가장 먼저 자동화되는 영역</b> 메일 정리, 일정과 할 일 파악, 대시보드 관리처럼 매일·매주 손이 가던 잡무. 여기서 시간을 회수하는 것이 나머지 세 칸의 자산이 됩니다</div>
+  <ol class="quad">
+    <li class="hot">
+      <span class="axis">반복된다 · 하고 싶지 않다</span>
+      <h4>가장 먼저 넘긴다</h4>
+      <p>메일 정리, 일정과 할 일 파악, 대시보드 관리처럼 매주 손이 가던 잡무. <b>여기서 회수한 시간이 나머지 세 칸의 자산이 됩니다.</b></p>
     </li>
     <li>
-      <div class="lab"><b>② 반복된다</b><br>앞으로 하고 싶은 일이다</div>
-      <div class="val"><b>품질을 한 단계 올립니다.</b> 이미 좋아하고 잘하는 반복 업무. 통째로 넘기지 않고 <b>내 판단을 흐름 안에 남긴 채</b>(human in the loop) 결과물의 적합성을 높입니다</div>
+      <span class="axis">반복된다 · 하고 싶다</span>
+      <h4>품질을 한 단계 올린다</h4>
+      <p>이미 좋아하고 잘하는 반복 업무. 통째로 넘기지 않고 <b>내 판단을 흐름 안에 남긴 채</b> 결과물의 적합성을 높입니다.</p>
     </li>
     <li>
-      <div class="lab"><b>③ 일회성이다</b><br>이미 하고 있는 일이다</div>
-      <div class="val"><b>덜어내거나 넘깁니다.</b> 마음이 가지 않는 한 번짜리 일. 다른 일과 어떻게 연결하여 빠르게 처리할지 고민하며 효율적으로 일하는 방법을 살펴봅니다</div>
+      <span class="axis">일회성이다 · 하고 싶지 않다</span>
+      <h4>덜어내거나 넘긴다</h4>
+      <p>마음이 가지 않는 한 번짜리 일. 다른 일과 어떻게 연결하면 빠르게 처리할지 고민하며 방법을 살펴봅니다.</p>
     </li>
     <li>
-      <div class="lab"><b>④ 일회성이다</b><br>앞으로 하고 싶은 일이다</div>
-      <div class="val"><b>생산성을 높여 확보한 시간을 여기에 씁니다.</b> 그동안 생각만 하고 시도하지 못 한 일, 시간이 없어 끝맺지 못한 숙원 사업. 다른 영역에서 되찾은 시간이 이 칸으로 흘러가는 것이 이 매트릭스의 목적입니다</div>
+      <span class="axis">일회성이다 · 하고 싶다</span>
+      <h4>회수한 시간을 여기에 쓴다</h4>
+      <p>생각만 하고 시도하지 못한 일, 시간이 없어 끝맺지 못한 일. <b>첫 칸에서 되찾은 시간이 이 칸으로 흘러가는 것</b>이 이 매트릭스의 목적입니다.</p>
     </li>
   </ol>
+  <p class="quad-note">가로축은 '하고 싶은 일인가(Potential)', 세로축은 '반복되는 일인가(Pattern)'입니다.</p>
 
   <div class="block" style="margin-top:52px;">
     
@@ -447,48 +490,50 @@ footer{
   <div class="sechead">
     <span class="no">04</span>
     <h2>참여자들이 실제로 만든 것</h2>
-    <p class="sub">회고와 대화 기록에서 "만들었다 / 해봤다"로 끝나는 것을 정리했습니다. 소속은 산업과 직무로만 적었습니다.</p>
+    <p class="sub">세션마다 각자 만든 것을 공유하게 했습니다. 그 기록에서 완성도가 높은 네 건을 골랐습니다. 소속은 산업과 직무로만 적었습니다.</p>
   </div>
 
-  <div class="tablewrap">
-    <table class="wide">
-      <caption>회사 업무</caption>
-      <thead><tr><th>직무 · 산업</th><th>만든 것</th></tr></thead>
-      <tbody>
-        <tr><td>글로벌 법인 인사·총무</td><td>주재원 <b>비자 서류 처리 자동화</b>. 개인 서류 파일 이름을 정리하고, 그걸 근거로 필요한 서류 목록을 자동으로 뽑아냅니다.</td></tr>
-        <tr><td>이커머스 마케팅</td><td>경쟁사 인기 순위를 매일 모아 자사몰과 비교한 보고서를 아침마다 메일로 받기</td></tr>
-        <tr><td>화학·소재 영업관리</td><td>경쟁사 신상품 추적 화면 / 고객 문의 답변의 법률 검토 / 물류 마감 보고서 / 마케팅 문구 다듬기</td></tr>
-        <tr><td>교육 · 학원 운영</td><td>출판사 6곳의 본문에서 <b>변형문항 35개를 만드는 작업</b>. 이전에는 두 달 넘게 걸리던 일을 <b>하루 만에</b> 끝냈습니다</td></tr>
-        <tr><td>데이터 서비스 운영</td><td>업계 동향을 모으는 스킬과 글을 쓰는 스킬을 <b>하나로 이어 붙였습니다.</b> 출처마다 신뢰도 등급을 매기는 기준을 넣어, 규제 관련 글을 <b>국문과 영문 모두 완성해 실제 발행까지</b> 마쳤습니다</td></tr>
-        <tr><td>광고 · 퍼포먼스 마케팅</td><td>따로 놀던 <b>채널별 광고 데이터를 연결해 구매 여정 분석을 자동화</b>했습니다</td></tr>
-        <tr><td>교육출판 홍보</td><td>매일 아침 업계 뉴스 클리핑 및 배포</td></tr>
-        
-        <tr><td>앱 서비스 콘텐츠 기획</td><td>주간회의 준비 / 코치 답변 자동 작성과 공유 / 기자에게 보낼 원고 초안 / 뉴스레터 요약</td></tr>
-        
-        <tr><td>통신사 기획</td><td>하루 업무 정리를 주·월 단위로 확장 / 개인 비서용 웹페이지</td></tr>
-        <tr><td>럭셔리 뷰티 리테일</td><td>매일 오전 9시 트렌드 정리본 자동 수신 / 매장별 부족한 점 데이터로 찾기</td></tr>
-        <tr><td>플랫폼 인사</td><td>해외 채용 공고와 비자 정책 변동을 모아 주는 뉴스 정리</td></tr>
-        <tr><td>인재개발원</td><td>주간 정리 자동화. 프로젝트 진행 상황 요약, 대화 내용 저장 및 업무 리마인더</td></tr>
-        <tr><td>제조업 고객관리</td><td>따로 놀던 여러 프로그램을 하나로 묶은 고객관리 자동화</td></tr>
-      </tbody>
-    </table>
-  </div>
+  <ol class="cases">
+    <li>
+      <h3>재고 예측 프로그램의 정확도를 65%에서 100%로</h3>
+      <p class="note">제약 · 기획</p>
+      <dl>
+        <dt>만든 것</dt><dd>회사 재고 시스템에서 <b>매달 재고 현황을 자동으로 뽑아내는 프로그램</b>을 완성했습니다. 뽑아낸 숫자가 실제와 맞는지 <b>대조하는 방법까지 만들어 정확도를 65%에서 100%로</b> 끌어올렸습니다.</dd>
+        <dt>남은 문제</dt><dd>지금까지 찾은 오류는 전부 결과가 이상해 보인 다음에 원인을 파고들어 잡은 것입니다. <b>"프로그램이 다 돌았다"와 "숫자가 맞다"를 구분해 주는 장치가 없습니다.</b></dd>
+        <dt>다음 목표</dt><dd>프로그램이 끝나면 숫자가 맞는지까지 자동으로 확인해 <b>맞은 비율과 이상한 것들의 목록</b>을 바로 보여주게 만드는 것. "다 돌았다"가 아니라 <b>"확인까지 끝났다"가 새 기본</b>이 되는 것입니다.</dd>
+        <dt>지킬 것</dt><dd>잘 쓰고 있는 예전 버전은 건드리지 않습니다. 목적이 다른 두 확인 방법을 섞지 않습니다. <b>이 둘을 분리한 것이 정확도를 100%까지 올린 핵심</b>이라 편하다고 합치면 오차가 되살아납니다.</dd>
+      </dl>
+    </li>
+    <li>
+      <h3>감으로 하던 카피 판단을 재현 가능한 기준서로</h3>
+      <p class="note">식품 · 마케팅</p>
+      <dl>
+        <dt>만든 것</dt><dd>팽팽한 카피 두 버전을 놓고 <b>"이게 낫다, 왜냐면"을 즉석에서 판단하고 그 이유를 원칙 한 줄로 받아 적는</b> 대조 인터뷰를 반복했습니다. 라운드를 거듭하며 쌓인 규칙으로 <b>본인 이름을 붙인 카피 기준서 한 장</b>을 만들었습니다.</dd>
+        <dt>왜 중요한가</dt><dd>카피를 보면 0.5초 만에 좋고 나쁨을 아는데 왜인지는 말로 안 나옵니다. <b>몸에 밴 감각을 남이 봐도 재현되는 규칙으로 꺼낸 것</b>입니다.</dd>
+        <dt>효과</dt><dd>감으로만 있을 때는 그날 컨디션에 따라 기준이 흔들립니다. 말로 꺼내 세워두면 <b>매번 같은 높이에서 시작하고, 의식적으로 더 밀어 올릴 수 있습니다.</b></dd>
+      </dl>
+    </li>
+    <li>
+      <h3>세 개의 명령을 이어 붙여 국문·영문 글 발행까지</h3>
+      <p class="note">데이터 서비스 · 콘텐츠 발행</p>
+      <dl>
+        <dt>만든 것</dt><dd>업계 소식 수집 명령과 블로그 수집 명령으로 <b>다중 출처 수집·요약을 자동화</b>하고, 여기에 출처 신뢰도 기준(높음 / 보통 / 벤더 자료 주의)과 인터뷰 기반 작성 원칙을 적용해 해외 AI 규제 관련 글을 <b>국문·영문 모두 완성하고 실제 발행까지</b> 마쳤습니다.</dd>
+        <dt>남은 문제</dt><dd>주제 탐색과 출처 6~10건 수집을 <b>매번 처음부터 새로 하고 있어</b> 주 2회 발행이 무리입니다.</dd>
+        <dt>지킬 것</dt><dd>인터뷰 없이 본문을 자동 생성하지 않습니다. <b>본인 경험이 없는 글은 마케팅 기사가 된다</b>는 원칙 때문입니다. 신뢰도 높은 출처가 아니면 수치를 근거로 쓰지 않습니다.</dd>
+      </dl>
+    </li>
+    <li>
+      <h3>자기 약점을 진단해 명령으로 고정</h3>
+      <p class="note">보험 · 데이터 운영</p>
+      <dl>
+        <dt>진단</dt><dd><b>강점</b> — 데이터에서 이상 징후를 감지하면 끝까지 원인을 추적해 재현 가능한 규칙으로 코드에 고정하는 것. <b>한계</b> — 새 데이터를 처음 받으면 값의 정의를 확인하지 않고 진행하다 뒤늦게 여러 번 되돌아가 고치는 것.</dd>
+        <dt>해결</dt><dd>새 데이터를 받으면 <b>AI가 먼저 "이 값들이 뭘 의미하는지" 확인 질문을 던지게</b> 만들었습니다. 다만 질문은 세 개까지만 하고, 그 이상 애매하면 가정해서 진행한 뒤 가정 목록만 알려주도록 했습니다.</dd>
+        <dt>결과</dt><dd>이 과정을 <b>명령 하나로 저장</b>해 새 데이터를 받을 때마다 부릅니다. 기존 시트 구조와 컬럼 순서는 건드리지 않는 것을 조건으로 걸었습니다.</dd>
+      </dl>
+    </li>
+  </ol>
 
-  <div class="tablewrap">
-    <table class="wide">
-      
-      <thead><tr><th>주제</th><th>만든 것</th></tr></thead>
-      <tbody>
-        <tr><td>정보 모으기</td><td>매일 기사를 모아 표에 정리해 두고 주말에 몰아 읽기 / 저장만 하고 안 읽던 글을 명령어 하나로 3줄 요약하고 "오늘 써먹을 한 가지"까지 뽑기</td></tr>
-        <tr><td>한눈에 보는 화면</td><td>미술 전시 정보 모으기 / 주식 투자 현황 / 운동 기록 모아 보기 / 제품 시장조사 결과를 웹페이지로</td></tr>
-        <tr><td>생활</td><td>안 읽은 메일을 주제별로 분류해 주 1회 묶어서 받기 / 동호회 참여 인원 모집과 팀 짜기</td></tr>
-        <tr><td>기록</td><td>개인 지식 보관 체계 / 사진 중복 정리하고 대표 컷만 남기기 / 스크린샷 자동 분류</td></tr>
-        
-      </tbody>
-    </table>
-  </div>
-
-  
+  <p class="anon">원본 기록에는 실명과 소속이 그대로 들어 있습니다. 외부에 공개하는 이 페이지에는 담지 않았고, 인용은 전부 익명으로 처리했습니다.</p>
 </section>
 
 <!-- ══════════ 06 장벽 ══════════ -->
@@ -506,10 +551,6 @@ footer{
     <li><span class="fig">100<i>개 이상</i></span><p>명령어 하나로 여러 단계를 대신하는 <b>자동화</b>를 직접 만들었습니다</p></li>
     <li><span class="fig">15 + 20</span><p>분기마다 돌아가는 <b>학습 과정과 행사</b>. 실무자는 저 한 명입니다</p></li>
   </ol>
-
-  <div><b>15 + 20</b><span>분기당 학습 과정 + 행사</span></div>
-    <div><b>1</b><span>유일한 실무자</span></div>
-  </div>
 
   <p class="tools">
     예를 들어 <i>주간 업무</i>라고 치면 매주 반복 되는 모든 업무를 한번에 실행합니다. 대표님과 대화를 보고 미팅 어젠더와 일정 관리를 진행합니다. 주간 공지 및 뉴스레터를 제작합니다. 진행될 이벤트에 대해 인원을 조회하고, 예상 질문을 연사에게 전달합니다. 슬랙 · 구글 드라이브/캘린더/메일 · 홈페이지 · 개인 옵시디언을 유기적으로 연결해 두었습니다.
@@ -580,16 +621,7 @@ footer{
         <dt>해보고 싶은 것</dt><dd>기록 도구 세팅을 시작하고, 영상 요약 기능을 직접 만들어 보겠다. <b>끌어올 자료를 더 만들자.</b></dd>
       </dl>
     </li>
-    <li>
-      <p class="who">데이터 서비스 · 콘텐츠 발행</p>
-      <dl>
-        <dt>지금까지 한 것</dt><dd>업계 소식을 모으는 명령과 블로그를 수집하는 명령으로 <b>다중 출처 수집·요약을 이미 자동화</b>했습니다. 여기에 출처 신뢰도 기준(높음 / 보통 / 벤더 자료 주의)과 인터뷰 기반 작성 원칙을 적용해, 해외 AI 규제 관련 글을 <b>국문과 영문 모두 완성하고 실제 발행까지</b> 마쳤습니다.</dd>
-        <dt>지금의 한계</dt><dd>주제 탐색과 출처 6~10건 수집을 <b>매번 처음부터 새로 하고 있습니다.</b> 이 속도로는 주 2회 발행이 무리입니다.</dd>
-        <dt>다음 목표</dt><dd>소식 수집 명령이 매주 뽑아내는 출처 목록을 <b>글쓰기 명령의 입력으로 그대로 이어받게</b> 만드는 것. 후보 주제가 신뢰도 표시와 함께 준비된 상태에서 인터뷰부터 바로 시작하려고 합니다.</dd>
-        <dt>지킬 것</dt><dd>인터뷰 없이 본문을 자동 생성하지 않습니다. <b>본인 경험이 없는 글은 마케팅 기사가 된다</b>는 원칙을 유지합니다. 신뢰도 높은 출처가 아니면 수치를 근거로 쓰지 않습니다.</dd>
-      </dl>
-    </li>
-  </ol>
+    </ol>
 </section>
 
 <!-- ══════════ 09 숫자 ══════════ -->
