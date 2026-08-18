@@ -13,16 +13,16 @@
 <style>
 :root{
   --orange:#FF6400; --burgundy:#5F0A32; --sand:#F7DECB;
-  --paper:#FCFAF8; --ink:#1A1817; --ink-2:#55504C; --ink-3:#8C847E;
+  --paper:#FCFAF8; --ink:#17150F; --ink-2:#463F39; --ink-3:#867D75;
   --rule:#DED6CE; --hair:#EFE9E3; --accent:var(--orange);
   --tint:#F6EFE8; --tint-2:#FCEFE3;
   --font:"Pretendard Variable",Pretendard,-apple-system,BlinkMacSystemFont,"Apple SD Gothic Neo",system-ui,sans-serif;
 
   /* 페이지 전체가 쓰는 단 하나의 격자 */
-  --rail:8.5rem;        /* 왼쪽 라벨 칸 */
+  --rail:7rem;          /* 왼쪽 라벨 칸 */
   --gap:1.75rem;        /* 라벨과 본문 사이 */
-  --indent:10.25rem;    /* = rail + gap. 모든 본문의 왼쪽 시작점 */
-  --measure:40rem;      /* 모든 본문의 최대 폭 (rem 고정 — em은 글자 크기마다 달라짐) */
+  --indent:8.75rem;     /* = rail + gap. 모든 본문의 왼쪽 시작점 */
+  --measure:34rem;      /* 본문 최대 폭. 한 줄 40~45자로 끊어 읽기 쉽게 */
 }
 @media (prefers-color-scheme:dark){
   :root:not([data-theme="light"]){
@@ -42,8 +42,8 @@
 html{scroll-behavior:smooth;}
 body{
   margin:0; background:var(--paper); color:var(--ink);
-  font-family:var(--font); font-size:16px; font-weight:400;
-  line-height:1.78; letter-spacing:-0.015em;
+  font-family:var(--font); font-size:16.5px; font-weight:400;
+  line-height:1.85; letter-spacing:-0.015em;
   -webkit-font-smoothing:antialiased; word-break:keep-all;
 }
 .wrap{max-width:940px; margin:0 auto; padding:0 28px 120px;}
@@ -65,27 +65,46 @@ em{font-style:normal;}
 .mast h1{max-width:var(--measure);}
 
 /* ═══ 표제 ═══ */
-.mast{padding:76px 0 0;}
-.mast .id{display:flex; align-items:center; gap:12px; margin:0 0 40px var(--indent);}
-.mast .id p{margin:0; font-size:13.5px; color:var(--ink-3);}
+.mast{padding:0 0 0; margin:0 0 96px;}
+.mast .band{
+  background:var(--tint-2); padding:72px 0 66px;
+  margin-left:calc(50% - 50vw); margin-right:calc(50% - 50vw);
+}
+.mast .band-in{
+  max-width:940px; margin:0 auto;
+  padding:0 28px 0 calc(var(--indent) + 28px);
+}
+.mast .id{display:flex; align-items:center; gap:14px; margin:0 0 34px;}
+.mast .id p{margin:0; font-size:13.5px; color:var(--ink-2); font-weight:500; letter-spacing:.01em;}
 .mast h1{
-  margin:0 0 24px var(--indent); font-size:clamp(1.85rem,4vw,2.75rem);
-  font-weight:800; line-height:1.24; letter-spacing:-0.015em; max-width:var(--measure);
+  margin:0 0 28px; font-size:clamp(2rem,4.6vw,3.1rem);
+  font-weight:800; line-height:1.26; letter-spacing:-0.025em; max-width:44rem;
 }
 .mast h1 em{color:var(--accent);}
-.lede{font-size:1.02rem; font-weight:300; line-height:1.82; color:var(--ink-2); max-width:var(--measure); margin:0 0 36px var(--indent);}
-.lede b{color:var(--ink); font-weight:600;}
-.namecard{display:flex; flex-wrap:wrap; align-items:baseline; gap:10px 20px; padding:0 0 20px var(--indent); border-bottom:1px solid var(--ink);}
-.namecard .nm{font-size:1.3rem; font-weight:800;}
-.namecard .rl{font-size:14px; color:var(--ink-2);}
-.namecard .lk{margin-left:auto; display:flex; flex-wrap:wrap; gap:16px;}
-.namecard .lk a{font-size:13.5px; color:var(--ink-2); text-decoration:none; border-bottom:1px solid var(--rule); padding-bottom:1px;}
+.lede{
+  font-size:1.06rem; font-weight:400; line-height:1.85;
+  color:var(--ink-2); max-width:var(--measure); margin:0;
+}
+.lede b{color:var(--ink); font-weight:700;}
+
+.namecard{
+  display:grid; grid-template-columns:1fr; gap:6px 24px;
+  padding:34px 0 0 var(--indent); margin:0;
+}
+@media(min-width:760px){.namecard{grid-template-columns:auto 1fr; align-items:baseline;}}
+.namecard .nm{font-size:1.5rem; font-weight:800; letter-spacing:-0.02em;}
+.namecard .rl{font-size:14.5px; color:var(--ink-2);}
+.namecard .lk{grid-column:1/-1; display:flex; flex-wrap:wrap; gap:8px 26px; margin-top:12px;}
+.namecard .lk a{font-size:14px; color:var(--ink-2); text-decoration:none; border-bottom:1px solid var(--rule); padding-bottom:2px;}
 .namecard .lk a:hover,.namecard .lk a:focus-visible{color:var(--accent); border-bottom-color:var(--accent);}
-.applying{margin:22px 0 0 var(--indent); font-size:14.5px; color:var(--ink-2); max-width:var(--measure);}
-.applying strong{color:var(--ink); font-weight:600;}
+.applying{
+  margin:30px 0 0 var(--indent); font-size:15.5px; color:var(--ink-2);
+  max-width:var(--measure); line-height:1.85;
+}
+.applying strong{color:var(--ink); font-weight:700;}
 
 /* ═══ 목차 ═══ */
-.toc{margin:44px 0 0; padding:22px 0 0 var(--indent); border-top:1px solid var(--hair);}
+.toc{margin:52px 0 0; padding:26px 0 0 var(--indent); border-top:1px solid var(--hair);}
 .toc ol{margin:0; padding:0; list-style:none; display:grid; grid-template-columns:1fr; gap:0 32px;}
 @media(min-width:700px){.toc ol{grid-template-columns:1fr 1fr;}}
 .toc a{display:grid; grid-template-columns:2.1rem 1fr; gap:8px; text-decoration:none; font-size:14px; color:var(--ink-2); padding:6px 0;}
@@ -93,7 +112,7 @@ em{font-style:normal;}
 .toc a span{font-weight:700; color:var(--ink-3); font-variant-numeric:tabular-nums;}
 
 /* ═══ 섹션 — 모든 본문은 --indent 에서 시작 ═══ */
-section{padding-top:104px;}
+section{padding-top:120px;}
 .sechead{
   display:grid; grid-template-columns:1fr; gap:2px;
   padding-bottom:0; margin-bottom:36px;
@@ -104,7 +123,7 @@ section{padding-top:104px;}
 }
 .sechead .no{font-size:1.9rem; font-weight:800; color:var(--accent); font-variant-numeric:tabular-nums; line-height:1;}
 .sechead h2{margin:0; font-size:1.5rem; font-weight:800; line-height:1.4; letter-spacing:-0.02em;}
-.sechead .sub{margin:8px 0 0; font-size:14.5px; font-weight:300; color:var(--ink-3); max-width:var(--measure); line-height:1.75;}
+.sechead .sub{margin:12px 0 0; font-size:15px; font-weight:400; color:var(--ink-3); max-width:var(--measure); line-height:1.8;}
 
 /* 격자를 쓰지 않는 덩어리는 들여쓰기로 본문 시작점을 맞춘다 */
 .block,.tablewrap,.tools,.chart,.pull,.point,.anon,.qgroup{
@@ -118,8 +137,8 @@ h4{font-size:.98rem; font-weight:700; margin:0 0 5px;}
 /* ═══ 라벨+본문 목록 (전부 같은 격자) ═══ */
 .rows{margin:0; padding:0; list-style:none;}
 .rows > li{
-  display:grid; grid-template-columns:1fr; gap:5px;
-  padding:24px 0; border-top:1px solid var(--hair);
+  display:grid; grid-template-columns:1fr; gap:6px;
+  padding:28px 0; border-top:1px solid var(--hair);
 }
 @media(min-width:760px){
   .rows > li{grid-template-columns:var(--rail) 1fr; gap:0 var(--gap); align-items:baseline;}
@@ -127,7 +146,7 @@ h4{font-size:.98rem; font-weight:700; margin:0 0 5px;}
 .sechead + .rows > li:first-child{border-top:none; padding-top:4px;}
 .rows .lab{font-size:13.5px; color:var(--ink-3); line-height:1.6;}
 .rows .lab b{display:block; color:var(--ink); font-weight:700; margin-bottom:2px;}
-.rows .val{font-size:15px; color:var(--ink-2); font-weight:300; line-height:1.76; max-width:var(--measure);}
+.rows .val{font-size:16px; color:var(--ink-2); font-weight:400; line-height:1.85; max-width:var(--measure);}
 .rows .val b{color:var(--ink); font-weight:600;}
 .rows .val h3,.rows .val h4{color:var(--ink);}
 .rows .val p{margin:0 0 12px;}
@@ -141,7 +160,7 @@ h4{font-size:.98rem; font-weight:700; margin:0 0 5px;}
 .block{margin-bottom:52px;}
 .block > .lbl{font-size:13.5px; color:var(--ink-3); margin:0 0 7px;}
 .block ul{margin:0 0 16px; padding-left:0; list-style:none; max-width:var(--measure);}
-.block ul li{font-size:15px; color:var(--ink-2); font-weight:300; line-height:1.78; padding-left:18px; position:relative; margin-bottom:7px;}
+.block ul li{font-size:16px; color:var(--ink-2); font-weight:400; line-height:1.85; padding-left:18px; position:relative; margin-bottom:7px;}
 .block ul li::before{content:""; position:absolute; left:0; top:.8em; width:5px; height:5px; background:var(--rule);}
 .block ul li b{color:var(--ink); font-weight:600;}
 .point{font-size:1.02rem; font-weight:400; line-height:1.8; color:var(--ink); margin-bottom:24px;}
@@ -151,7 +170,7 @@ h4{font-size:.98rem; font-weight:700; margin:0 0 5px;}
 .sofar{background:var(--tint-2); padding:28px 32px 30px; margin-top:44px; margin-bottom:8px;}
 .sofar h4,.sofar p{max-width:var(--measure);}
 .sofar h4{color:var(--accent); font-size:.95rem; margin:0 0 10px;}
-.sofar p{font-size:15px; font-weight:300; color:var(--ink-2); line-height:1.8; margin:0 0 10px;}
+.sofar p{font-size:16px; font-weight:400; color:var(--ink-2); line-height:1.85; margin:0 0 14px;}
 .sofar p:last-child{margin:0;}
 .sofar p b{color:var(--ink); font-weight:600;}
 
@@ -171,7 +190,7 @@ h4{font-size:.98rem; font-weight:700; margin:0 0 5px;}
 .inline-figs{display:flex; flex-wrap:wrap; gap:0 40px; padding:0 0 26px; border-bottom:1px solid var(--hair); margin-bottom:26px;}
 .inline-figs div b{display:block; font-size:1.5rem; font-weight:800; letter-spacing:-0.02em; font-variant-numeric:tabular-nums; line-height:1.2;}
 .inline-figs div span{display:block; font-size:13px; color:var(--ink-3);}
-.tools{font-size:14px; color:var(--ink-3); font-weight:300; line-height:1.95; max-width:var(--measure); margin-bottom:0;}
+.tools{font-size:15px; color:var(--ink-2); font-weight:400; line-height:1.9; max-width:var(--measure); margin-bottom:0;}
 .tools i{font-style:normal; color:var(--ink-2);}
 
 /* ═══ 표 ═══ */
@@ -180,7 +199,7 @@ table{border-collapse:collapse; width:100%; min-width:560px;}
 caption{text-align:left; font-size:14.5px; font-weight:700; padding:0 0 14px; color:var(--ink);}
 th,td{text-align:left; padding:15px 20px 15px 0; vertical-align:top;}
 thead th{font-size:13px; font-weight:400; color:var(--ink-3); border-bottom:1px solid var(--rule); padding-bottom:10px;}
-tbody td{font-size:14px; color:var(--ink-2); font-weight:300; line-height:1.72;}
+tbody td{font-size:15px; color:var(--ink-2); font-weight:400; line-height:1.8;}
 tbody td:first-child{color:var(--ink); font-weight:400;}
 tbody td b{font-weight:700; color:var(--ink);}
 tbody td i{font-style:normal; color:var(--ink-3);}
@@ -200,17 +219,34 @@ svg .dot{fill:var(--accent);}
 svg .lbl{fill:var(--ink-3); font-family:var(--font); font-size:11px; letter-spacing:-0.015em;}
 svg .val{fill:var(--ink); font-family:var(--font); font-size:13px; font-weight:800; letter-spacing:-0.015em;}
 
+/* ═══ 이끄는 문장 · 번호 목록 ═══ */
+.lead-in{margin:0 0 14px var(--indent); font-size:16px; color:var(--ink-2); max-width:var(--measure);}
+.ordered{
+  margin:0 0 8px var(--indent); padding:0; list-style:none;
+  counter-reset:ord; max-width:var(--measure);
+}
+.ordered li{
+  counter-increment:ord; position:relative;
+  padding:0 0 0 2.1rem; margin-bottom:11px;
+  font-size:16px; color:var(--ink-2); line-height:1.85;
+}
+.ordered li::before{
+  content:counter(ord); position:absolute; left:0; top:0;
+  font-size:13px; font-weight:800; color:var(--accent);
+  width:1.4rem; text-align:right;
+}
+
 /* ═══ 회고 노트 (채움 블록) ═══ */
-.notes{margin:0 0 8px var(--indent); padding:0; list-style:none; display:grid; gap:14px;}
-.notes > li{background:var(--tint); padding:26px 30px 28px;}
+.notes{margin:0 0 8px var(--indent); padding:0; list-style:none; display:grid; gap:18px;}
+.notes > li{background:var(--tint); padding:30px 34px 32px;}
 .notes .who{
   margin:0 0 14px; font-size:13px; font-weight:700; color:var(--accent);
   max-width:none;
 }
-.notes dl{margin:0; display:grid; grid-template-columns:1fr; gap:4px 22px;}
+.notes dl{margin:0; display:grid; grid-template-columns:1fr; gap:4px 26px;}
 @media(min-width:700px){.notes dl{grid-template-columns:6.5rem 1fr;}}
 .notes dt{font-size:13.5px; color:var(--ink-3); padding-top:3px;}
-.notes dd{margin:0 0 12px; font-size:15px; font-weight:300; line-height:1.76; color:var(--ink-2);}
+.notes dd{margin:0 0 16px; font-size:16px; font-weight:400; line-height:1.85; color:var(--ink-2);}
 .notes dd:last-child{margin-bottom:0;}
 .notes dd b{color:var(--ink); font-weight:600;}
 
@@ -232,19 +268,18 @@ footer{
 <div class="wrap">
 
 <header class="mast">
-  <div class="id">
+  <div class="band"><div class="band-in">
+    <div class="id">
     <svg class="sym" width="19" height="19" viewBox="0 0 32 32" aria-hidden="true">
       <rect x="2" y="10" width="18" height="18"/><circle cx="20" cy="14" r="9.5"/>
     </svg>
     <p>삼양라운드스퀘어 AX전략팀 지원 포트폴리오 · 2026년 8월</p>
   </div>
-
-  <h1>AI를 배운 사람들이<br>회사에서 <em>못 쓰는 이유</em></h1>
-
-  <p class="lede">
+    <h1>AI를 배운 사람들이<br>회사에서 <em>못 쓰는 이유</em></h1>
+    <p class="lede">
     'AI 도구를 쓸 줄 아는 것'과 '회사 업무가 실제로 바뀌는 것'은 다릅니다.<br>저는 개발자가 아닌 직장인에게 AI를 가르치는 과정을 2022년 12월에 기획해 지금까지 이어왔습니다. 전자·통신·자동차·화학·유통·금융·제약·식품·플랫폼에서 온 실무자들은 프로그램에 참여하며 늘 회고에 이런 말을 남겼습니다. <b>"회사 데이터를 밖으로 못 빼는데 무엇을 할 수 있을까."</b>
   </p>
-
+  </div></div>
   <div class="namecard">
     <span class="nm">이슬기</span>
     <span class="rl">AI 실무 적용 · 교육 설계 · 운영 자동화</span>
@@ -254,12 +289,10 @@ footer{
       <a href="https://www.linkedin.com/in/fromsklee/" target="_blank" rel="noopener noreferrer">linkedin.com/in/fromsklee</a>
     </span>
   </div>
-
   <p class="applying">
     <strong>AI Transformation(AX) 전략 기획</strong> 직무에 지원합니다.
     아래 01번에 <strong>무엇을 했고, 어떤 결과가 나왔고, 삼양라운드스퀘어에서 어떻게 쓸 것인지</strong>를 먼저 정리했습니다.
   </p>
-
   <nav class="toc">
     <ol>
       
@@ -309,9 +342,15 @@ footer{
     </table>
   </div>
 
-  <p class="point">
-    **AI 도입이 어려운 것은 임직원은 자신의 일이 대체된다고 생각하기 때문입니다. <br><br>AX로 업무를 효율적으로 하게 된다면<br><br>1. 비효율적인 작업을 자동화할 수 있습니다.<br>2. AI가 대체할 수 없는 내 의사결정이 필요한 부분이 어디인지 알게 됩니다. <br>3. 나의 암묵지를 데이터로 쌓게 됩니다.<br>4. 새로운 업무 영역과 가능성을 발견합니다.<br>5. 잘 하던 것을 더 잘 하는 전문가가 됩니다.
-  </p>
+  <p class="point"><b>AI 도입이 어려운 것은, 임직원이 자신의 일이 대체된다고 생각하기 때문입니다.</b></p>
+  <p class="lead-in">AX로 업무를 효율적으로 하게 되면 이런 것들이 따라옵니다.</p>
+  <ol class="ordered">
+    <li>비효율적인 작업을 자동화할 수 있습니다.</li>
+    <li>AI가 대체할 수 없는, 내 의사결정이 필요한 부분이 어디인지 알게 됩니다.</li>
+    <li>나의 암묵지를 데이터로 쌓게 됩니다.</li>
+    <li>새로운 업무 영역과 가능성을 발견합니다.</li>
+    <li>잘하던 것을 더 잘하는 전문가가 됩니다.</li>
+  </ol>
 </section>
 
 <!-- ══════════ 02 AI부사수 ══════════ -->
@@ -540,11 +579,11 @@ footer{
       </dl>
     </li>
     <li>
-      <p class="who">공간 기획 · 1인 사업</p>
+      <p class="who">홍보 · 커뮤니케이션</p>
       <dl>
-        <dt>좋았던 점</dt><dd>회고부터 시작한 점이 좋았다. <b>"이거 해봐"가 아니라 맥락으로 이해시키려 한 것</b>이 멋지다고 생각했다.</dd>
-        <dt>배운 점</dt><dd>코딩이라는 게 무엇인가부터 생각하게 됐다. 컴퓨터는 결국 파일로 움직이는 것이었지, 하는 데서 무릎을 치게 된다.</dd>
-        <dt>해보고 싶은 것</dt><dd>내가 무슨 일을 하는지부터 정리해봐야겠다. 다만 <b>내 기록에 연결된 사람과 회사가 많다 보니, 어디까지 접근하게 할 것인가는 조심스럽다.</b></dd>
+        <dt>좋았던 점</dt><dd><b>팀에 도움이 될 자동 알림을 만들기 시작했다.</b> 내가 먼저 알림을 받고 팀에 알려줄지, 팀 대화방으로 바로 보낼지 고민이지만 오늘 중에 정해서 <b>내일 배포해 보겠다.</b></dd>
+        <dt>배운 점</dt><dd>본격적으로 적용하기 전에 <b>"적용하기 전에 미리보기를 먼저 보여줘"</b>라고 하면 대대적인 수정을 하지 않아도 되어 효율적이라는 말을 주워들었다.</dd>
+        <dt>해보고 싶은 것</dt><dd><b>쾌적한 팀 빌딩에 도움이 되었으면.</b></dd>
       </dl>
     </li>
   </ol>
