@@ -29,14 +29,14 @@
   .hl{ color:var(--accent); font-weight:700; }
   .sm{ font-size:.82em; font-weight:400; color:var(--sub); letter-spacing:-0.01em; }
 
-  .body{ position:absolute; left:116px; right:116px; top:74px; bottom:62px; z-index:2; }
+  .body{ position:static; z-index:2; flex:1 0 auto; }
   .label{ font-size:13px; font-weight:700; color:var(--accent); margin-bottom:26px; letter-spacing:-0.01em; }
   .label b{ font-weight:700; margin-right:9px; }
   .h-title{ font-size:29px; font-weight:700; line-height:1.38; letter-spacing:-0.028em; }
   .h-title .hl{ font-weight:700; }
   .lead{ font-size:15.5px; color:var(--body); line-height:1.85; margin-top:30px; max-width:900px; }
 
-  .foot{ position:absolute; left:116px; right:116px; bottom:26px; display:flex; justify-content:space-between;
+  .foot{ position:static; margin-top:52px; padding-top:22px; border-top:1px solid var(--line2); display:flex; justify-content:space-between;
          z-index:2; font-size:11px; color:var(--faint); font-weight:500; letter-spacing:-0.005em; }
   .foot .pg{ font-variant-numeric:tabular-nums; }
 
@@ -47,16 +47,16 @@
   .cover h1{ font-size:60px; font-weight:700; line-height:1.2; letter-spacing:-0.035em; color:#FBF6F1; }
   .cover .role{ font-size:18px; color:#D8CEC5; font-weight:600; margin-top:26px; }
   .cover .tag{ font-size:16px; color:var(--deep-sub); margin-top:34px; line-height:1.72; }
-  .cover .contact{ position:absolute; left:116px; bottom:64px; font-size:13.5px; color:#A0958B; z-index:2; }
+  .cover .contact{ position:static; margin-top:auto; padding-top:72px; font-size:13.5px; color:#A0958B; z-index:2; }
 
   .close h1{ font-size:36px; font-weight:700; line-height:1.5; letter-spacing:-0.03em; color:#FBF6F1; }
   .close .sub{ font-size:16px; color:var(--deep-sub); margin-top:40px; line-height:1.75; }
-  .close .links{ position:absolute; left:116px; bottom:64px; font-size:13.5px; color:#A0958B; z-index:2; }
+  .close .links{ position:static; margin-top:auto; padding-top:72px; font-size:13.5px; color:#A0958B; z-index:2; }
 
   /* ---------- 문제 정의 ---------- */
   .quote{ margin-top:40px; font-size:33px; font-weight:700; line-height:1.42; letter-spacing:-0.032em;
           color:var(--accent); }
-  .note{ position:absolute; left:0; right:0; bottom:6px; border-top:1px solid var(--line); padding-top:20px;
+  .note{ position:static; margin-top:44px; border-top:1px solid var(--line); padding-top:24px;
          font-size:14px; color:var(--body); line-height:1.72; }
 
   /* ---------- 숫자 ---------- */
@@ -85,7 +85,7 @@
   .vstats{ display:flex; flex-direction:column; gap:30px; }
   .vstat .num{ font-size:31px; font-weight:700; letter-spacing:-0.04em; line-height:1.05; color:var(--accent); }
   .vstat .lb{ font-size:13px; color:var(--sub); margin-top:9px; line-height:1.55; }
-  .result{ position:absolute; left:0; right:0; bottom:6px; border-top:1px solid var(--line); padding-top:18px;
+  .result{ position:static; margin-top:44px; border-top:1px solid var(--line); padding-top:24px;
            font-size:13.5px; color:var(--body); line-height:1.65; }
 
   /* ---------- 3단 ---------- */
@@ -94,7 +94,7 @@
   .col h3{ font-size:17px; font-weight:700; letter-spacing:-0.028em; line-height:1.4; }
   .col p{ font-size:13.5px; color:var(--body); line-height:1.72; margin-top:13px; }
 
-  .band{ position:absolute; left:0; right:0; bottom:2px; background:var(--wash); padding:20px 26px; box-sizing:border-box; }
+  .band{ position:static; margin-top:44px; background:var(--wash); padding:26px 30px 28px; box-sizing:border-box; }
   .band .bt{ font-size:13.5px; color:var(--body); line-height:1.6; }
   .band .eff{ display:grid; grid-template-columns:repeat(5,1fr); gap:20px; margin-top:15px; }
   .band .eff div{ font-size:12px; color:var(--body); line-height:1.55; padding-top:11px; border-top:1px solid #E3DAD1; }
@@ -134,7 +134,7 @@
   .crit .ci{ display:grid; grid-template-columns:0.85fr 1.5fr; gap:40px; padding:31px 0; border-bottom:1px solid var(--line); align-items:baseline; }
   .crit .ci h4{ font-size:16.5px; font-weight:700; letter-spacing:-0.028em; line-height:1.42; }
   .crit .ci p{ font-size:13.5px; color:var(--body); line-height:1.68; }
-  .steps{ position:absolute; left:0; right:0; bottom:4px; }
+  .steps{ position:static; margin-top:44px; }
   .steps .sh{ font-size:12.5px; font-weight:700; color:var(--sub); margin-bottom:13px; }
   .steps .sf{ display:flex; align-items:center; gap:0; }
   .steps .sf span{ font-size:12.5px; font-weight:600; color:var(--ink); white-space:nowrap; }
@@ -170,13 +170,6 @@
     padding:80px 150px 36px; display:flex; flex-direction:column;
     box-shadow:0 1px 4px rgba(40,30,20,.10); overflow:visible;
   }
-  /* 절대배치를 흐름배치로 — 여백이 자유롭게 늘어나도록 */
-  .body{ position:static; left:auto; right:auto; top:auto; bottom:auto; flex:1 0 auto; }
-  .foot{ position:static; left:auto; right:auto; bottom:auto;
-         margin-top:52px; padding-top:22px; border-top:1px solid var(--line2); }
-  .note,.result{ position:static; left:auto; right:auto; bottom:auto; margin-top:44px; padding-top:24px; }
-  .band{ position:static; left:auto; right:auto; bottom:auto; margin-top:40px; }
-  .cover .contact,.close .links{ position:static; left:auto; bottom:auto; margin-top:auto; padding-top:72px; }
   .deep{ padding-top:104px; padding-bottom:56px; min-height:600px; }
 
   /* 삼양 시그니처 — 장마다 오렌지 룰 */
